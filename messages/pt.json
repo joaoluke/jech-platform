@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "home": "Início",
+    "playground": "Playground",
+    "docs": "Documentação",
+    "learn": "Aprender",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "JECH Programming Language",
+    "subtitle": "Aprenda como linguagens de programação funcionam por dentro",
+    "description": "JECH é uma linguagem construída do zero para ensinar exatamente como Python, JavaScript e PHP funcionam - de forma clara, documentada e acessível.",
+    "cta": {
+      "playground": "Experimentar Playground",
+      "docs": "Ver Documentação"
+    },
+    "features": {
+      "educational": {
+        "title": "Educacional",
+        "description": "Aprenda os conceitos fundamentais de compiladores e interpretadores"
+      },
+      "transparent": {
+        "title": "Transparente",
+        "description": "Veja cada etapa: tokenizer, parser, AST, bytecode e VM"
+      },
+      "practical": {
+        "title": "Prático",
+        "description": "Execute código real com variáveis, arrays e condicionais"
+      }
+    }
+  },
+  "playground": {
+    "title": "Playground Interativo",
+    "run": "Executar",
+    "clear": "Limpar",
+    "examples": "Exemplos",
+    "output": "Saída",
+    "editor": "Editor"
+  }
+}
