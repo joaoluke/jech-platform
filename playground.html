@@ -1,266 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground - Jech</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #1e1e1e;
-            color: #d4d4d4;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background: #1e1e1e;
+        color: #d4d4d4;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        header {
-            background: #2d2d30;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid #3e3e42;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      header {
+        background: #2d2d30;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #3e3e42;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #fff;
-        }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+      }
 
-        .controls {
-            display: flex;
-            gap: 0.5rem;
-        }
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+      }
 
-        button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
+      button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+      }
 
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-        #runBtn {
-            background: #16a34a;
-            color: white;
-        }
+      #runBtn {
+        background: #16a34a;
+        color: white;
+      }
 
-        #runBtn:hover:not(:disabled) {
-            background: #15803d;
-        }
+      #runBtn:hover:not(:disabled) {
+        background: #15803d;
+      }
 
-        #clearBtn {
-            background: #3f3f46;
-            color: white;
-        }
+      #clearBtn {
+        background: #3f3f46;
+        color: white;
+      }
 
-        #clearBtn:hover:not(:disabled) {
-            background: #52525b;
-        }
+      #clearBtn:hover:not(:disabled) {
+        background: #52525b;
+      }
 
+      .container {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: #3e3e42;
+        overflow: hidden;
+      }
+
+      .panel {
+        background: #1e1e1e;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-header {
+        background: #2d2d30;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #3e3e42;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .panel-content {
+        flex: 1;
+        overflow: auto;
+      }
+
+      #editor {
+        width: 100%;
+        height: 100%;
+      }
+
+      #output {
+        padding: 1rem;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+        color: #4ade80;
+      }
+
+      #output.error {
+        color: #f87171;
+      }
+
+      #output.empty {
+        color: #71717a;
+      }
+
+      .examples {
+        padding: 1rem 2rem;
+        background: #2d2d30;
+        border-top: 1px solid #3e3e42;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .examples label {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .example-btn {
+        background: #3f3f46;
+        color: #d4d4d4;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .example-btn:hover {
+        background: #52525b;
+      }
+
+      .status {
+        padding: 0.5rem 2rem;
+        background: #3730a3;
+        color: white;
+        font-size: 0.85rem;
+        text-align: center;
+      }
+
+      .status.ready {
+        background: #15803d;
+      }
+
+      .status.error {
+        background: #dc2626;
+      }
+
+      .loader {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spin 0.6s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
         .container {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: #3e3e42;
-            overflow: hidden;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr;
         }
-
-        .panel {
-            background: #1e1e1e;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .panel-header {
-            background: #2d2d30;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #3e3e42;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .panel-content {
-            flex: 1;
-            overflow: auto;
-        }
-
-        #editor {
-            width: 100%;
-            height: 100%;
-        }
-
-        #output {
-            padding: 1rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            white-space: pre-wrap;
-            color: #4ade80;
-        }
-
-        #output.error {
-            color: #f87171;
-        }
-
-        #output.empty {
-            color: #71717a;
-        }
-
-        .examples {
-            padding: 1rem 2rem;
-            background: #2d2d30;
-            border-top: 1px solid #3e3e42;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .examples label {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .example-btn {
-            background: #3f3f46;
-            color: #d4d4d4;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.85rem;
-        }
-
-        .example-btn:hover {
-            background: #52525b;
-        }
-
-        .status {
-            padding: 0.5rem 2rem;
-            background: #3730a3;
-            color: white;
-            font-size: 0.85rem;
-            text-align: center;
-        }
-
-        .status.ready {
-            background: #15803d;
-        }
-
-        .status.error {
-            background: #dc2626;
-        }
-
-        .loader {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">🚀 JECH</a>
-            <div class="nav-links">
-                <a href="index.html">Início</a>
-                <a href="playground.html" class="active">Playground</a>
-                <a href="docs.html">Documentação</a>
-                <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
-            </div>
+      <div class="container">
+        <a href="index.html" class="logo">🚀 JECH</a>
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="playground.html" class="active">Playground</a>
+          <a href="docs.html">Documentação</a>
+          <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
         </div>
+      </div>
     </nav>
 
     <header>
-        <h1>🚀 Jech Playground</h1>
-        <div class="controls">
-            <button id="runBtn" disabled>
-                <span>▶</span>
-                <span id="runText">Carregando...</span>
-            </button>
-            <button id="clearBtn" disabled>
-                <span>🗑️</span>
-                <span>Limpar</span>
-            </button>
-        </div>
+      <h1>🚀 Jech Playground</h1>
+      <div class="controls">
+        <button id="runBtn" disabled>
+          <span>▶</span>
+          <span id="runText">Carregando...</span>
+        </button>
+        <button id="clearBtn" disabled>
+          <span>🗑️</span>
+          <span>Limpar</span>
+        </button>
+      </div>
     </header>
 
     <div id="status" class="status">
-        <span class="loader"></span> Carregando interpretador WASM...
+      <span class="loader"></span> Carregando interpretador WASM...
     </div>
 
     <div class="container">
-        <div class="panel">
-            <div class="panel-header">Editor</div>
-            <div class="panel-content">
-                <textarea id="editor" spellcheck="false">keep x = 10;
+      <div class="panel">
+        <div class="panel-header">Editor</div>
+        <div class="panel-content">
+          <textarea id="editor" spellcheck="false">
+keep x = 10;
 keep name = "JECH";
 say(x);
 say(name);
 
 keep numbers = [1, 2, 3];
-say(numbers[0]);</textarea>
-            </div>
+say(numbers[0]);</textarea
+          >
         </div>
+      </div>
 
-        <div class="panel">
-            <div class="panel-header">Saída</div>
-            <div class="panel-content">
-                <div id="output" class="empty">Clique em Executar para ver a saída...</div>
-            </div>
+      <div class="panel">
+        <div class="panel-header">Saída</div>
+        <div class="panel-content">
+          <div id="output" class="empty">
+            Clique em Executar para ver a saída...
+          </div>
         </div>
+      </div>
     </div>
 
     <div class="examples">
-        <label>Exemplos:</label>
-        <button class="example-btn" onclick="loadExample('hello')">Hello World</button>
-        <button class="example-btn" onclick="loadExample('conditional')">Condicional</button>
-        <button class="example-btn" onclick="loadExample('array')">Arrays</button>
-        <button class="example-btn" onclick="loadExample('loop')">Loop</button>
+      <label>Exemplos:</label>
+      <button class="example-btn" onclick="loadExample('hello')">
+        Hello World
+      </button>
+      <button class="example-btn" onclick="loadExample('conditional')">
+        Condicional
+      </button>
+      <button class="example-btn" onclick="loadExample('array')">Arrays</button>
+      <button class="example-btn" onclick="loadExample('loop')">Loop</button>
     </div>
 
     <script>
-        // Exemplos de código
-        const examples = {
-            hello: `keep x = 10;
+      // Exemplos de código
+      const examples = {
+        hello: `keep x = 10;
 keep name = "JECH";
 say(x);
 say(name);
 
 keep numbers = [1, 2, 3];
 say(numbers[0]);`,
-            conditional: `keep age = 20;
+        conditional: `keep age = 20;
 
 when (age > 18) {
     say("Adulto");
@@ -268,175 +280,176 @@ when (age > 18) {
 else {
     say("Menor de idade");
 }`,
-            array: `keep numbers = [1, 2, 3, 4, 5];
+        array: `keep numbers = [1, 2, 3, 4, 5];
 say(numbers[0]);
 say(numbers[2]);
 say(numbers[4]);`,
-            loop: `keep i = 0;
+        loop: `keep i = 0;
 when (i < 5) {
     say(i);
     keep i = i + 1;
-}`
-        };
+}`,
+      };
 
-        function loadExample(name) {
-            if (examples[name]) {
-                document.getElementById('editor').value = examples[name];
-            }
+      function loadExample(name) {
+        if (examples[name]) {
+          document.getElementById("editor").value = examples[name];
         }
+      }
 
-        // Estado do WASM
-        let jechModule = null;
-        let isReady = false;
+      // Estado do WASM
+      let jechModule = null;
+      let isReady = false;
 
-        // Elementos DOM
-        const runBtn = document.getElementById('runBtn');
-        const clearBtn = document.getElementById('clearBtn');
-        const runText = document.getElementById('runText');
-        const output = document.getElementById('output');
-        const status = document.getElementById('status');
-        const editor = document.getElementById('editor');
+      // Elementos DOM
+      const runBtn = document.getElementById("runBtn");
+      const clearBtn = document.getElementById("clearBtn");
+      const runText = document.getElementById("runText");
+      const output = document.getElementById("output");
+      const status = document.getElementById("status");
+      const editor = document.getElementById("editor");
 
-        // Buffer para capturar output
-        let capturedOutput = '';
+      // Buffer para capturar output
+      let capturedOutput = "";
 
-        // Carregar módulo WASM
-        async function initWasm() {
+      // Carregar módulo WASM
+      async function initWasm() {
+        try {
+          status.innerHTML =
+            '<span class="loader"></span> Carregando interpretador WASM...';
+
+          // Carregar o script do Emscripten
+          const script = document.createElement("script");
+          script.src = "/wasm/jech.js";
+
+          script.onload = async () => {
             try {
-                status.innerHTML = '<span class="loader"></span> Carregando interpretador WASM...';
-                
-                // Carregar o script do Emscripten
-                const script = document.createElement('script');
-                script.src = '/wasm/jech.js';
-                
-                script.onload = async () => {
-                    try {
-                        // Inicializar o módulo com callbacks para capturar output
-                        jechModule = await JechModule({
-                            locateFile: (path) => {
-                                if (path.endsWith('.wasm')) {
-                                    return '/wasm/jech.wasm';
-                                }
-                                return path;
-                            },
-                            print: (text) => {
-                                // Capturar stdout
-                                capturedOutput += text + '\n';
-                                console.log('WASM stdout:', text);
-                            },
-                            printErr: (text) => {
-                                // Capturar stderr
-                                capturedOutput += text + '\n';
-                                console.error('WASM stderr:', text);
-                            }
-                        });
+              // Inicializar o módulo com callbacks para capturar output
+              jechModule = await JechModule({
+                locateFile: (path) => {
+                  if (path.endsWith(".wasm")) {
+                    return "/wasm/jech.wasm";
+                  }
+                  return path;
+                },
+                print: (text) => {
+                  // Capturar stdout
+                  capturedOutput += text + "\n";
+                  console.log("WASM stdout:", text);
+                },
+                printErr: (text) => {
+                  // Capturar stderr
+                  capturedOutput += text + "\n";
+                  console.error("WASM stderr:", text);
+                },
+              });
 
-                        isReady = true;
-                        runBtn.disabled = false;
-                        clearBtn.disabled = false;
-                        runText.textContent = 'Executar';
-                        status.textContent = '✅ Interpretador pronto!';
-                        status.className = 'status ready';
-                        
-                        console.log('WASM module loaded successfully!');
-                        console.log('Exported functions:', Object.keys(jechModule).filter(k => k.startsWith('_')));
-                    } catch (error) {
-                        throw new Error('Falha ao inicializar módulo: ' + error.message);
-                    }
-                };
+              isReady = true;
+              runBtn.disabled = false;
+              clearBtn.disabled = false;
+              runText.textContent = "Executar";
+              status.textContent = "✅ Interpretador pronto!";
+              status.className = "status ready";
 
-                script.onerror = () => {
-                    throw new Error('Falha ao carregar jech.js');
-                };
-
-                document.head.appendChild(script);
+              console.log("WASM module loaded successfully!");
+              console.log(
+                "Exported functions:",
+                Object.keys(jechModule).filter((k) => k.startsWith("_")),
+              );
             } catch (error) {
-                console.error('Error loading WASM:', error);
-                status.textContent = '❌ Erro ao carregar interpretador: ' + error.message;
-                status.className = 'status error';
-                output.textContent = 'Erro ao carregar o interpretador WASM.\n\n' + error.message;
-                output.className = 'error';
+              throw new Error("Falha ao inicializar módulo: " + error.message);
             }
+          };
+
+          script.onerror = () => {
+            throw new Error("Falha ao carregar jech.js");
+          };
+
+          document.head.appendChild(script);
+        } catch (error) {
+          console.error("Error loading WASM:", error);
+          status.textContent =
+            "❌ Erro ao carregar interpretador: " + error.message;
+          status.className = "status error";
+          output.textContent =
+            "Erro ao carregar o interpretador WASM.\n\n" + error.message;
+          output.className = "error";
+        }
+      }
+
+      // Executar código
+      function runCode() {
+        if (!isReady || !jechModule) {
+          output.textContent = "Aguarde o interpretador carregar...";
+          output.className = "error";
+          return;
         }
 
-        // Executar código
-        function runCode() {
-            if (!isReady || !jechModule) {
-                output.textContent = 'Aguarde o interpretador carregar...';
-                output.className = 'error';
-                return;
-            }
+        const code = editor.value.trim();
 
-            const code = editor.value.trim();
-            
-            if (!code) {
-                output.textContent = 'Digite algum código para executar.';
-                output.className = 'empty';
-                return;
-            }
-
-            try {
-                runBtn.disabled = true;
-                runText.innerHTML = '<span class="loader"></span> Executando...';
-                output.textContent = '> Executando código...';
-                output.className = '';
-
-                // Limpar output capturado anterior
-                capturedOutput = '';
-
-                // Executar usando ccall - o output será capturado pelos callbacks print/printErr
-                jechModule.ccall(
-                    'jech_execute',
-                    'string',
-                    ['string'],
-                    [code]
-                );
-
-                // Usar o output capturado pelos callbacks
-                if (capturedOutput && capturedOutput.trim()) {
-                    output.textContent = capturedOutput.trim();
-                    output.className = '';
-                } else {
-                    output.textContent = '✓ Código executado com sucesso (sem output)';
-                    output.className = 'empty';
-                }
-            } catch (error) {
-                console.error('Execution error:', error);
-                output.textContent = '❌ Erro ao executar:\n\n' + error.message;
-                output.className = 'error';
-            } finally {
-                runBtn.disabled = false;
-                runText.textContent = 'Executar';
-            }
+        if (!code) {
+          output.textContent = "Digite algum código para executar.";
+          output.className = "empty";
+          return;
         }
 
-        // Limpar saída
-        function clearOutput() {
-            if (!isReady || !jechModule) return;
+        try {
+          runBtn.disabled = true;
+          runText.innerHTML = '<span class="loader"></span> Executando...';
+          output.textContent = "> Executando código...";
+          output.className = "";
 
-            try {
-                jechModule._jech_clear();
-                output.textContent = 'Clique em Executar para ver a saída...';
-                output.className = 'empty';
-            } catch (error) {
-                console.error('Clear error:', error);
-            }
+          // Limpar output capturado anterior
+          capturedOutput = "";
+
+          // Executar usando ccall - o output será capturado pelos callbacks print/printErr
+          jechModule.ccall("jech_execute", "string", ["string"], [code]);
+
+          // Usar o output capturado pelos callbacks
+          if (capturedOutput && capturedOutput.trim()) {
+            output.textContent = capturedOutput.trim();
+            output.className = "";
+          } else {
+            output.textContent = "✓ Código executado com sucesso (sem output)";
+            output.className = "empty";
+          }
+        } catch (error) {
+          console.error("Execution error:", error);
+          output.textContent = "❌ Erro ao executar:\n\n" + error.message;
+          output.className = "error";
+        } finally {
+          runBtn.disabled = false;
+          runText.textContent = "Executar";
         }
+      }
 
-        // Event listeners
-        runBtn.addEventListener('click', runCode);
-        clearBtn.addEventListener('click', clearOutput);
+      // Limpar saída
+      function clearOutput() {
+        if (!isReady || !jechModule) return;
 
-        // Atalho de teclado: Ctrl/Cmd + Enter para executar
-        editor.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
-                runCode();
-            }
-        });
+        try {
+          jechModule._jech_clear();
+          output.textContent = "Clique em Executar para ver a saída...";
+          output.className = "empty";
+        } catch (error) {
+          console.error("Clear error:", error);
+        }
+      }
 
-        // Inicializar
-        initWasm();
+      // Event listeners
+      runBtn.addEventListener("click", runCode);
+      clearBtn.addEventListener("click", clearOutput);
+
+      // Atalho de teclado: Ctrl/Cmd + Enter para executar
+      editor.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          runCode();
+        }
+      });
+
+      // Inicializar
+      initWasm();
     </script>
-</body>
+  </body>
 </html>
