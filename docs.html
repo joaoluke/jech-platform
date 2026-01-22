@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação - Jech</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .docs-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .docs-sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .docs-sidebar ul {
+            list-style: none;
+        }
+
+        .docs-sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .docs-sidebar ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .docs-sidebar ul li a:hover,
+        .docs-sidebar ul li a.active {
+            color: var(--primary);
+            background: var(--dark-2);
+        }
+
+        .docs-content {
+            max-width: 800px;
+        }
+
+        .docs-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .docs-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .docs-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .docs-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .docs-content pre {
+            background: var(--dark-2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .docs-content code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .docs-content ul, .docs-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .docs-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .note {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .docs-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚀 JECH</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="playground.html">Playground</a>
+                <a href="docs.html" class="active">Documentação</a>
+                <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <h3>Conteúdo</h3>
+            <ul>
+                <li><a href="#introducao" class="active">Introdução</a></li>
+                <li><a href="#instalacao">Instalação</a></li>
+                <li><a href="#sintaxe">Sintaxe Básica</a></li>
+                <li><a href="#variaveis">Variáveis</a></li>
+                <li><a href="#tipos">Tipos de Dados</a></li>
+                <li><a href="#operadores">Operadores</a></li>
+                <li><a href="#condicionais">Condicionais</a></li>
+                <li><a href="#arrays">Arrays</a></li>
+                <li><a href="#funcoes">Funções</a></li>
+                <li><a href="#exemplos">Exemplos</a></li>
+            </ul>
+        </aside>
+
+        <main class="docs-content">
+            <h1 id="introducao">Documentação Jech</h1>
+            <p>
+                Bem-vindo à documentação oficial da linguagem de programação Jech! 
+                Esta linguagem foi criada com propósito educacional para demonstrar 
+                como interpretadores e compiladores funcionam.
+            </p>
+
+            <h2 id="instalacao">Instalação</h2>
+            <p>Existem duas formas de usar Jech:</p>
+
+            <h3>1. Playground Online</h3>
+            <p>
+                A forma mais rápida de começar é usar o 
+                <a href="playground.html" style="color: var(--primary);">playground online</a>. 
+                Não requer instalação e roda diretamente no navegador via WebAssembly.
+            </p>
+
+            <h3>2. Instalação Local</h3>
+            <p>Para instalar o interpretador Jech localmente:</p>
+            <pre><code><span class="comment"># Clone o repositório</span>
+git clone https://github.com/joaoluke/jech.git
+cd jech
+
+<span class="comment"># Compile o interpretador</span>
+make
+
+<span class="comment"># Execute um arquivo .jc</span>
+./build/jech exemplo.jc
+
+<span class="comment"># Ou use o REPL interativo</span>
+./build/jech</code></pre>
+
+            <h2 id="sintaxe">Sintaxe Básica</h2>
+            <p>
+                Jech possui uma sintaxe simples e intuitiva, inspirada em linguagens 
+                modernas mas com palavras-chave únicas para fins educacionais.
+            </p>
+
+            <h2 id="variaveis">Variáveis</h2>
+            <p>
+                Use a palavra-chave <code>keep</code> para declarar variáveis. 
+                Jech possui tipagem dinâmica, então você não precisa especificar o tipo.
+            </p>
+            <pre><code><span class="keyword">keep</span> <span class="variable">x</span> = <span class="number">10</span>;
+<span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"João"</span>;
+<span class="keyword">keep</span> <span class="variable">active</span> = <span class="number">1</span>;</code></pre>
+
+            <div class="note">
+                <strong>📝 Nota:</strong> Todas as declarações devem terminar com ponto e vírgula (;)
+            </div>
+
+            <h2 id="tipos">Tipos de Dados</h2>
+            <p>Jech suporta três tipos principais de dados:</p>
+
+            <h3>Números</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
+<span class="keyword">keep</span> <span class="variable">price</span> = <span class="number">19.99</span>;
+<span class="keyword">keep</span> <span class="variable">negative</span> = <span class="number">-10</span>;</code></pre>
+
+            <h3>Strings</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">greeting</span> = <span class="string">"Olá, Mundo!"</span>;
+<span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Jech"</span>;</code></pre>
+
+            <h3>Arrays</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">keep</span> <span class="variable">names</span> = [<span class="string">"Ana"</span>, <span class="string">"Bruno"</span>, <span class="string">"Carlos"</span>];</code></pre>
+
+            <h2 id="operadores">Operadores</h2>
+
+            <h3>Operadores Aritméticos</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">sum</span> = <span class="number">10</span> + <span class="number">5</span>;        <span class="comment">// 15</span>
+<span class="keyword">keep</span> <span class="variable">diff</span> = <span class="number">10</span> - <span class="number">5</span>;       <span class="comment">// 5</span>
+<span class="keyword">keep</span> <span class="variable">product</span> = <span class="number">10</span> * <span class="number">5</span>;    <span class="comment">// 50</span>
+<span class="keyword">keep</span> <span class="variable">quotient</span> = <span class="number">10</span> / <span class="number">5</span>;   <span class="comment">// 2</span></code></pre>
+
+            <h3>Operadores de Comparação</h3>
+            <pre><code><span class="variable">x</span> == <span class="variable">y</span>    <span class="comment">// Igual</span>
+<span class="variable">x</span> != <span class="variable">y</span>    <span class="comment">// Diferente</span>
+<span class="variable">x</span> > <span class="variable">y</span>     <span class="comment">// Maior que</span>
+<span class="variable">x</span> < <span class="variable">y</span>     <span class="comment">// Menor que</span>
+<span class="variable">x</span> >= <span class="variable">y</span>    <span class="comment">// Maior ou igual</span>
+<span class="variable">x</span> <= <span class="variable">y</span>    <span class="comment">// Menor ou igual</span></code></pre>
+
+            <h3>Concatenação de Strings</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">fullName</span> = <span class="string">"João"</span> + <span class="string">" "</span> + <span class="string">"Silva"</span>;
+<span class="function">say</span>(<span class="variable">fullName</span>);  <span class="comment">// João Silva</span></code></pre>
+
+            <h2 id="condicionais">Condicionais</h2>
+            <p>Use <code>when</code> para estruturas condicionais:</p>
+
+            <h3>If-Else Básico</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">20</span>;
+
+<span class="keyword">when</span> (<span class="variable">age</span> >= <span class="number">18</span>) {
+    <span class="function">say</span>(<span class="string">"Você é maior de idade"</span>);
+}
+<span class="keyword">else</span> {
+    <span class="function">say</span>(<span class="string">"Você é menor de idade"</span>);
+}</code></pre>
+
+            <h3>Múltiplas Condições</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">score</span> = <span class="number">85</span>;
+
+<span class="keyword">when</span> (<span class="variable">score</span> >= <span class="number">90</span>) {
+    <span class="function">say</span>(<span class="string">"Excelente!"</span>);
+}
+<span class="keyword">else</span> <span class="keyword">when</span> (<span class="variable">score</span> >= <span class="number">70</span>) {
+    <span class="function">say</span>(<span class="string">"Bom!"</span>);
+}
+<span class="keyword">else</span> {
+    <span class="function">say</span>(<span class="string">"Precisa melhorar"</span>);
+}</code></pre>
+
+            <h2 id="arrays">Arrays</h2>
+            <p>Arrays em Jech são indexados a partir de 0:</p>
+
+            <h3>Criação e Acesso</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"maçã"</span>, <span class="string">"banana"</span>, <span class="string">"laranja"</span>];
+
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">0</span>]);  <span class="comment">// maçã</span>
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">1</span>]);  <span class="comment">// banana</span>
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">2</span>]);  <span class="comment">// laranja</span></code></pre>
+
+            <h3>Modificação</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="variable">numbers</span>[<span class="number">0</span>] = <span class="number">10</span>;
+<span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);  <span class="comment">// 10</span></code></pre>
+
+            <h2 id="funcoes">Funções</h2>
+            <p>Use <code>task</code> para definir funções:</p>
+
+            <h3>Função Simples</h3>
+            <pre><code><span class="keyword">task</span> <span class="function">greet</span>() {
+    <span class="function">say</span>(<span class="string">"Olá, Mundo!"</span>);
+}
+
+<span class="function">greet</span>();</code></pre>
+
+            <h3>Função com Parâmetros</h3>
+            <pre><code><span class="keyword">task</span> <span class="function">greet</span>(<span class="variable">name</span>) {
+    <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
+}
+
+<span class="function">greet</span>(<span class="string">"João"</span>);  <span class="comment">// Olá, João</span></code></pre>
+
+            <h3>Função com Múltiplos Parâmetros</h3>
+            <pre><code><span class="keyword">task</span> <span class="function">add</span>(<span class="variable">a</span>, <span class="variable">b</span>) {
+    <span class="keyword">keep</span> <span class="variable">result</span> = <span class="variable">a</span> + <span class="variable">b</span>;
+    <span class="function">say</span>(<span class="variable">result</span>);
+}
+
+<span class="function">add</span>(<span class="number">5</span>, <span class="number">3</span>);  <span class="comment">// 8</span></code></pre>
+
+            <h2 id="exemplos">Exemplos Práticos</h2>
+
+            <h3>Calculadora Simples</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">a</span> = <span class="number">10</span>;
+<span class="keyword">keep</span> <span class="variable">b</span> = <span class="number">5</span>;
+
+<span class="function">say</span>(<span class="string">"Soma: "</span> + (<span class="variable">a</span> + <span class="variable">b</span>));
+<span class="function">say</span>(<span class="string">"Subtração: "</span> + (<span class="variable">a</span> - <span class="variable">b</span>));
+<span class="function">say</span>(<span class="string">"Multiplicação: "</span> + (<span class="variable">a</span> * <span class="variable">b</span>));
+<span class="function">say</span>(<span class="string">"Divisão: "</span> + (<span class="variable">a</span> / <span class="variable">b</span>));</code></pre>
+
+            <h3>Verificador de Idade</h3>
+            <pre><code><span class="keyword">task</span> <span class="function">checkAge</span>(<span class="variable">age</span>) {
+    <span class="keyword">when</span> (<span class="variable">age</span> >= <span class="number">18</span>) {
+        <span class="function">say</span>(<span class="string">"Maior de idade"</span>);
+    }
+    <span class="keyword">else</span> {
+        <span class="function">say</span>(<span class="string">"Menor de idade"</span>);
+    }
+}
+
+<span class="function">checkAge</span>(<span class="number">20</span>);
+<span class="function">checkAge</span>(<span class="number">15</span>);</code></pre>
+
+            <h3>Iteração em Array</h3>
+            <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">keep</span> <span class="variable">i</span> = <span class="number">0</span>;
+
+<span class="keyword">when</span> (<span class="variable">i</span> < <span class="number">5</span>) {
+    <span class="function">say</span>(<span class="variable">numbers</span>[<span class="variable">i</span>]);
+    <span class="keyword">keep</span> <span class="variable">i</span> = <span class="variable">i</span> + <span class="number">1</span>;
+}</code></pre>
+
+            <div class="note">
+                <strong>💡 Dica:</strong> Experimente estes exemplos no 
+                <a href="playground.html" style="color: var(--primary);">playground</a> 
+                para ver como funcionam!
+            </div>
+
+            <h3>Função de Saudação Personalizada</h3>
+            <pre><code><span class="keyword">task</span> <span class="function">personalGreeting</span>(<span class="variable">name</span>, <span class="variable">age</span>) {
+    <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span> + <span class="string">"!"</span>);
+    
+    <span class="keyword">when</span> (<span class="variable">age</span> >= <span class="number">18</span>) {
+        <span class="function">say</span>(<span class="string">"Você tem "</span> + <span class="variable">age</span> + <span class="string">" anos e é maior de idade."</span>);
+    }
+    <span class="keyword">else</span> {
+        <span class="function">say</span>(<span class="string">"Você tem "</span> + <span class="variable">age</span> + <span class="string">" anos e é menor de idade."</span>);
+    }
+}
+
+<span class="function">personalGreeting</span>(<span class="string">"Ana"</span>, <span class="number">25</span>);
+<span class="function">personalGreeting</span>(<span class="string">"Pedro"</span>, <span class="number">16</span>);</code></pre>
+
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> Jech está em desenvolvimento ativo. 
+                Algumas funcionalidades podem mudar em versões futuras.
+            </div>
+
+            <div style="margin-top: 4rem; padding: 2rem; background: var(--dark-2); border-radius: 12px; text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Pronto para começar?</h3>
+                <p style="margin-bottom: 1.5rem;">Teste seus conhecimentos no playground interativo!</p>
+                <a href="playground.html" class="btn btn-primary btn-large">
+                    <span>▶</span> Abrir Playground
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Jech</h4>
+                    <p>Linguagem de programação educacional para aprender sobre interpretadores e compiladores.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="playground.html">Playground</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Tecnologias</h4>
+                    <ul>
+                        <li>C (Interpretador)</li>
+                        <li>WebAssembly (Browser)</li>
+                        <li>Emscripten (Compilação)</li>
+                        <li>HTML/CSS/JS (Interface)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
