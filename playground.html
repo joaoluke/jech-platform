@@ -1,455 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground - Jech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-          Cantarell, sans-serif;
-        background: #1e1e1e;
-        color: #d4d4d4;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        background: #2d2d30;
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #3e3e42;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #fff;
-      }
-
-      .controls {
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      button {
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.2s;
-      }
-
-      button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      #runBtn {
-        background: #16a34a;
-        color: white;
-      }
-
-      #runBtn:hover:not(:disabled) {
-        background: #15803d;
-      }
-
-      #clearBtn {
-        background: #3f3f46;
-        color: white;
-      }
-
-      #clearBtn:hover:not(:disabled) {
-        background: #52525b;
-      }
-
-      .container {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1px;
-        background: #3e3e42;
-        overflow: hidden;
-      }
-
-      .panel {
-        background: #1e1e1e;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .panel-header {
-        background: #2d2d30;
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid #3e3e42;
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-
-      .panel-content {
-        flex: 1;
-        overflow: auto;
-      }
-
-      #editor {
-        width: 100%;
-        height: 100%;
-      }
-
-      #output {
-        padding: 1rem;
-        font-family: "Courier New", monospace;
-        font-size: 0.9rem;
-        white-space: pre-wrap;
-        color: #4ade80;
-      }
-
-      #output.error {
-        color: #f87171;
-      }
-
-      #output.empty {
-        color: #71717a;
-      }
-
-      .examples {
-        padding: 1rem 2rem;
-        background: #2d2d30;
-        border-top: 1px solid #3e3e42;
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .examples label {
-        font-size: 0.9rem;
-        font-weight: 500;
-      }
-
-      .example-btn {
-        background: #3f3f46;
-        color: #d4d4d4;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-      }
-
-      .example-btn:hover {
-        background: #52525b;
-      }
-
-      .status {
-        padding: 0.5rem 2rem;
-        background: #3730a3;
-        color: white;
-        font-size: 0.85rem;
-        text-align: center;
-      }
-
-      .status.ready {
-        background: #15803d;
-      }
-
-      .status.error {
-        background: #dc2626;
-      }
-
-      .loader {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border: 2px solid #ffffff;
-        border-radius: 50%;
-        border-top-color: transparent;
-        animation: spin 0.6s linear infinite;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          grid-template-columns: 1fr;
-          grid-template-rows: 1fr 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="playground.css" />
+    <script src="js/playground/wasm-loader.js"></script>
   </head>
   <body>
     <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="logo">🚀 JECH</a>
-        <div class="nav-links">
-          <a href="index.html">Início</a>
-          <a href="playground.html" class="active">Playground</a>
-          <a href="docs.html">Documentação</a>
-          <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
+        <div class="container">
+            <a href="index.html" class="logo">🚀 JECH</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="playground.html" class="active">Playground</a>
+                <a href="docs.html">Documentação</a>
+                <a href="https://github.com/joaoluke/jech" target="_blank" rel="noopener noreferrer">
+                    <span class="github-icon">GitHub</span>
+                </a>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <header>
-      <h1>🚀 Jech Playground</h1>
-      <div class="controls">
-        <button id="runBtn" disabled>
-          <span>▶</span>
-          <span id="runText">Carregando...</span>
-        </button>
-        <button id="clearBtn" disabled>
-          <span>🗑️</span>
-          <span>Limpar</span>
-        </button>
-      </div>
-    </header>
-
-    <div id="status" class="status">
-      <span class="loader"></span> Carregando interpretador WASM...
-    </div>
-
-    <div class="container">
-      <div class="panel">
-        <div class="panel-header">Editor</div>
-        <div class="panel-content">
-          <textarea id="editor" spellcheck="false">
-keep x = 10;
-keep name = "JECH";
-say(x);
-say(name);
-
-keep numbers = [1, 2, 3];
-say(numbers[0]);</textarea
-          >
+    <div class="playground-container">
+        <div class="playground-header">
+            <h1 class="playground-title">Jech Playground</h1>
+            <div class="playground-controls">
+                <button id="runBtn" class="playground-btn playground-btn-primary">
+                    <span class="run-icon">▶</span> Executar (Ctrl+Enter)
+                </button>
+                <button id="clearBtn" class="playground-btn playground-btn-secondary">
+                    <span class="clear-icon">🗑️</span> Limpar
+                </button>
+            </div>
         </div>
-      </div>
 
-      <div class="panel">
-        <div class="panel-header">Saída</div>
-        <div class="panel-content">
-          <div id="output" class="empty">
-            Clique em Executar para ver a saída...
-          </div>
+        <div class="playground-main">
+            <div class="playground-panel">
+                <div class="playground-panel-header">
+                    <span>📝</span> Código Fonte
+                </div>
+                <div class="playground-panel-content">
+                    <textarea id="editor" spellcheck="false" placeholder="Digite seu código Jech aqui..."></textarea>
+                </div>
+            </div>
+            
+            <div class="playground-panel">
+                <div class="playground-panel-header">
+                    <span>📤</span> Saída
+                </div>
+                <div class="playground-panel-content">
+                    <pre id="output" class="empty">A saída do seu código aparecerá aqui...</pre>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="examples">
-      <label>Exemplos:</label>
-      <button class="example-btn" onclick="loadExample('hello')">
-        Hello World
-      </button>
-      <button class="example-btn" onclick="loadExample('conditional')">
-        Condicional
-      </button>
-      <button class="example-btn" onclick="loadExample('array')">Arrays</button>
-      <button class="example-btn" onclick="loadExample('loop')">Loop</button>
+        <div class="playground-examples">
+            <span class="playground-examples-label">Exemplos:</span>
+            <button class="example-btn" onclick="loadExample('hello')">👋 Olá Mundo</button>
+            <button class="example-btn" onclick="loadExample('variables')">🔢 Variáveis</button>
+            <button class="example-btn" onclick="loadExample('conditionals')">🔀 Condicionais</button>
+            <button class="example-btn" onclick="loadExample('loops')">🔄 Loops</button>
+            <button class="example-btn" onclick="loadExample('functions')">📦 Funções</button>
+        </div>
+
+        <div id="status" class="playground-status">
+            <span class="loader"></span> Inicializando o interpretador Jech...
+        </div>
     </div>
 
     <script>
-      // Exemplos de código
+      // Códigos de exemplo
       const examples = {
-        hello: `keep x = 10;
-keep name = "JECH";
-say(x);
-say(name);
-
-keep numbers = [1, 2, 3];
-say(numbers[0]);`,
-        conditional: `keep age = 20;
-
-when (age > 18) {
-    say("Adulto");
-}
-else {
-    say("Menor de idade");
-}`,
-        array: `keep numbers = [1, 2, 3, 4, 5];
-say(numbers[0]);
-say(numbers[2]);
-say(numbers[4]);`,
-        loop: `keep i = 0;
-when (i < 5) {
-    say(i);
-    keep i = i + 1;
-}`,
+        hello: 'say("👋 Olá, Mundo!");\n',
+        variables: '// Variáveis e tipos básicos\nkeep nome = "Jech";\nkeep versao = 1.0;\nkeep ativo = 1;\n\n// Concatenação de strings\nsay("Bem-vindo ao " + nome + " " + versao);\n\n// Operações matemáticas\nkeep x = 10;\nkeep y = 5;\nkeep soma = x + y;\n\nsay(x + " + " + y + " = " + soma);',
+        conditionals: '// Estruturas condicionais\nkeep idade = 20;\n\nwhen (idade >= 18) {\n  say("Você é maior de idade!");\n} else {\n  say("Você é menor de idade!");\n}\n\n// Operadores lógicos\nkeep tem_carteira = 1;\n\nwhen (idade >= 18 && tem_carteira) {\n  say("Pode dirigir!");\n} else {\n  say("Não pode dirigir!");\n}',
+        loops: '// Loops\nkeep i = 0;\n\n// Loop while\nwhile (i < 5) {\n  say("Contagem: " + i);\n  i = i + 1;\n}\n\n// Loop for\nfor (keep j = 0; j < 3; j = j + 1) {\n  say("Iteração: " + j);\n}',
+        functions: '// Funções\ndo saudacao(nome) {\n  say("Olá, " + nome + "!");\n  return "Saudação enviada para " + nome;\n}\n\n// Chamando a função\nkeep mensagem = saudacao("Visitante");\nsay("Retorno: " + mensagem);'
       };
 
-      function loadExample(name) {
-        if (examples[name]) {
-          document.getElementById("editor").value = examples[name];
+      // Elementos da interface
+      const editor = document.getElementById('editor');
+      const output = document.getElementById('output');
+      const runBtn = document.getElementById('run-btn');
+      const clearBtn = document.getElementById('clear-btn');
+      const exampleSelect = document.getElementById('example-select');
+      const statusElement = document.querySelector('.playground-status');
+
+      // Estado do interpretador
+      let isReady = false;
+
+      // Inicializar o interpretador Jech
+      async function initJech() {
+        try {
+          updateStatus('⏳ Inicializando o interpretador Jech...');
+          
+          // Inicializar o módulo WASM
+          await JechWASM.init();
+          
+          // Verificar se o módulo foi inicializado corretamente
+          if (!JechWASM.isInitialized()) {
+            throw new Error('Falha ao inicializar o interpretador Jech');
+          }
+          
+          // Obter a versão do interpretador
+          const version = await JechWASM.getVersion();
+          console.log(`Jech ${version} inicializado com sucesso!`);
+          
+          // Atualizar estado
+          isReady = true;
+          runBtn.disabled = false;
+          updateStatus('✅ Interpretador Jech pronto!', 'ready');
+          
+          // Carregar exemplo inicial
+          loadExample('hello');
+          
+        } catch (error) {
+          console.error('Erro ao inicializar o interpretador Jech:', error);
+          updateStatus(`❌ Falha ao inicializar: ${error.message}`, 'error');
+          appendOutput(`Erro crítico: ${error.message}`, true);
         }
       }
 
-      // Estado do WASM
-      let jechModule = null;
-      let isReady = false;
-
-      // Elementos DOM
-      const runBtn = document.getElementById("runBtn");
-      const clearBtn = document.getElementById("clearBtn");
-      const runText = document.getElementById("runText");
-      const output = document.getElementById("output");
-      const status = document.getElementById("status");
-      const editor = document.getElementById("editor");
-
-      // Buffer para capturar output
-      let capturedOutput = "";
-
-      // Carregar módulo WASM
-      async function initWasm() {
-        try {
-          status.innerHTML =
-            '<span class="loader"></span> Carregando interpretador WASM...';
-
-          // Carregar o script do Emscripten
-          const script = document.createElement("script");
-          script.src = "/wasm/jech.js";
-
-          script.onload = async () => {
-            try {
-              // Inicializar o módulo com callbacks para capturar output
-              jechModule = await JechModule({
-                locateFile: (path) => {
-                  if (path.endsWith(".wasm")) {
-                    return "/wasm/jech.wasm";
-                  }
-                  return path;
-                },
-                print: (text) => {
-                  // Capturar stdout
-                  capturedOutput += text + "\n";
-                  console.log("WASM stdout:", text);
-                },
-                printErr: (text) => {
-                  // Capturar stderr
-                  capturedOutput += text + "\n";
-                  console.error("WASM stderr:", text);
-                },
-              });
-
-              isReady = true;
-              runBtn.disabled = false;
-              clearBtn.disabled = false;
-              runText.textContent = "Executar";
-              status.textContent = "✅ Interpretador pronto!";
-              status.className = "status ready";
-
-              console.log("WASM module loaded successfully!");
-              console.log(
-                "Exported functions:",
-                Object.keys(jechModule).filter((k) => k.startsWith("_")),
-              );
-            } catch (error) {
-              throw new Error("Falha ao inicializar módulo: " + error.message);
-            }
-          };
-
-          script.onerror = () => {
-            throw new Error("Falha ao carregar jech.js");
-          };
-
-          document.head.appendChild(script);
-        } catch (error) {
-          console.error("Error loading WASM:", error);
-          status.textContent =
-            "❌ Erro ao carregar interpretador: " + error.message;
-          status.className = "status error";
-          output.textContent =
-            "Erro ao carregar o interpretador WASM.\n\n" + error.message;
-          output.className = "error";
+      // Carregar exemplo
+      function loadExample(name) {
+        if (examples[name]) {
+          editor.value = examples[name];
+          
+          // Rolar para o topo do editor
+          editor.scrollTop = 0;
+          
+          // Atualizar o seletor
+          exampleSelect.value = name;
+          
+          // Mostrar mensagem de exemplo carregado
+          updateStatus(`✅ Exemplo "${name.replace(/([A-Z])/g, ' $1').trim()}" carregado`);
+          
+          // Focar no editor
+          editor.focus();
+          
+          // Ajustar altura do editor
+          updateEditorHeight();
+        } else {
+          updateStatus('❌ Exemplo não encontrado', 'error');
         }
+      }
+
+      // Atualizar status
+      function updateStatus(message, type = '') {
+        statusElement.textContent = message;
+        statusElement.className = 'playground-status' + (type ? ` ${type}` : '');
       }
 
       // Executar código
-      function runCode() {
-        if (!isReady || !jechModule) {
-          output.textContent = "Aguarde o interpretador carregar...";
-          output.className = "error";
+      async function runCode() {
+        if (!isReady) {
+          updateStatus('❌ O interpretador ainda não está pronto. Por favor, aguarde...', 'error');
           return;
         }
-
+        
         const code = editor.value.trim();
-
         if (!code) {
-          output.textContent = "Digite algum código para executar.";
-          output.className = "empty";
+          updateStatus('❌ Nenhum código para executar', 'error');
           return;
         }
-
+        
+        // Limpar saída anterior
+        clearOutput();
+        
+        // Mostrar o código que está sendo executado
+        const codePreview = document.createElement('div');
+        codePreview.className = 'code-preview';
+        codePreview.innerHTML = `
+          <div class="code-preview-header">🚀 Executando código...</div>
+          <div class="code-separator">-------------------</div>
+          <pre>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+          <div class="code-separator">-------------------</div>
+        `;
+        output.appendChild(codePreview);
+        
+        // Executar o código
+        const startTime = performance.now();
+        updateStatus('⚡ Executando...', 'running');
+        
         try {
-          runBtn.disabled = true;
-          runText.innerHTML = '<span class="loader"></span> Executando...';
-          output.textContent = "> Executando código...";
-          output.className = "";
-
-          // Limpar output capturado anterior
-          capturedOutput = "";
-
-          // Executar usando ccall - o output será capturado pelos callbacks print/printErr
-          jechModule.ccall("jech_execute", "string", ["string"], [code]);
-
-          // Usar o output capturado pelos callbacks
-          if (capturedOutput && capturedOutput.trim()) {
-            output.textContent = capturedOutput.trim();
-            output.className = "";
+          // Executar o código usando o JechWASM
+          const result = await JechWASM.execute(code);
+          const executionTime = ((performance.now() - startTime) / 1000).toFixed(2);
+          
+          if (result) {
+            updateStatus(`✅ Executado com sucesso (${executionTime}s)`, 'success');
           } else {
-            output.textContent = "✓ Código executado com sucesso (sem output)";
-            output.className = "empty";
+            updateStatus(`❌ Erro durante a execução (${executionTime}s)`, 'error');
           }
         } catch (error) {
-          console.error("Execution error:", error);
-          output.textContent = "❌ Erro ao executar:\n\n" + error.message;
-          output.className = "error";
-        } finally {
-          runBtn.disabled = false;
-          runText.textContent = "Executar";
+          console.error('Erro ao executar código:', error);
+          const errorMessage = error.message || 'Erro desconhecido';
+          appendOutput(`❌ Erro: ${errorMessage}`, true);
+          updateStatus('❌ Erro durante a execução', 'error');
         }
       }
 
       // Limpar saída
       function clearOutput() {
-        if (!isReady || !jechModule) return;
+        output.textContent = '';
+        output.className = '';
+        output.classList.add('empty');
+      }
 
-        try {
-          jechModule._jech_clear();
-          output.textContent = "Clique em Executar para ver a saída...";
-          output.className = "empty";
-        } catch (error) {
-          console.error("Clear error:", error);
+      // Adicionar texto à saída
+      function appendOutput(text, isError = false) {
+        // Se a saída estiver vazia, remover a classe 'empty'
+        if (output.classList.contains('empty')) {
+          output.textContent = '';
+          output.className = '';
         }
+        
+        // Criar elemento de linha de saída
+        const line = document.createElement('div');
+        line.className = isError ? 'output-line error' : 'output-line';
+        
+        // Processar quebras de linha e adicionar cada linha
+        const lines = text.split('\n');
+        lines.forEach((lineText, index) => {
+          if (index > 0) {
+            output.appendChild(document.createElement('br'));
+          }
+          if (lineText) {
+            const textNode = document.createTextNode(lineText);
+            output.appendChild(textNode);
+          }
+        });
+        
+        // Rolar para a última linha
+        output.scrollTop = output.scrollHeight;
       }
 
       // Event listeners
-      runBtn.addEventListener("click", runCode);
-      clearBtn.addEventListener("click", clearOutput);
-
-      // Atalho de teclado: Ctrl/Cmd + Enter para executar
-      editor.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      runBtn.addEventListener('click', runCode);
+      clearBtn.addEventListener('click', clearOutput);
+      
+      // Carregar exemplo selecionado
+      exampleSelect.addEventListener('change', (e) => {
+        if (e.target.value) {
+          loadExample(e.target.value);
+        }
+      });
+      
+      // Atalhos de teclado
+      document.addEventListener('keydown', (e) => {
+        // Ctrl+Enter ou Cmd+Enter para executar
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
           e.preventDefault();
           runCode();
         }
       });
-
-      // Inicializar
-      initWasm();
+      
+      // Configurar altura do editor
+      function updateEditorHeight() {
+        editor.style.height = 'auto';
+        editor.style.height = (editor.scrollHeight) + 'px';
+      }
+      
+      // Inicializar o editor
+      function initEditor() {
+        // Configurar eventos do editor
+        editor.addEventListener('input', updateEditorHeight);
+        window.addEventListener('resize', updateEditorHeight);
+        updateEditorHeight();
+        
+        // Inicializar o interpretador Jech
+        initJech();
+      }
+      
+      // Inicializar quando o DOM estiver pronto
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEditor);
+      } else {
+        initEditor();
+      }
     </script>
   </body>
 </html>
