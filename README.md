@@ -1,128 +1,135 @@
-# Jech Platform - Site Estático
+# Jech Programming Language
 
-Site oficial da linguagem de programação Jech, construído com HTML/CSS/JS puro.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/joaoluke/jech?style=social)](https://github.com/joaoluke/jech/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/joaoluke/jech)](https://github.com/joaoluke/jech/issues)
 
-## 🚀 Como Usar
+Jech is a modern, expressive programming language designed to be both beginner-friendly and powerful for experienced developers. With its clean syntax and WebAssembly-based execution, Jech makes it easy to write, test, and deploy code right in your browser.
 
-### Opção 1: Servidor HTTP Simples (Python)
+## ✨ Features
 
-```bash
-cd public
-python3 -m http.server 8000
-```
+- **Clean, readable syntax** - Focus on your code, not on complex syntax
+- **WebAssembly-powered** - Blazing fast execution in the browser
+- **Interactive playground** - Test code snippets instantly
+- **Modern web interface** - Beautiful dark theme with syntax highlighting
+- **Zero-dependency** - Runs entirely in the browser with no server required
+- **Responsive design** - Works on desktop and mobile devices
 
-Acesse: http://localhost:8000
+## 🚀 Quick Start
 
-### Opção 2: Servidor HTTP Simples (Node.js)
+Try Jech directly in your browser with our [interactive playground](https://joaoluke.github.io/jech-platform/playground.html). No installation needed!
 
-```bash
-cd public
-npx http-server -p 8000
-```
+```jech
+// Hello, World!
+say("👋 Hello from Jech!");
 
-Acesse: http://localhost:8000
+// Variables and types
+keep name = "Jech";
+keep version = 1.0;
+keep isAwesome = true;
 
-### Opção 3: Live Server (VS Code)
+// Conditional statements
+when (version > 0.5) {
+    say(name + " is stable!");
+} else {
+    say(name + " is still in development!");
+}
 
-1. Instale a extensão "Live Server" no VS Code
-2. Clique com botão direito em `index.html`
-3. Selecione "Open with Live Server"
+// Functions
+do greet(name) {
+    return "Hello, " + name + "!";
+}
 
-### Opção 4: Usar o Next.js (já configurado)
+// Function calls
+say(greet("Developer"));
 
-```bash
-npm run dev
-```
-
-Acesse: http://localhost:3000
-
-## 📁 Estrutura de Arquivos
-
-```
-public/
-├── index.html          # Página inicial
-├── playground.html     # Playground interativo
-├── docs.html          # Documentação
-├── styles.css         # Estilos globais
-├── wasm/              # Arquivos WebAssembly
-│   ├── jech.js        # Módulo Emscripten
-│   └── jech.wasm      # Binário WASM
-└── README.md          # Este arquivo
-```
-
-## 🎯 Páginas
-
-- **index.html** - Página inicial com apresentação da linguagem
-- **playground.html** - Editor interativo para testar código Jech
-- **docs.html** - Documentação completa da linguagem
-
-## 🔧 Atualizar WASM
-
-Para recompilar o interpretador WASM:
-
-```bash
-cd ../jech
-./build_wasm.sh
-```
-
-Os arquivos serão automaticamente copiados para `public/wasm/`.
-
-## 🌐 Deploy
-
-Este site é 100% estático e pode ser hospedado em:
-
-- **GitHub Pages**
-- **Netlify**
-- **Vercel**
-- **Cloudflare Pages**
-- Qualquer servidor HTTP estático
-
-### Deploy no GitHub Pages
-
-1. Faça push do diretório `public/` para o branch `gh-pages`
-2. Configure GitHub Pages para usar o branch `gh-pages`
-3. Seu site estará disponível em: `https://username.github.io/jech-platform/`
-
-### Deploy no Netlify
-
-1. Arraste a pasta `public/` para o Netlify Drop
-2. Ou conecte o repositório Git e configure:
-   - Build command: (vazio)
-   - Publish directory: `public`
-
-## 📝 Desenvolvimento
-
-Não há build process! Apenas edite os arquivos HTML/CSS/JS e recarregue o navegador.
-
-## ✨ Funcionalidades
-
-- ✅ Site 100% estático (sem Node.js necessário em produção)
-- ✅ Playground com WebAssembly
-- ✅ Documentação completa
-- ✅ Design responsivo
-- ✅ Tema dark moderno
-- ✅ Syntax highlighting
-- ✅ Exemplos interativos
-
-## 🎨 Personalização
-
-Edite `styles.css` para mudar cores e estilos. As variáveis CSS estão no topo do arquivo:
-
-```css
-:root {
-    --primary: #16a34a;
-    --primary-dark: #15803d;
-    --secondary: #3b82f6;
-    /* ... */
+// Loops
+for (keep i = 1; i <= 3; i = i + 1) {
+    say("Count: " + i);
 }
 ```
 
-## 📦 Sem Dependências
+## 📚 Documentation
 
-Este site não requer:
-- ❌ Node.js (em produção)
-- ❌ npm/yarn
-- ❌ Build tools
-- ❌ Frameworks JavaScript
+Explore the complete [documentation](https://joaoluke.github.io/jech-platform/docs.html) to learn about Jech's syntax, features, and standard library.
 
-Apenas HTML, CSS e JavaScript puro! 🎉
+## 🛠️ Development
+
+### Prerequisites
+
+- Modern web browser (Chrome, Firefox, Safari, or Edge)
+- (Optional) Local web server for development
+
+### Running Locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/joaoluke/jech.git
+   cd jech/jech-platform
+   ```
+
+2. Start a local web server. For example, using Python:
+   ```bash
+   python3 -m http.server 8000
+   ```
+
+3. Open your browser to `http://localhost:8000`
+
+### Project Structure
+
+```
+jech-platform/
+├── index.html          # Landing page
+├── playground.html     # Interactive code editor
+├── docs.html           # Documentation
+├── styles/             # CSS styles
+│   ├── styles.css      # Global styles
+│   └── playground.css  # Playground-specific styles
+├── js/                 # JavaScript files
+│   ├── animations.js   # UI animations
+│   └── playground/     # Playground logic
+│       └── wasm-loader.js  # WebAssembly loader
+└── wasm/               # WebAssembly files
+    ├── jech.wasm      # Jech interpreter (WASM)
+    └── jech.js        # Emscripten loader
+```
+
+## 🌐 Deployment
+
+This is a static website that can be deployed to any web hosting service:
+
+- [GitHub Pages](https://pages.github.com/)
+- [Netlify](https://www.netlify.com/)
+- [Vercel](https://vercel.com/)
+- [Cloudflare Pages](https://pages.cloudflare.com/)
+- Any static web server
+
+### GitHub Pages Deployment
+
+1. Push the `public` directory to the `gh-pages` branch
+2. Enable GitHub Pages in your repository settings
+3. Your site will be available at `https://<username>.github.io/jech-platform/`
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- The Jech community for their support and feedback
+- All contributors who helped improve the language
+- The WebAssembly and Emscripten teams for making this possible
+
+---
+
+Made with ❤️ by the Jech Team
