@@ -30,10 +30,10 @@
         <div class="playground-header">
             <h1 class="playground-title">Jech Playground</h1>
             <div class="playground-controls">
-                <button id="runBtn" class="playground-btn playground-btn-primary">
+                <button id="runBtn" class="playground-btn playground-btn-primary" disabled>
                     <span class="run-icon">▶</span> Executar (Ctrl+Enter)
                 </button>
-                <button id="clearBtn" class="playground-btn playground-btn-secondary">
+                <button id="clearBtn" class="playground-btn playground-btn-secondary" disabled>
                     <span class="clear-icon">🗑️</span> Limpar
                 </button>
             </div>
@@ -86,9 +86,8 @@
       // Elementos da interface
       const editor = document.getElementById('editor');
       const output = document.getElementById('output');
-      const runBtn = document.getElementById('run-btn');
-      const clearBtn = document.getElementById('clear-btn');
-      const exampleSelect = document.getElementById('example-select');
+      const runBtn = document.getElementById('runBtn');
+      const clearBtn = document.getElementById('clearBtn');
       const statusElement = document.querySelector('.playground-status');
 
       // Estado do interpretador
@@ -98,6 +97,13 @@
       async function initJech() {
         try {
           updateStatus('⏳ Inicializando o interpretador Jech...');
+          
+          // Configurar callback para receber a saída do WASM
+          JechWASM.setOutputCallback((text) => {
+            output.textContent = text;
+            output.classList.remove('empty');
+            output.scrollTop = output.scrollHeight;
+          });
           
           // Inicializar o módulo WASM
           await JechWASM.init();
@@ -114,7 +120,8 @@
           // Atualizar estado
           isReady = true;
           runBtn.disabled = false;
-          updateStatus('✅ Interpretador Jech pronto!', 'ready');
+          clearBtn.disabled = false;
+          updateStatus(`✅ Jech v${version} pronto!`, 'ready');
           
           // Carregar exemplo inicial
           loadExample('hello');
@@ -133,9 +140,6 @@
           
           // Rolar para o topo do editor
           editor.scrollTop = 0;
-          
-          // Atualizar o seletor
-          exampleSelect.value = name;
           
           // Mostrar mensagem de exemplo carregado
           updateStatus(`✅ Exemplo "${name.replace(/([A-Z])/g, ' $1').trim()}" carregado`);
@@ -207,9 +211,9 @@
 
       // Limpar saída
       function clearOutput() {
-        output.textContent = '';
-        output.className = '';
-        output.classList.add('empty');
+        output.textContent = 'A saída do seu código aparecerá aqui...';
+        output.className = 'empty';
+        JechWASM.clearOutput();
       }
 
       // Adicionar texto à saída
@@ -243,13 +247,6 @@
       // Event listeners
       runBtn.addEventListener('click', runCode);
       clearBtn.addEventListener('click', clearOutput);
-      
-      // Carregar exemplo selecionado
-      exampleSelect.addEventListener('change', (e) => {
-        if (e.target.value) {
-          loadExample(e.target.value);
-        }
-      });
       
       // Atalhos de teclado
       document.addEventListener('keydown', (e) => {

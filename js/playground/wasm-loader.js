@@ -1,5 +1,6 @@
 /**
  * Módulo para carregar e gerenciar o WASM do Jech
+ * Compilado com MODULARIZE=1 e EXPORT_NAME='JechModule'
  */
 
 const JechWASM = (function() {
@@ -7,51 +8,27 @@ const JechWASM = (function() {
     let moduleInstance = null;
     let isInitialized = false;
     let isInitializing = false;
-    let initCallbacks = [];
     
     // Buffer para armazenar a saída
     let outputBuffer = '';
     
-    /**
-     * Configura o módulo Emscripten
-     */
-    const moduleConfig = {
-        // Redireciona stdout para o buffer
-        print: (text) => {
-            outputBuffer += text + '\n';
-            updateOutput();
-        },
-        
-        // Redireciona stderr para o buffer
-        printErr: (text) => {
-            outputBuffer += `\x1b[31m${text}\x1b[0m\n`; // Adiciona cor vermelha para erros
-            updateOutput();
-        },
-        
-        // Chamado quando o módulo está pronto
-        onRuntimeInitialized: () => {
-            console.log('WASM carregado com sucesso!');
-            isInitialized = true;
-            isInitializing = false;
-            
-            // Chama todos os callbacks de inicialização
-            initCallbacks.forEach(callback => callback());
-            initCallbacks = [];
-        },
-        
-        // Configurações adicionais
-        wasmBinaryFile: '/wasm/jech.wasm', // Caminho para o arquivo .wasm
-        noInitialRun: true, // Não executa a função main() automaticamente
-    };
+    // Callback para atualizar a saída na página
+    let outputCallback = null;
     
     /**
-     * Atualiza o elemento de saída na página
+     * Define um callback para receber a saída
      */
-    function updateOutput() {
-        const outputElement = document.getElementById('output');
-        if (outputElement) {
-            outputElement.textContent = outputBuffer;
-            outputElement.scrollTop = outputElement.scrollHeight; // Rola para baixo
+    function setOutputCallback(callback) {
+        outputCallback = callback;
+    }
+    
+    /**
+     * Adiciona texto ao buffer de saída
+     */
+    function appendOutput(text) {
+        outputBuffer += text + '\n';
+        if (outputCallback) {
+            outputCallback(outputBuffer);
         }
     }
     
@@ -59,92 +36,132 @@ const JechWASM = (function() {
      * Inicializa o módulo WASM
      * @returns {Promise} Promessa que resolve quando o WASM estiver pronto
      */
-    function init() {
+    async function init() {
+        if (isInitialized) {
+            return moduleInstance;
+        }
+        
+        if (isInitializing) {
+            // Aguarda a inicialização em andamento
+            return new Promise((resolve) => {
+                const checkInit = setInterval(() => {
+                    if (isInitialized) {
+                        clearInterval(checkInit);
+                        resolve(moduleInstance);
+                    }
+                }, 100);
+            });
+        }
+        
+        isInitializing = true;
+        
         return new Promise((resolve, reject) => {
-            if (isInitialized) {
-                resolve(moduleInstance);
-                return;
-            }
-            
-            if (isInitializing) {
-                // Já está inicializando, adiciona à fila de callbacks
-                initCallbacks.push(() => resolve(moduleInstance));
-                return;
-            }
-            
-            isInitializing = true;
-            
             // Carrega o script do Emscripten
             const script = document.createElement('script');
-            script.src = '/wasm/jech.js';
-            script.onload = () => {
-                // O script do Emscripten define um módulo global chamado 'Module'
-                if (typeof Module === 'undefined') {
-                    const error = new Error('Falha ao carregar o módulo WASM');
-                    console.error(error);
+            script.src = 'wasm/jech.js';
+            
+            script.onload = async () => {
+                try {
+                    // Verifica se JechModule foi definido
+                    if (typeof JechModule === 'undefined') {
+                        throw new Error('JechModule não encontrado. Verifique se o arquivo wasm/jech.js foi compilado corretamente.');
+                    }
+                    
+                    console.log('Carregando módulo WASM...');
+                    
+                    // Chama a função factory JechModule() com as configurações
+                    moduleInstance = await JechModule({
+                        // Redireciona stdout para o buffer
+                        print: (text) => {
+                            appendOutput(text);
+                        },
+                        
+                        // Redireciona stderr para o buffer
+                        printErr: (text) => {
+                            console.error('[Jech Error]', text);
+                            appendOutput(`[Erro] ${text}`);
+                        },
+                        
+                        // Caminho para o arquivo .wasm
+                        locateFile: (path) => {
+                            if (path.endsWith('.wasm')) {
+                                return 'wasm/jech.wasm';
+                            }
+                            return path;
+                        }
+                    });
+                    
+                    console.log('WASM carregado com sucesso!');
+                    isInitialized = true;
+                    isInitializing = false;
+                    resolve(moduleInstance);
+                    
+                } catch (error) {
+                    console.error('Erro ao inicializar o módulo WASM:', error);
+                    isInitializing = false;
                     reject(error);
-                    return;
-                }
-                
-                // Configura o módulo
-                Object.assign(Module, moduleConfig);
-                moduleInstance = Module;
-                
-                // Se já estiver inicializado (pode acontecer em alguns casos)
-                if (Module.asm) {
-                    moduleConfig.onRuntimeInitialized();
                 }
             };
             
             script.onerror = (error) => {
                 console.error('Erro ao carregar o script WASM:', error);
                 isInitializing = false;
-                reject(error);
+                reject(new Error('Falha ao carregar wasm/jech.js'));
             };
             
             document.head.appendChild(script);
-            
-            // Adiciona à fila de callbacks
-            initCallbacks.push(() => resolve(moduleInstance));
         });
     }
     
     /**
      * Executa código Jech
      * @param {string} code Código Jech para executar
-     * @returns {Promise<string>} Saída do código
+     * @returns {Promise<boolean>} true se executou com sucesso
      */
     async function execute(code) {
         if (!isInitialized) {
             await init();
         }
         
-        return new Promise((resolve, reject) => {
-            try {
-                // Limpa o buffer de saída
-                outputBuffer = '';
-                
-                // Converte a string para um ponteiro C
-                const codePtr = moduleInstance.allocate(
-                    moduleInstance.intArrayFromString(code),
-                    'i8',
-                    0
-                );
-                
-                // Chama a função de execução do Jech
-                const result = moduleInstance._jech_execute(codePtr);
-                
-                // Libera a memória alocada
-                moduleInstance._free(codePtr);
-                
-                // Pega a saída do buffer
-                const output = outputBuffer.trim();
-                resolve(output);
-            } catch (error) {
-                console.error('Erro ao executar código Jech:', error);
-                reject(error);
+        try {
+            // Limpa o buffer de saída
+            outputBuffer = '';
+            
+            // Usa ccall para chamar a função C
+            const result = moduleInstance.ccall(
+                'jech_execute',    // Nome da função C
+                'string',          // Tipo de retorno
+                ['string'],        // Tipos dos argumentos
+                [code]             // Argumentos
+            );
+            
+            // Se houver resultado, adiciona ao buffer
+            if (result && result.length > 0) {
+                // O resultado já foi impresso via print callback
             }
-        });
+            
+            return true;
+        } catch (error) {
+            console.error('Erro ao executar código Jech:', error);
+            appendOutput(`Erro: ${error.message}`);
+            return false;
+        }
+    }
+    
+    /**
+     * Limpa o estado da VM
+     */
+    async function clear() {
+        if (!isInitialized) {
+            return;
+        }
+        
+        try {
+            moduleInstance.ccall('jech_clear', null, [], []);
+            outputBuffer = '';
+        } catch (error) {
+            console.error('Erro ao limpar estado:', error);
+        }
     }
     
     /**
@@ -157,20 +174,42 @@ const JechWASM = (function() {
         }
         
         try {
-            const versionPtr = moduleInstance._jech_version();
-            const version = moduleInstance.UTF8ToString(versionPtr);
-            return version;
+            const version = moduleInstance.ccall(
+                'jech_version',
+                'string',
+                [],
+                []
+            );
+            return version || '0.1.0';
         } catch (error) {
             console.error('Erro ao obter versão do Jech:', error);
-            return 'Desconhecida';
+            return '0.1.0';
         }
+    }
+    
+    /**
+     * Obtém o buffer de saída atual
+     */
+    function getOutput() {
+        return outputBuffer;
+    }
+    
+    /**
+     * Limpa o buffer de saída
+     */
+    function clearOutput() {
+        outputBuffer = '';
     }
     
     // Interface pública
     return {
         init,
         execute,
+        clear,
         getVersion,
+        getOutput,
+        clearOutput,
+        setOutputCallback,
         isInitialized: () => isInitialized
     };
 })();
