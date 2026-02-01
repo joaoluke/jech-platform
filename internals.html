@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Funciona - Jech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="internals.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚀 JECH</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="playground.html">Playground</a>
+                <a href="docs.html">Documentação</a>
+                <a href="internals.html" class="active">Como Funciona</a>
+                <a href="https://github.com/joaoluke/jech" target="_blank" rel="noopener noreferrer">
+                    <span class="github-icon">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="internals-container">
+        <header class="internals-header">
+            <h1>🔍 Por Trás dos Panos</h1>
+            <p class="subtitle">Entenda como seu código Jech é processado e executado</p>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-card">
+                <h2>🎯 O que você vai aprender</h2>
+                <p>
+                    Nesta página, você vai descobrir como o comando <code>say("hello world");</code> 
+                    passa por cada etapa do nosso compilador/interpretador até ser executado. 
+                    Vamos explorar todas as fases: desde a análise léxica até a execução final.
+                </p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>🚀 Demonstração Interativa</h2>
+            <p>Digite um código Jech e veja como ele é processado em cada etapa:</p>
+            
+            <div class="demo-container">
+                <div class="code-input-section">
+                    <label for="codeInput">Código Fonte:</label>
+                    <textarea id="codeInput" placeholder='say("hello world");'>say("hello world");</textarea>
+                    <button id="analyzeBtn" class="btn-analyze">🔬 Analisar Código</button>
+                </div>
+
+                <div class="pipeline-visualization">
+                    <div class="pipeline-step" data-step="1">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h3>📝 Análise Léxica (Lexer)</h3>
+                            <span class="step-status">⏳</span>
+                        </div>
+                        <div class="step-description">
+                            <p>O código fonte é dividido em <strong>tokens</strong> (unidades mínimas de significado).</p>
+                            <p class="tech-detail">Cada caractere é lido e agrupado em categorias: palavras-chave, identificadores, operadores, literais, etc.</p>
+                        </div>
+                        <div class="step-output" id="lexerOutput">
+                            <div class="output-placeholder">Aguardando análise...</div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step" data-step="2">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h3>🌳 Análise Sintática (Parser)</h3>
+                            <span class="step-status">⏳</span>
+                        </div>
+                        <div class="step-description">
+                            <p>Os tokens são organizados em uma <strong>Árvore Sintática Abstrata (AST)</strong>.</p>
+                            <p class="tech-detail">O parser verifica se a sequência de tokens segue as regras gramaticais da linguagem.</p>
+                        </div>
+                        <div class="step-output" id="parserOutput">
+                            <div class="output-placeholder">Aguardando análise...</div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step" data-step="3">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h3>🔍 Análise Semântica</h3>
+                            <span class="step-status">⏳</span>
+                        </div>
+                        <div class="step-description">
+                            <p>Verifica se o código faz <strong>sentido lógico</strong>.</p>
+                            <p class="tech-detail">Checa tipos de dados, escopo de variáveis, e se funções/variáveis foram declaradas antes de serem usadas.</p>
+                        </div>
+                        <div class="step-output" id="semanticOutput">
+                            <div class="output-placeholder">Aguardando análise...</div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step" data-step="4">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h3>⚙️ Geração de Código Intermediário</h3>
+                            <span class="step-status">⏳</span>
+                        </div>
+                        <div class="step-description">
+                            <p>A AST é convertida em <strong>bytecode</strong> ou código intermediário.</p>
+                            <p class="tech-detail">Este formato é mais fácil de executar e otimizar que a AST original.</p>
+                        </div>
+                        <div class="step-output" id="irOutput">
+                            <div class="output-placeholder">Aguardando análise...</div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-step" data-step="5">
+                        <div class="step-header">
+                            <span class="step-number">5</span>
+                            <h3>🎯 Execução (Runtime)</h3>
+                            <span class="step-status">⏳</span>
+                        </div>
+                        <div class="step-description">
+                            <p>O código intermediário é <strong>executado</strong> pela máquina virtual.</p>
+                            <p class="tech-detail">A VM interpreta cada instrução e executa as operações correspondentes.</p>
+                        </div>
+                        <div class="step-output" id="executionOutput">
+                            <div class="output-placeholder">Aguardando análise...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detailed-explanation">
+            <h2>📚 Explicação Detalhada de Cada Etapa</h2>
+
+            <div class="explanation-card">
+                <div class="card-header">
+                    <span class="card-icon">📝</span>
+                    <h3>1. Análise Léxica (Lexer/Tokenizer)</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>O que faz:</strong> Transforma o código fonte (string) em uma sequência de tokens.</p>
+                    
+                    <div class="example-box">
+                        <h4>Exemplo:</h4>
+                        <div class="code-comparison">
+                            <div class="before">
+                                <strong>Entrada:</strong>
+                                <pre><code>say("hello world");</code></pre>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="after">
+                                <strong>Saída (Tokens):</strong>
+                                <pre><code>[
+  { type: 'IDENTIFIER', value: 'say' },
+  { type: 'LPAREN', value: '(' },
+  { type: 'STRING', value: 'hello world' },
+  { type: 'RPAREN', value: ')' },
+  { type: 'SEMICOLON', value: ';' }
+]</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-details">
+                        <h4>Como funciona:</h4>
+                        <ul>
+                            <li>Lê o código caractere por caractere</li>
+                            <li>Ignora espaços em branco e comentários</li>
+                            <li>Agrupa caracteres em tokens significativos</li>
+                            <li>Identifica o tipo de cada token (palavra-chave, operador, literal, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-card">
+                <div class="card-header">
+                    <span class="card-icon">🌳</span>
+                    <h3>2. Análise Sintática (Parser)</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>O que faz:</strong> Organiza os tokens em uma estrutura hierárquica (AST) que representa a estrutura do programa.</p>
+                    
+                    <div class="example-box">
+                        <h4>Exemplo:</h4>
+                        <div class="ast-visualization">
+                            <pre><code>CallExpression
+├── callee: Identifier("say")
+└── arguments:
+    └── StringLiteral("hello world")</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="tech-details">
+                        <h4>Como funciona:</h4>
+                        <ul>
+                            <li>Consome tokens da esquerda para a direita</li>
+                            <li>Aplica regras gramaticais da linguagem</li>
+                            <li>Constrói uma árvore que representa a estrutura do código</li>
+                            <li>Detecta erros de sintaxe (parênteses não fechados, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-card">
+                <div class="card-header">
+                    <span class="card-icon">🔍</span>
+                    <h3>3. Análise Semântica</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>O que faz:</strong> Verifica se o código faz sentido do ponto de vista lógico.</p>
+                    
+                    <div class="example-box">
+                        <h4>Verificações realizadas:</h4>
+                        <ul class="check-list">
+                            <li>✅ A função <code>say</code> existe?</li>
+                            <li>✅ O número de argumentos está correto?</li>
+                            <li>✅ Os tipos de dados são compatíveis?</li>
+                            <li>✅ As variáveis foram declaradas antes do uso?</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-details">
+                        <h4>Como funciona:</h4>
+                        <ul>
+                            <li>Percorre a AST verificando regras semânticas</li>
+                            <li>Mantém uma tabela de símbolos (variáveis e funções declaradas)</li>
+                            <li>Verifica compatibilidade de tipos</li>
+                            <li>Detecta erros como variáveis não declaradas ou tipos incompatíveis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-card">
+                <div class="card-header">
+                    <span class="card-icon">⚙️</span>
+                    <h3>4. Geração de Código Intermediário</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>O que faz:</strong> Converte a AST em instruções mais simples e otimizadas.</p>
+                    
+                    <div class="example-box">
+                        <h4>Exemplo de Bytecode:</h4>
+                        <pre><code>LOAD_CONST    "hello world"    ; Carrega a string
+LOAD_GLOBAL   say              ; Carrega a função say
+CALL_FUNCTION 1                ; Chama com 1 argumento
+POP_TOP                        ; Remove resultado da pilha</code></pre>
+                    </div>
+
+                    <div class="tech-details">
+                        <h4>Como funciona:</h4>
+                        <ul>
+                            <li>Traduz cada nó da AST em instruções simples</li>
+                            <li>Usa uma representação baseada em pilha</li>
+                            <li>Aplica otimizações básicas</li>
+                            <li>Gera código independente de plataforma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-card">
+                <div class="card-header">
+                    <span class="card-icon">🎯</span>
+                    <h3>5. Execução (Runtime)</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>O que faz:</strong> Executa as instruções do bytecode usando uma máquina virtual.</p>
+                    
+                    <div class="example-box">
+                        <h4>Processo de Execução:</h4>
+                        <ol class="execution-steps">
+                            <li>VM lê a instrução <code>LOAD_CONST "hello world"</code></li>
+                            <li>Empilha a string na pilha de operandos</li>
+                            <li>Lê <code>LOAD_GLOBAL say</code> e empilha a função</li>
+                            <li>Executa <code>CALL_FUNCTION 1</code>: desempilha função e argumento, executa</li>
+                            <li>A função <code>say</code> imprime "hello world" no console</li>
+                            <li><code>POP_TOP</code> remove o resultado da pilha</li>
+                        </ol>
+                    </div>
+
+                    <div class="tech-details">
+                        <h4>Como funciona:</h4>
+                        <ul>
+                            <li>Mantém uma pilha de operandos e frames de chamada</li>
+                            <li>Executa instruções em um loop (fetch-decode-execute)</li>
+                            <li>Gerencia memória para variáveis e objetos</li>
+                            <li>Interage com funções nativas (como <code>say</code>)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="architecture-section">
+            <h2>🏗️ Arquitetura do Jech</h2>
+            
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <div class="layer-title">Frontend</div>
+                    <div class="layer-components">
+                        <div class="component">Lexer</div>
+                        <div class="component">Parser</div>
+                        <div class="component">Semantic Analyzer</div>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer">
+                    <div class="layer-title">Middle-end</div>
+                    <div class="layer-components">
+                        <div class="component">AST Optimizer</div>
+                        <div class="component">IR Generator</div>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer">
+                    <div class="layer-title">Backend</div>
+                    <div class="layer-components">
+                        <div class="component">Virtual Machine</div>
+                        <div class="component">Runtime Library</div>
+                        <div class="component">Memory Manager</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <h3>🛠️ Stack Tecnológica</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <strong>Linguagem Core:</strong>
+                        <span>C</span>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Compilação Web:</strong>
+                        <span>Emscripten → WebAssembly</span>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Interface:</strong>
+                        <span>HTML5 + CSS3 + JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <strong>Execução:</strong>
+                        <span>WASM VM no Browser</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-section">
+            <h2>📖 Recursos Adicionais</h2>
+            
+            <div class="resources-grid">
+                <a href="playground.html" class="resource-card">
+                    <span class="resource-icon">🎮</span>
+                    <h3>Playground</h3>
+                    <p>Experimente o Jech no navegador e veja a execução em tempo real</p>
+                </a>
+                
+                <a href="docs.html" class="resource-card">
+                    <span class="resource-icon">📚</span>
+                    <h3>Documentação</h3>
+                    <p>Aprenda a sintaxe e recursos da linguagem Jech</p>
+                </a>
+                
+                <a href="https://github.com/joaoluke/jech" target="_blank" class="resource-card">
+                    <span class="resource-icon">💻</span>
+                    <h3>Código Fonte</h3>
+                    <p>Explore a implementação completa no GitHub</p>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Jech</h4>
+                    <p>Linguagem de programação educacional para aprender sobre interpretadores e compiladores.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="playground.html">Playground</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="internals.html">Como Funciona</a></li>
+                        <li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Tecnologias</h4>
+                    <ul>
+                        <li>C (Interpretador)</li>
+                        <li>WebAssembly (Browser)</li>
+                        <li>Emscripten (Compilação)</li>
+                        <li>HTML/CSS/JS (Interface)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/internals.js"></script>
+</body>
+</html>

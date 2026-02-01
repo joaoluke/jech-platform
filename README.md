@@ -96,19 +96,47 @@ jech-platform/
 
 ## 🌐 Deployment
 
-This is a static website that can be deployed to any web hosting service:
+This project can be deployed to any web hosting service. **Important:** The playground requires proper CORS headers and WASM support, so a simple static file host may not work correctly.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Netlify](https://www.netlify.com/)
-- [Vercel](https://vercel.com/)
-- [Cloudflare Pages](https://pages.cloudflare.com/)
-- Any static web server
+### Recommended: Vercel Deployment (Configured)
+
+The project includes `vercel.json` with proper configuration for WASM files and CORS headers:
+
+1. Install Vercel CLI (optional):
+   ```bash
+   npm i -g vercel
+   ```
+
+2. Deploy from the project directory:
+   ```bash
+   vercel
+   ```
+
+3. Or connect your GitHub repository to Vercel:
+   - Go to [vercel.com](https://vercel.com/)
+   - Import your GitHub repository
+   - Vercel will automatically detect the configuration
+   - Deploy!
+
+The `vercel.json` configuration ensures:
+- ✅ Proper WASM MIME types (`application/wasm`)
+- ✅ CORS headers for SharedArrayBuffer support
+- ✅ Correct routing for all pages
+
+### Alternative Hosting Options
+
+- **[Netlify](https://www.netlify.com/)** - Add `_headers` file for WASM support
+- **[GitHub Pages](https://pages.github.com/)** - May have CORS limitations
+- **[Cloudflare Pages](https://pages.cloudflare.com/)** - Good WASM support
+- **Custom server** - Use the included `package.json` scripts
 
 ### GitHub Pages Deployment
 
 1. Push the `public` directory to the `gh-pages` branch
 2. Enable GitHub Pages in your repository settings
 3. Your site will be available at `https://<username>.github.io/jech-platform/`
+
+**Note:** GitHub Pages may have limitations with WASM and CORS headers.
 
 ## 🤝 Contributing
 

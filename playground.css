@@ -3,22 +3,22 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 80px);
-    background: var(--dark);
-    padding: 2rem 0;
+    background: var(--bg-dark);
+    padding: var(--spacing-xl) 0;
 }
 
 .playground-header {
-    padding: 0 2rem 1.5rem;
+    padding: 0 var(--spacing-xl) var(--spacing-lg);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--spacing-md);
 }
 
 .playground-title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -28,7 +28,7 @@
 
 .playground-controls {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-md);
     flex-wrap: wrap;
 }
 
@@ -36,12 +36,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
     border: none;
-    border-radius: var(--rounded);
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: var(--radius);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
     transition: var(--transition);
     position: relative;
@@ -52,30 +52,30 @@
 .playground-btn-primary {
     background: var(--gradient);
     color: white;
-    box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.3);
+    box-shadow: var(--shadow-primary);
 }
 
 .playground-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.4);
+    box-shadow: var(--shadow-primary-lg);
 }
 
 .playground-btn-secondary {
-    background: var(--dark-2);
+    background: var(--bg-dark-2);
     color: var(--text);
-    border: 1px solid var(--border);
+    border: var(--border-width) solid var(--border);
 }
 
 .playground-btn-secondary:hover {
-    background: var(--dark-3);
+    background: var(--bg-dark-3);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
     border-color: var(--primary);
     color: var(--primary-light);
 }
 
 .playground-btn:disabled {
-    opacity: 0.6;
+    opacity: var(--opacity-disabled);
     cursor: not-allowed;
     transform: none !important;
     box-shadow: none !important;
@@ -85,16 +85,16 @@
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
+    gap: var(--border-width);
     background: var(--border);
     overflow: hidden;
-    border-radius: var(--rounded);
-    margin: 0 2rem;
+    border-radius: var(--radius);
+    margin: 0 var(--spacing-xl);
     box-shadow: var(--shadow-lg);
 }
 
 .playground-panel {
-    background: var(--dark-2);
+    background: var(--bg-dark-2);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -102,13 +102,13 @@
 }
 
 .playground-panel-header {
-    background: var(--dark-3);
-    padding: 0.75rem 1.25rem;
-    font-weight: 600;
-    border-bottom: 1px solid var(--border);
+    background: var(--bg-dark-3);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-weight: var(--font-weight-semibold);
+    border-bottom: var(--border-width) solid var(--border);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
 }
 
 .playground-panel-content {
@@ -120,12 +120,12 @@
 #editor {
     width: 100%;
     height: 100%;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
     background: transparent;
     color: var(--text);
-    padding: 1rem;
+    padding: var(--spacing-md);
     border: none;
     resize: none;
     outline: none;
@@ -133,12 +133,12 @@
 }
 
 #output {
-    padding: 1rem;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 0.95rem;
+    padding: var(--spacing-md);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
     white-space: pre-wrap;
     color: var(--success);
-    line-height: 1.6;
+    line-height: var(--line-height-normal);
     min-height: 100%;
     box-sizing: border-box;
 }
@@ -153,28 +153,28 @@
 }
 
 .playground-examples {
-    padding: 1.5rem 2rem;
-    background: var(--dark-2);
-    border-top: 1px solid var(--border);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background: var(--bg-dark-2);
+    border-top: var(--border-width) solid var(--border);
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-md);
     flex-wrap: wrap;
     align-items: center;
 }
 
 .playground-examples-label {
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     color: var(--text-muted);
 }
 
 .example-btn {
-    background: var(--dark-3);
+    background: var(--bg-dark-3);
     color: var(--text);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--rounded);
-    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--font-size-sm);
     cursor: pointer;
     transition: var(--transition);
 }
@@ -186,12 +186,12 @@
 }
 
 .playground-status {
-    padding: 0.75rem 2rem;
+    padding: var(--spacing-md) var(--spacing-xl);
     background: var(--primary);
     color: white;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     text-align: center;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     transition: var(--transition);
 }
 
@@ -224,32 +224,32 @@
     .playground-main {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        margin: 0 1rem;
+        margin: 0 var(--spacing-md);
     }
     
     .playground-header {
-        padding: 0 1.5rem 1.5rem;
+        padding: 0 var(--spacing-lg) var(--spacing-lg);
     }
     
     .playground-examples {
-        padding: 1.25rem 1.5rem;
+        padding: var(--spacing-lg) var(--spacing-lg);
     }
 }
 
 @media (max-width: 640px) {
     .playground-title {
-        font-size: 1.75rem;
+        font-size: var(--font-size-2xl);
     }
     
     .playground-btn {
-        padding: 0.6rem 1.25rem;
-        font-size: 0.95rem;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-sm);
     }
     
     .playground-examples {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
+        gap: var(--spacing-md);
     }
     
     .playground-examples-label {

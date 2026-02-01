@@ -1,0 +1,323 @@
+/* ===============================================
+   JECH - DESIGN SYSTEM
+   Sistema de variáveis CSS globais
+   =============================================== */
+
+:root {
+    /* ===============================================
+       CORES PRINCIPAIS
+       =============================================== */
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --primary-light: #a7f3d0;
+    --primary-hover: #0d9668;
+    
+    --secondary: #3b82f6;
+    --secondary-dark: #2563eb;
+    --secondary-light: #93c5fd;
+    --secondary-hover: #2563eb;
+    
+    --accent: #8b5cf6;
+    --accent-dark: #7c3aed;
+    --accent-light: #c4b5fd;
+    
+    /* ===============================================
+       CORES DE FUNDO
+       =============================================== */
+    --bg-dark: #0f172a;
+    --bg-dark-2: #1e293b;
+    --bg-dark-3: #334155;
+    --bg-dark-4: #475569;
+    --bg-light: #f8fafc;
+    
+    /* Aliases para compatibilidade */
+    --dark: var(--bg-dark);
+    --dark-2: var(--bg-dark-2);
+    --dark-3: var(--bg-dark-3);
+    --light: var(--bg-light);
+    
+    /* ===============================================
+       CORES DE TEXTO
+       =============================================== */
+    --text-primary: #f1f5f9;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-disabled: #64748b;
+    --text-inverse: #0f172a;
+    
+    /* Alias para compatibilidade */
+    --text: var(--text-secondary);
+    
+    /* ===============================================
+       CORES DE ESTADO
+       =============================================== */
+    --success: #10b981;
+    --success-light: #6ee7b7;
+    --success-dark: #047857;
+    
+    --error: #ef4444;
+    --error-light: #fca5a5;
+    --error-dark: #dc2626;
+    
+    --warning: #f59e0b;
+    --warning-light: #fcd34d;
+    --warning-dark: #d97706;
+    
+    --info: #0ea5e9;
+    --info-light: #7dd3fc;
+    --info-dark: #0284c7;
+    
+    /* ===============================================
+       BORDAS
+       =============================================== */
+    --border-color: #475569;
+    --border-color-light: #64748b;
+    --border-color-dark: #334155;
+    --border-color-hover: var(--primary);
+    
+    /* Alias para compatibilidade */
+    --border: var(--border-color);
+    
+    --border-width: 1px;
+    --border-width-thick: 2px;
+    --border-width-thin: 0.5px;
+    
+    /* ===============================================
+       BORDER RADIUS
+       =============================================== */
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-full: 9999px;
+    
+    /* Aliases para compatibilidade */
+    --rounded-sm: var(--radius-sm);
+    --rounded: var(--radius);
+    --rounded-md: var(--radius-md);
+    --rounded-lg: var(--radius-lg);
+    --rounded-xl: var(--radius-xl);
+    
+    /* ===============================================
+       ESPAÇAMENTO
+       =============================================== */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 6rem;
+    --spacing-5xl: 8rem;
+    
+    /* ===============================================
+       TIPOGRAFIA - TAMANHOS DE FONTE
+       =============================================== */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    
+    /* ===============================================
+       TIPOGRAFIA - PESOS DE FONTE
+       =============================================== */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* ===============================================
+       TIPOGRAFIA - FAMÍLIAS DE FONTE
+       =============================================== */
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-family-mono: 'Fira Code', 'Courier New', Consolas, Monaco, monospace;
+    
+    /* ===============================================
+       TIPOGRAFIA - LINE HEIGHT
+       =============================================== */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+    --line-height-loose: 2;
+    
+    /* ===============================================
+       SOMBRAS
+       =============================================== */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 6px 12px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    
+    /* Sombras coloridas */
+    --shadow-primary: 0 4px 15px -3px rgba(16, 185, 129, 0.3);
+    --shadow-primary-lg: 0 8px 25px -5px rgba(16, 185, 129, 0.4);
+    --shadow-secondary: 0 4px 15px -3px rgba(59, 130, 246, 0.3);
+    --shadow-accent: 0 4px 15px -3px rgba(139, 92, 246, 0.3);
+    
+    /* ===============================================
+       GRADIENTES
+       =============================================== */
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+    --gradient-dark: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-2) 100%);
+    --gradient-text: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+    
+    /* Alias para compatibilidade */
+    --gradient: var(--gradient-primary);
+    
+    /* ===============================================
+       TRANSIÇÕES
+       =============================================== */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --transition-colors: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    --transition-transform: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-opacity: opacity 0.3s ease;
+    
+    /* ===============================================
+       Z-INDEX
+       =============================================== */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    
+    /* ===============================================
+       OPACIDADE
+       =============================================== */
+    --opacity-disabled: 0.6;
+    --opacity-hover: 0.8;
+    --opacity-muted: 0.7;
+    
+    /* ===============================================
+       BACKDROP FILTER
+       =============================================== */
+    --backdrop-blur: blur(12px);
+    --backdrop-blur-sm: blur(8px);
+    --backdrop-blur-lg: blur(16px);
+    
+    /* ===============================================
+       LARGURAS MÁXIMAS
+       =============================================== */
+    --max-width-xs: 20rem;
+    --max-width-sm: 24rem;
+    --max-width-md: 28rem;
+    --max-width-lg: 32rem;
+    --max-width-xl: 36rem;
+    --max-width-2xl: 42rem;
+    --max-width-3xl: 48rem;
+    --max-width-4xl: 56rem;
+    --max-width-5xl: 64rem;
+    --max-width-6xl: 72rem;
+    --max-width-7xl: 80rem;
+    --max-width-container: 1200px;
+    
+    /* ===============================================
+       BREAKPOINTS (para referência em media queries)
+       =============================================== */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+/* ===============================================
+   DARK MODE (preparado para futuro)
+   =============================================== */
+/* @media (prefers-color-scheme: light) {
+    :root {
+        Aqui podem ser adicionadas variáveis para modo claro no futuro
+    }
+} */
+
+/* ===============================================
+   UTILITÁRIOS DE ANIMAÇÃO
+   =============================================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from { 
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
