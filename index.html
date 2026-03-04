@@ -8,6 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
   <link rel="stylesheet" href="styles/variables.css" />
   <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/language-selector.css" />
 </head>
 
 <body>
@@ -15,11 +16,19 @@
     <div class="container">
       <a href="index.html" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a>
       <div class="nav-links">
-        <a href="/" class="active">Início</a>
-        <a href="/playground">Playground</a>
-        <a href="/docs">Documentação</a>
-        <a href="/internals">Como Funciona</a>
-        <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
+        <a href="/" class="active" data-i18n="nav.home">Início</a>
+        <a href="/playground" data-i18n="nav.playground">Playground</a>
+        <a href="/docs" data-i18n="nav.docs">Documentação</a>
+        <a href="/internals" data-i18n="nav.internals">Como Funciona</a>
+        <a href="https://github.com/joaoluke/jech" target="_blank" data-i18n="nav.github">GitHub</a>
+        
+        <div class="language-selector">
+          <span class="language-icon">🌐</span>
+          <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
+            <option value="pt-BR">🇧🇷 PT</option>
+            <option value="en">🇺🇸 EN</option>
+          </select>
+        </div>
       </div>
     </div>
   </nav>
@@ -270,6 +279,8 @@
     </div>
   </footer>
 
+  <script src="js/i18n/translations.js"></script>
+  <script src="js/i18n/i18n.js"></script>
   <script src="js/animations.js"></script>
 </body>
 

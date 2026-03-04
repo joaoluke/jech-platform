@@ -1,91 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página não encontrada - Jech</title>
-    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-    <link rel="stylesheet" href="styles/variables.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <style>
-        .error-container {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        .error-code {
-            font-size: 8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0;
-        }
-        .error-message {
-            font-size: 1.5rem;
-            color: var(--text);
-            margin: 1rem 0 2rem;
-        }
-        .error-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-    </style>
-    <script>
-        // Tenta redirecionar URLs limpas para as páginas corretas
-        (function() {
-            const path = window.location.pathname;
-            const redirects = {
-                '/playground': '/playground.html',
-                '/docs': '/docs.html',
-                '/internals': '/internals.html'
-            };
-            
-            if (redirects[path]) {
-                window.location.replace(redirects[path]);
-            }
-        })();
-    </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Página não encontrada - Jech</title>
+	<link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+	<link rel="stylesheet" href="styles/variables.css" />
+	<link rel="stylesheet" href="styles/styles.css" />
+	<link rel="stylesheet" href="styles/language-selector.css" />
+	<style>
+		.error-container {
+			min-height: 80vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 2rem;
+		}
+
+		.error-code {
+			font-size: 8rem;
+			font-weight: 700;
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			margin: 0;
+		}
+
+		.error-message {
+			font-size: 1.5rem;
+			color: var(--text);
+			margin: 1rem 0 2rem;
+		}
+
+		.error-links {
+			display: flex;
+			gap: 1rem;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	</style>
+	<script>
+		// Tenta redirecionar URLs limpas para as páginas corretas
+		(function () {
+			const path = window.location.pathname;
+			const redirects = {
+				'/playground': '/playground.html',
+				'/docs': '/docs.html',
+				'/internals': '/internals.html'
+			};
+
+			if (redirects[path]) {
+				window.location.replace(redirects[path]);
+			}
+		})();
+	</script>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="/" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a>
-            <div class="nav-links">
-                <a href="/">Início</a>
-                <a href="/playground">Playground</a>
-                <a href="/docs">Documentação</a>
-                <a href="/internals">Como Funciona</a>
-                <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
-            </div>
-        </div>
-    </nav>
+	<nav class="navbar">
+		<div class="container">
+			<a href="/" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a>
+			<div class="nav-links">
+				<a href="/" data-i18n="nav.home">Início</a>
+				<a href="/playground" data-i18n="nav.playground">Playground</a>
+				<a href="/docs" data-i18n="nav.docs">Documentação</a>
+				<a href="/internals" data-i18n="nav.internals">Como Funciona</a>
+				<a href="https://github.com/joaoluke/jech" target="_blank" data-i18n="nav.github">GitHub</a>
+				
+				<div class="language-selector">
+					<span class="language-icon">🌐</span>
+					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
+						<option value="pt-BR">🇧🇷 PT</option>
+						<option value="en">🇺🇸 EN</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</nav>
 
-    <div class="error-container">
-        <h1 class="error-code">404</h1>
-        <p class="error-message">Página não encontrada</p>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">
-            A página que você está procurando não existe ou foi movida.
-        </p>
-        <div class="error-links">
-            <a href="/" class="btn btn-primary">Voltar ao Início</a>
-            <a href="/playground" class="btn btn-secondary">Ir para o Playground</a>
-        </div>
-    </div>
+	<div class="error-container">
+		<h1 class="error-code">404</h1>
+		<p class="error-message">Página não encontrada</p>
+		<p style="color: var(--text-muted); margin-bottom: 2rem;">
+			A página que você está procurando não existe ou foi movida.
+		</p>
+		<div class="error-links">
+			<a href="/" class="btn btn-primary">Voltar ao Início</a>
+			<a href="/playground" class="btn btn-secondary">Ir para o Playground</a>
+		</div>
+	</div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
-            </div>
-        </div>
-    </footer>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-bottom">
+				<p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
+			</div>
+		</div>
+	</footer>
+	<script src="js/i18n/translations.js"></script>
+	<script src="js/i18n/i18n.js"></script>
 </body>
+
 </html>
