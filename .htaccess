@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# Redireciona /playground para /pages/playground.html
+RewriteRule ^playground$ pages/playground.html [L]
+
+# Redireciona /docs para /pages/docs.html
+RewriteRule ^docs$ pages/docs.html [L]
+
+# Redireciona /internals para /pages/internals.html
+RewriteRule ^internals$ pages/internals.html [L]
+
+# Redireciona /playground/ para /pages/playground.html
+RewriteRule ^playground/$ pages/playground.html [L]
+
+# Redireciona /docs/ para /pages/docs.html
+RewriteRule ^docs/$ pages/docs.html [L]
+
+# Redireciona /internals/ para /pages/internals.html
+RewriteRule ^internals/$ pages/internals.html [L]
