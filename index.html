@@ -1,55 +1,56 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jech - Linguagem de Programação Educacional</title>
-    <link rel="stylesheet" href="variables.css" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="logo">🚀 JECH</a>
-        <div class="nav-links">
-          <a href="index.html" class="active">Início</a>
-          <a href="playground.html">Playground</a>
-          <a href="docs.html">Documentação</a>
-          <a href="internals.html">Como Funciona</a>
-          <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jech - Linguagem de Programação Educacional</title>
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Início</a>
+        <a href="pages/playground.html">Playground</a>
+        <a href="pages/docs.html">Documentação</a>
+        <a href="pages/internals.html">Como Funciona</a>
+        <a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Aprenda Como Linguagens de Programação Funcionam</h1>
+        <p class="hero-subtitle">
+          Jech é uma linguagem de programação educacional que demonstra os
+          fundamentos de interpretadores, compiladores e máquinas virtuais.
+        </p>
+        <div class="hero-buttons">
+          <a href="pages/playground.html" class="btn btn-primary">
+            <span>▶</span> Testar no Playground
+          </a>
+          <a href="pages/docs.html" class="btn btn-secondary">
+            📚 Ver Documentação
+          </a>
         </div>
       </div>
-    </nav>
 
-    <header class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1>Aprenda Como Linguagens de Programação Funcionam</h1>
-          <p class="hero-subtitle">
-            Jech é uma linguagem de programação educacional que demonstra os
-            fundamentos de interpretadores, compiladores e máquinas virtuais.
-          </p>
-          <div class="hero-buttons">
-            <a href="playground.html" class="btn btn-primary">
-              <span>▶</span> Testar no Playground
-            </a>
-            <a href="docs.html" class="btn btn-secondary">
-              📚 Ver Documentação
-            </a>
+      <div class="hero-code">
+        <div class="code-window">
+          <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-title">exemplo.jc</span>
           </div>
-        </div>
-
-        <div class="hero-code">
-          <div class="code-window">
-            <div class="code-header">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-              <span class="code-title">exemplo.jc</span>
-            </div>
-            <pre
-              class="code-content"
-            ><code><span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Mundo"</span>;
+          <pre class="code-content"><code><span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Mundo"</span>;
 <span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
 
 <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
@@ -60,219 +61,216 @@
 <span class="keyword">else</span> {
     <span class="function">say</span>(<span class="string">"Você é menor de idade!"</span>);
 }</code></pre>
-          </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section class="features">
-      <div class="container">
-        <h2>Por Que Jech?</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🎓</div>
-            <h3>Educacional</h3>
-            <p>
-              Projetada para ensinar conceitos de compiladores, interpretadores
-              e VMs de forma prática.
-            </p>
-          </div>
+  <section class="features">
+    <div class="container">
+      <h2>Por Que Jech?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎓</div>
+          <h3>Educacional</h3>
+          <p>
+            Projetada para ensinar conceitos de compiladores, interpretadores
+            e VMs de forma prática.
+          </p>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3>Roda no Navegador</h3>
-            <p>
-              Compilada para WebAssembly, execute código Jech diretamente no seu
-              navegador.
-            </p>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Roda no Navegador</h3>
+          <p>
+            Compilada para WebAssembly, execute código Jech diretamente no seu
+            navegador.
+          </p>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Simples e Rápida</h3>
-            <p>
-              Sintaxe clara e intuitiva, perfeita para aprender os fundamentos
-              de programação.
-            </p>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Simples e Rápida</h3>
+          <p>
+            Sintaxe clara e intuitiva, perfeita para aprender os fundamentos
+            de programação.
+          </p>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">🔧</div>
-            <h3>Open Source</h3>
-            <p>
-              Código aberto escrito em C, explore e aprenda com a implementação
-              completa.
-            </p>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Open Source</h3>
+          <p>
+            Código aberto escrito em C, explore e aprenda com a implementação
+            completa.
+          </p>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <h3>Bytecode VM</h3>
-            <p>
-              Compila para bytecode e executa em uma máquina virtual
-              customizada.
-            </p>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Bytecode VM</h3>
+          <p>
+            Compila para bytecode e executa em uma máquina virtual
+            customizada.
+          </p>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>Tipagem Dinâmica</h3>
-            <p>
-              Sistema de tipos flexível com suporte a números, strings e arrays.
-            </p>
-          </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Tipagem Dinâmica</h3>
+          <p>
+            Sistema de tipos flexível com suporte a números, strings e arrays.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="syntax-section">
-      <div class="container">
-        <h2>Sintaxe Jech</h2>
-        <div class="syntax-grid">
-          <div class="syntax-example">
-            <h3>Variáveis</h3>
-            <pre><code><span class="keyword">keep</span> <span class="variable">x</span> = <span class="number">10</span>;
+  <section class="syntax-section">
+    <div class="container">
+      <h2>Sintaxe Jech</h2>
+      <div class="syntax-grid">
+        <div class="syntax-example">
+          <h3>Variáveis</h3>
+          <pre><code><span class="keyword">keep</span> <span class="variable">x</span> = <span class="number">10</span>;
 <span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Jech"</span>;
 <span class="keyword">keep</span> <span class="variable">active</span> = <span class="number">1</span>;</code></pre>
-          </div>
+        </div>
 
-          <div class="syntax-example">
-            <h3>Condicionais</h3>
-            <pre><code><span class="keyword">when</span> (<span class="variable">x</span> > <span class="number">5</span>) {
+        <div class="syntax-example">
+          <h3>Condicionais</h3>
+          <pre><code><span class="keyword">when</span> (<span class="variable">x</span> > <span class="number">5</span>) {
     <span class="function">say</span>(<span class="string">"X é maior que 5"</span>);
 }
 <span class="keyword">else</span> {
     <span class="function">say</span>(<span class="string">"X é menor ou igual a 5"</span>);
 }</code></pre>
-          </div>
+        </div>
 
-          <div class="syntax-example">
-            <h3>Arrays</h3>
-            <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+        <div class="syntax-example">
+          <h3>Arrays</h3>
+          <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
 <span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);
 <span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">2</span>]);</code></pre>
-          </div>
+        </div>
 
-          <div class="syntax-example">
-            <h3>Funções</h3>
-            <pre><code><span class="keyword">task</span> <span class="function">greet</span>(<span class="variable">name</span>) {
+        <div class="syntax-example">
+          <h3>Funções</h3>
+          <pre><code><span class="keyword">task</span> <span class="function">greet</span>(<span class="variable">name</span>) {
     <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
 }
 
 <span class="function">greet</span>(<span class="string">"Mundo"</span>);</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="architecture">
+    <div class="container">
+      <h2>Arquitetura do Interpretador</h2>
+      <div class="arch-diagram">
+        <div class="arch-step">
+          <div class="arch-box">
+            <h4>1. Código Fonte</h4>
+            <p>Arquivo .jc</p>
+          </div>
+          <div class="arch-arrow">↓</div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-box">
+            <h4>2. Tokenizer</h4>
+            <p>Análise Léxica</p>
+          </div>
+          <div class="arch-arrow">↓</div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-box">
+            <h4>3. Parser</h4>
+            <p>Análise Sintática (AST)</p>
+          </div>
+          <div class="arch-arrow">↓</div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-box">
+            <h4>4. Compilador</h4>
+            <p>Geração de Bytecode</p>
+          </div>
+          <div class="arch-arrow">↓</div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-box">
+            <h4>5. VM</h4>
+            <p>Execução</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="architecture">
-      <div class="container">
-        <h2>Arquitetura do Interpretador</h2>
-        <div class="arch-diagram">
-          <div class="arch-step">
-            <div class="arch-box">
-              <h4>1. Código Fonte</h4>
-              <p>Arquivo .jc</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-          </div>
-
-          <div class="arch-step">
-            <div class="arch-box">
-              <h4>2. Tokenizer</h4>
-              <p>Análise Léxica</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-          </div>
-
-          <div class="arch-step">
-            <div class="arch-box">
-              <h4>3. Parser</h4>
-              <p>Análise Sintática (AST)</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-          </div>
-
-          <div class="arch-step">
-            <div class="arch-box">
-              <h4>4. Compilador</h4>
-              <p>Geração de Bytecode</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-          </div>
-
-          <div class="arch-step">
-            <div class="arch-box">
-              <h4>5. VM</h4>
-              <p>Execução</p>
-            </div>
-          </div>
-        </div>
+  <section class="cta">
+    <div class="container">
+      <h2>Comece Agora!</h2>
+      <p>
+        Experimente Jech no playground interativo ou explore o código fonte.
+      </p>
+      <div class="cta-buttons">
+        <a href="pages/playground.html" class="btn btn-primary btn-large">
+          <span>▶</span> Abrir Playground
+        </a>
+        <a href="https://github.com/joaoluke/jech" target="_blank" class="btn btn-secondary btn-large">
+          <span>⭐</span> Ver no GitHub
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="cta">
-      <div class="container">
-        <h2>Comece Agora!</h2>
-        <p>
-          Experimente Jech no playground interativo ou explore o código fonte.
-        </p>
-        <div class="cta-buttons">
-          <a href="playground.html" class="btn btn-primary btn-large">
-            <span>▶</span> Abrir Playground
-          </a>
-          <a
-            href="https://github.com/joaoluke/jech"
-            target="_blank"
-            class="btn btn-secondary btn-large"
-          >
-            <span>⭐</span> Ver no GitHub
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h4>Jech</h4>
-            <p>
-              Linguagem de programação educacional para aprender sobre
-              interpretadores e compiladores.
-            </p>
-          </div>
-
-          <div class="footer-section">
-            <h4>Links</h4>
-            <ul>
-              <li><a href="index.html">Início</a></li>
-              <li><a href="playground.html">Playground</a></li>
-              <li><a href="docs.html">Documentação</a></li>
-              <li><a href="internals.html">Como Funciona</a></li>
-              <li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-section">
-            <h4>Tecnologias</h4>
-            <ul>
-              <li>C (Interpretador)</li>
-              <li>WebAssembly (Browser)</li>
-              <li>Emscripten (Compilação)</li>
-              <li>HTML/CSS/JS (Interface)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Jech</h4>
           <p>
-            &copy; 2026 Jech Programming Language. Open Source sob MIT License.
+            Linguagem de programação educacional para aprender sobre
+            interpretadores e compiladores.
           </p>
         </div>
-      </div>
-    </footer>
 
-    <script src="js/animations.js"></script>
-  </body>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="pages/playground.html">Playground</a></li>
+            <li><a href="pages/docs.html">Documentação</a></li>
+            <li><a href="pages/internals.html">Como Funciona</a></li>
+            <li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Tecnologias</h4>
+          <ul>
+            <li>C (Interpretador)</li>
+            <li>WebAssembly (Browser)</li>
+            <li>Emscripten (Compilação)</li>
+            <li>HTML/CSS/JS (Interface)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 Jech Programming Language. Open Source sob MIT License.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/animations.js"></script>
+</body>
+
 </html>

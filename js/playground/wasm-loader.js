@@ -58,7 +58,9 @@ const JechWASM = (function() {
         return new Promise((resolve, reject) => {
             // Carrega o script do Emscripten
             const script = document.createElement('script');
-            script.src = 'wasm/jech.js';
+            // Detecta se estamos em uma subpasta (pages/) ou na raiz
+            const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+            script.src = basePath + 'wasm/jech.js';
             
             script.onload = async () => {
                 try {
@@ -85,7 +87,7 @@ const JechWASM = (function() {
                         // Caminho para o arquivo .wasm
                         locateFile: (path) => {
                             if (path.endsWith('.wasm')) {
-                                return 'wasm/jech.wasm';
+                                return basePath + 'wasm/jech.wasm';
                             }
                             return path;
                         }
@@ -106,7 +108,7 @@ const JechWASM = (function() {
             script.onerror = (error) => {
                 console.error('Erro ao carregar o script WASM:', error);
                 isInitializing = false;
-                reject(new Error('Falha ao carregar wasm/jech.js'));
+                reject(new Error(`Falha ao carregar ${script.src}`));
             };
             
             document.head.appendChild(script);
