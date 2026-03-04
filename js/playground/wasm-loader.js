@@ -58,9 +58,7 @@ const JechWASM = (function() {
         return new Promise((resolve, reject) => {
             // Carrega o script do Emscripten
             const script = document.createElement('script');
-            // Detecta se estamos em uma subpasta (pages/) ou na raiz
-            const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
-            script.src = basePath + 'wasm/jech.js';
+            script.src = 'wasm/jech.js';
             
             script.onload = async () => {
                 try {
@@ -87,7 +85,7 @@ const JechWASM = (function() {
                         // Caminho para o arquivo .wasm
                         locateFile: (path) => {
                             if (path.endsWith('.wasm')) {
-                                return basePath + 'wasm/jech.wasm';
+                                return 'wasm/jech.wasm';
                             }
                             return path;
                         }

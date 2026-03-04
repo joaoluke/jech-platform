@@ -9,20 +9,6 @@
       }
     }
   ],
-  "rewrites": [
-    {
-      "source": "/playground",
-      "destination": "/pages/playground.html"
-    },
-    {
-      "source": "/docs",
-      "destination": "/pages/docs.html"
-    },
-    {
-      "source": "/internals",
-      "destination": "/pages/internals.html"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)\\.wasm$",
@@ -43,12 +29,12 @@
       "dest": "/$1.js"
     },
     {
-      "src": "/pages/playground.html",
+      "src": "/playground.html",
       "headers": {
         "Cross-Origin-Embedder-Policy": "require-corp",
         "Cross-Origin-Opener-Policy": "same-origin"
       },
-      "dest": "/pages/playground.html"
+      "dest": "/playground.html"
     },
     {
       "src": "/(.*)",
