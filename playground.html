@@ -55,21 +55,21 @@
 
     <div class="playground-container">
       <div class="playground-header">
-        <h1 class="playground-title">Jech Playground</h1>
+        <h1 class="playground-title" data-i18n="playground.title">Jech Playground</h1>
         <div class="playground-controls">
           <button
             id="runBtn"
             class="playground-btn playground-btn-primary"
             disabled
           >
-            <span class="run-icon">▶</span> Executar (Ctrl+Enter)
+            <span class="run-icon">▶</span> <span data-i18n="playground.run">Executar</span> (Ctrl+Enter)
           </button>
           <button
             id="clearBtn"
             class="playground-btn playground-btn-secondary"
             disabled
           >
-            <span class="clear-icon">🗑️</span> Limpar
+            <span class="clear-icon">🗑️</span> <span data-i18n="playground.clear">Limpar</span>
           </button>
         </div>
       </div>
@@ -77,43 +77,40 @@
       <div class="playground-main">
         <div class="playground-panel">
           <div class="playground-panel-header">
-            <span>📝</span> Código Fonte
+            <span>📝</span> <span data-i18n="playground.sourceCode">Código Fonte</span>
           </div>
           <div class="playground-panel-content">
             <textarea
               id="editor"
               spellcheck="false"
               placeholder="Digite seu código Jech aqui..."
+              data-i18n-placeholder="playground.editorPlaceholder"
             ></textarea>
           </div>
         </div>
 
         <div class="playground-panel">
-          <div class="playground-panel-header"><span>📤</span> Saída</div>
+          <div class="playground-panel-header"><span>📤</span> <span data-i18n="playground.output">Saída</span></div>
           <div class="playground-panel-content">
-            <pre id="output" class="empty">
-A saída do seu código aparecerá aqui...</pre
-            >
+            <pre id="output" class="empty" data-i18n="playground.outputPlaceholder">A saída do seu código aparecerá aqui...</pre>
           </div>
         </div>
       </div>
 
       <div class="playground-examples">
-        <span class="playground-examples-label">Exemplos:</span>
-        <button class="example-btn" onclick="loadExample('hello')">
+        <span class="playground-examples-label" data-i18n="playground.examples">Exemplos:</span>
+        <button class="example-btn" onclick="loadExample('hello')" data-i18n="playground.exampleHello">
           👋 Olá Mundo
         </button>
-        <button class="example-btn" onclick="loadExample('variables')">
+        <button class="example-btn" onclick="loadExample('variables')" data-i18n="playground.exampleVariables">
           🔢 Variáveis
         </button>
-        <button class="example-btn" onclick="loadExample('conditionals')">
+        <button class="example-btn" onclick="loadExample('conditionals')" data-i18n="playground.exampleConditionals">
           🔀 Condicionais
         </button>
-        <!-- <button class="example-btn" onclick="loadExample('loops')">🔄 Loops</button>
-      <button class="example-btn" onclick="loadExample('functions')">📦 Funções</button> -->
       </div>
 
-      <div id="status" class="playground-status">
+      <div id="status" class="playground-status" data-i18n="playground.status.initializing">
         <span class="loader"></span> Inicializando o interpretador Jech...
       </div>
     </div>
@@ -142,7 +139,7 @@ A saída do seu código aparecerá aqui...</pre
       // Inicializar o interpretador Jech
       async function initJech() {
         try {
-          updateStatus("⏳ Inicializando o interpretador Jech...");
+          updateStatus("⏳ " + I18n.t('playground.status.initializing'));
 
           // Configurar callback para receber a saída do WASM
           JechWASM.setOutputCallback((text) => {
@@ -161,19 +158,20 @@ A saída do seu código aparecerá aqui...</pre
 
           // Obter a versão do interpretador
           const version = await JechWASM.getVersion();
-          console.log(`Jech ${version} inicializado com sucesso!`);
+          console.log(`Jech ${version} ${I18n.t('playground.status.ready').replace('{version}', version)}`);
 
           // Atualizar estado
           isReady = true;
           runBtn.disabled = false;
           clearBtn.disabled = false;
-          updateStatus(`✅ Jech v${version} pronto!`, "ready");
+          updateStatus(`✅ ${I18n.t('playground.status.ready', { version })}`, "ready");
 
           // Carregar exemplo inicial
           loadExample("hello");
         } catch (error) {
           console.error("Erro ao inicializar o interpretador Jech:", error);
-          updateStatus(`❌ Falha ao inicializar: ${error.message}`, "error");
+          const errorMessage = I18n.t('playground.status.errorInit', { error: error.message });
+          updateStatus(`❌ ${errorMessage}`, "error");
           appendOutput(`Erro crítico: ${error.message}`, true);
         }
       }
@@ -188,7 +186,7 @@ A saída do seu código aparecerá aqui...</pre
 
           // Mostrar mensagem de exemplo carregado
           updateStatus(
-            `✅ Exemplo "${name.replace(/([A-Z])/g, " $1").trim()}" carregado`
+            `✅ ${I18n.t('playground.status.exampleLoaded', { name: name.replace(/([A-Z])/g, " $1").trim() })}`
           );
 
           // Focar no editor
@@ -197,7 +195,7 @@ A saída do seu código aparecerá aqui...</pre
           // Ajustar altura do editor
           updateEditorHeight();
         } else {
-          updateStatus("❌ Exemplo não encontrado", "error");
+          updateStatus(`❌ ${I18n.t('playground.status.exampleNotFound')}`, "error");
         }
       }
 
@@ -212,7 +210,7 @@ A saída do seu código aparecerá aqui...</pre
       async function runCode() {
         if (!isReady) {
           updateStatus(
-            "❌ O interpretador ainda não está pronto. Por favor, aguarde...",
+            `❌ ${I18n.t('playground.status.notReady')}`,
             "error"
           );
           return;
@@ -220,7 +218,7 @@ A saída do seu código aparecerá aqui...</pre
 
         const code = editor.value.trim();
         if (!code) {
-          updateStatus("❌ Nenhum código para executar", "error");
+          updateStatus(`❌ ${I18n.t('playground.status.noCode')}`, "error");
           return;
         }
 
@@ -231,7 +229,7 @@ A saída do seu código aparecerá aqui...</pre
         const codePreview = document.createElement("div");
         codePreview.className = "code-preview";
         codePreview.innerHTML = `
-          <div class="code-preview-header">🚀 Executando código...</div>
+          <div class="code-preview-header">🚀 ${I18n.t('playground.status.executing')}</div>
           <div class="code-separator">-------------------</div>
           <pre>${code.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
           <div class="code-separator">-------------------</div>
@@ -240,7 +238,7 @@ A saída do seu código aparecerá aqui...</pre
 
         // Executar o código
         const startTime = performance.now();
-        updateStatus("⚡ Executando...", "running");
+        updateStatus(`⚡ ${I18n.t('playground.status.running')}`, "running");
 
         try {
           // Executar o código usando o JechWASM
@@ -252,12 +250,12 @@ A saída do seu código aparecerá aqui...</pre
 
           if (result) {
             updateStatus(
-              `✅ Executado com sucesso (${executionTime}s)`,
+              `✅ ${I18n.t('playground.status.success', { time: executionTime })}`,
               "success"
             );
           } else {
             updateStatus(
-              `❌ Erro durante a execução (${executionTime}s)`,
+              `❌ ${I18n.t('playground.status.error')} (${executionTime}s)`,
               "error"
             );
           }
@@ -265,13 +263,13 @@ A saída do seu código aparecerá aqui...</pre
           console.error("Erro ao executar código:", error);
           const errorMessage = error.message || "Erro desconhecido";
           appendOutput(`❌ Erro: ${errorMessage}`, true);
-          updateStatus("❌ Erro durante a execução", "error");
+          updateStatus(`❌ ${I18n.t('playground.status.error')}`, "error");
         }
       }
 
       // Limpar saída
       function clearOutput() {
-        output.textContent = "A saída do seu código aparecerá aqui...";
+        output.textContent = I18n.t('playground.outputPlaceholder');
         output.className = "empty";
         JechWASM.clearOutput();
       }

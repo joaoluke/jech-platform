@@ -152,7 +152,7 @@
 				<a href="/docs" class="active" data-i18n="nav.docs">Documentação</a>
 				<a href="/internals" data-i18n="nav.internals">Como Funciona</a>
 				<a href="https://github.com/joaoluke/jech" target="_blank" data-i18n="nav.github">GitHub</a>
-				
+
 				<div class="language-selector">
 					<span class="language-icon">🌐</span>
 					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -166,125 +166,125 @@
 
 	<div class="docs-container">
 		<aside class="docs-sidebar">
-			<h3>Conteúdo</h3>
+			<h3 data-i18n="docs.sidebar.title">Conteúdo</h3>
 			<ul>
-				<li><a href="#introducao" class="active">Introdução</a></li>
-				<li><a href="#instalacao">Instalação</a></li>
-				<li><a href="#primeiros-passos">Primeiros Passos</a></li>
-				<li><a href="#say">Comando say</a></li>
-				<li><a href="#variaveis">Variáveis (keep)</a></li>
-				<li><a href="#tipos">Tipos de Dados</a></li>
-				<li><a href="#operadores">Operadores</a></li>
-				<li><a href="#concatenacao">Concatenação</a></li>
-				<li><a href="#condicionais">Condicionais (when/else)</a></li>
-				<li><a href="#arrays">Arrays</a></li>
-				<li><a href="#funcoes">Funções (do)</a></li>
-				<li><a href="#exemplos-praticos">Exemplos Práticos</a></li>
+				<li><a href="#introducao" class="active" data-i18n="docs.sidebar.intro">Introdução</a></li>
+				<li><a href="#instalacao" data-i18n="docs.sidebar.install">Instalação</a></li>
+				<li><a href="#primeiros-passos" data-i18n="docs.sidebar.steps">Primeiros Passos</a></li>
+				<li><a href="#say" data-i18n="docs.sidebar.say">Comando say</a></li>
+				<li><a href="#variaveis" data-i18n="docs.sidebar.vars">Variáveis (keep)</a></li>
+				<li><a href="#tipos" data-i18n="docs.sidebar.types">Tipos de Dados</a></li>
+				<li><a href="#operadores" data-i18n="docs.sidebar.operators">Operadores</a></li>
+				<li><a href="#concatenacao" data-i18n="docs.sidebar.concat">Concatenação</a></li>
+				<li><a href="#condicionais" data-i18n="docs.sidebar.conditionals">Condicionais (when/else)</a></li>
+				<li><a href="#arrays" data-i18n="docs.sidebar.arrays">Arrays</a></li>
+				<li><a href="#funcoes" data-i18n="docs.sidebar.functions">Funções (do)</a></li>
+				<li><a href="#exemplos-praticos" data-i18n="docs.sidebar.examples">Exemplos Práticos</a></li>
 			</ul>
 		</aside>
 
 		<main class="docs-content">
-			<h1 id="introducao">📚 Documentação Completa Jech</h1>
-			<p>
+			<h1 id="introducao" data-i18n="docs.title">📚 Documentação Completa Jech</h1>
+			<p data-i18n="docs.intro.p1">
 				Bem-vindo à documentação oficial da linguagem de programação Jech!
 				Esta linguagem foi criada com propósito educacional para demonstrar
 				como interpretadores, compiladores e máquinas virtuais funcionam na prática.
 			</p>
-			<p>
+			<p data-i18n="docs.intro.p2">
 				Jech é uma linguagem de tipagem dinâmica com sintaxe clara e intuitiva,
 				perfeita para aprender os fundamentos de linguagens de programação e
 				entender como o código é processado desde a análise léxica até a execução.
 			</p>
 
-			<h2 id="instalacao">🚀 Instalação</h2>
-			<p>Existem duas formas de usar Jech:</p>
+			<h2 id="instalacao" data-i18n="docs.install.title">🚀 Instalação</h2>
+			<p data-i18n="docs.install.desc">Existem duas formas de usar Jech:</p>
 
-			<h3>1. Playground Online (Recomendado para Iniciantes)</h3>
-			<p>
+			<h3 data-i18n="docs.install.playground.title">1. Playground Online (Recomendado para Iniciantes)</h3>
+			<p data-i18n="docs.install.playground.desc">
 				A forma mais rápida de começar é usar o
 				<a href="/playground" style="color: var(--primary);">playground</a> online.
 				Não requer instalação e roda diretamente no navegador via WebAssembly.
 			</p>
 			<ul>
-				<li>✅ Sem necessidade de instalação</li>
-				<li>✅ Execução instantânea no navegador</li>
-				<li>✅ Exemplos prontos para testar</li>
-				<li>✅ Ideal para aprendizado rápido</li>
+				<li data-i18n="docs.install.playground.item1">✅ Sem necessidade de instalação</li>
+				<li data-i18n="docs.install.playground.item2">✅ Execução instantânea no navegador</li>
+				<li data-i18n="docs.install.playground.item3">✅ Exemplos prontos para testar</li>
+				<li data-i18n="docs.install.playground.item4">✅ Ideal para aprendizado rápido</li>
 			</ul>
 
-			<h3>2. Instalação Local</h3>
-			<p>Para desenvolvedores que querem explorar o código fonte e entender a implementação:</p>
-			<pre><code><span class="comment"># Clone o repositório</span>
+			<h3 data-i18n="docs.install.local.title">2. Instalação Local</h3>
+			<p data-i18n="docs.install.local.desc">Para desenvolvedores que querem explorar o código fonte e entender a implementação:</p>
+			<pre><code><span class="comment" data-i18n="docs.install.local.comment1"># Clone o repositório</span>
 git clone https://github.com/joaoluke/jech.git
 cd jech
 
-<span class="comment"># Compile o interpretador</span>
+<span class="comment" data-i18n="docs.install.local.comment2"># Compile o interpretador</span>
 make
 
-<span class="comment"># Execute um arquivo .jc</span>
+<span class="comment" data-i18n="docs.install.local.comment3"># Execute um arquivo .jc</span>
 ./build/jech examples/01_hello_world.jc
 
-<span class="comment"># Ou use o REPL interativo</span>
+<span class="comment" data-i18n="docs.install.local.comment4"># Ou use o REPL interativo</span>
 ./build/jech</code></pre>
 
-			<h2 id="primeiros-passos">🎯 Primeiros Passos</h2>
-			<p>
+			<h2 id="primeiros-passos" data-i18n="docs.firstSteps.title">🎯 Primeiros Passos</h2>
+			<p data-i18n="docs.firstSteps.desc">
 				Vamos começar com o programa mais simples possível em Jech: o famoso "Hello, World!".
 			</p>
-			<pre><code><span class="comment">// Seu primeiro programa Jech!</span>
+			<pre><code><span class="comment" data-i18n="docs.firstSteps.comment">// Seu primeiro programa Jech!</span>
 <span class="function">say</span>(<span class="string">"Hello, World!"</span>);</code></pre>
-			<p>
+			<p data-i18n="docs.firstSteps.explain">
 				Este programa usa o comando <code>say</code> para exibir uma mensagem na tela.
 				Simples assim! Vamos entender cada parte:
 			</p>
 			<ul>
-				<li><code>say</code> - Função nativa que imprime valores na saída</li>
-				<li><code>"Hello, World!"</code> - Uma string (texto entre aspas duplas)</li>
-				<li><code>;</code> - Ponto e vírgula obrigatório no final de cada instrução</li>
+				<li data-i18n="docs.firstSteps.item1"><code>say</code> - Função nativa que imprime valores na saída</li>
+				<li data-i18n="docs.firstSteps.item2"><code>"Hello, World!"</code> - Uma string (texto entre aspas duplas)</li>
+				<li data-i18n="docs.firstSteps.item3"><code>;</code> - Ponto e vírgula obrigatório no final de cada instrução</li>
 			</ul>
 
-			<h2 id="say">💬 Comando say - Exibindo Valores</h2>
-			<p>
+			<h2 id="say" data-i18n="docs.say.title">💬 Comando say - Exibindo Valores</h2>
+			<p data-i18n="docs.say.desc">
 				O comando <code>say</code> é a forma de exibir informações em Jech.
 				Ele aceita diferentes tipos de dados e os imprime na saída padrão.
 			</p>
 
-			<h3>Imprimindo Strings (Texto)</h3>
+			<h3 data-i18n="docs.say.strings">Imprimindo Strings (Texto)</h3>
 			<pre><code><span class="function">say</span>(<span class="string">"Esta é uma string"</span>);
 <span class="function">say</span>(<span class="string">"Strings podem ter espaços e pontuação!"</span>);
 <span class="function">say</span>(<span class="string">"Até caracteres especiais: @#$%"</span>);</code></pre>
 
-			<h3>Imprimindo Números</h3>
-			<pre><code><span class="comment">// Números inteiros</span>
+			<h3 data-i18n="docs.say.numbers">Imprimindo Números</h3>
+			<pre><code><span class="comment" data-i18n="docs.say.numsComment1">// Números inteiros</span>
 <span class="function">say</span>(<span class="number">42</span>);
 <span class="function">say</span>(<span class="number">0</span>);
 <span class="function">say</span>(<span class="number">999</span>);
 
-<span class="comment">// Números decimais (floats)</span>
+<span class="comment" data-i18n="docs.say.numsComment2">// Números decimais (floats)</span>
 <span class="function">say</span>(<span class="number">3.14</span>);
 <span class="function">say</span>(<span class="number">0.5</span>);
 <span class="function">say</span>(<span class="number">100.99</span>);</code></pre>
 
-			<h3>Imprimindo Booleanos</h3>
+			<h3 data-i18n="docs.say.booleans">Imprimindo Booleanos</h3>
 			<pre><code><span class="function">say</span>(<span class="number">true</span>);   <span class="comment">// Exibe: true</span>
 <span class="function">say</span>(<span class="number">false</span>);  <span class="comment">// Exibe: false</span></code></pre>
 
-			<div class="note">
-				<strong>� Dica:</strong> O comando <code>say</code> automaticamente adiciona uma quebra de linha
+			<div class="note" data-i18n="docs.say.tip">
+				<strong> Dica:</strong> O comando <code>say</code> automaticamente adiciona uma quebra de linha
 				após cada valor impresso. Cada chamada de <code>say</code> imprime em uma nova linha.
 			</div>
 
-			<h2 id="variaveis">📦 Variáveis - Armazenando Dados com keep</h2>
-			<p>
+			<h2 id="variaveis" data-i18n="docs.vars.title">📦 Variáveis - Armazenando Dados com keep</h2>
+			<p data-i18n="docs.vars.p1">
 				Em Jech, usamos a palavra-chave <code>keep</code> para declarar variáveis.
 				O nome "keep" foi escolhido para ser intuitivo: você está "guardando" um valor.
 			</p>
-			<p>
+			<p data-i18n="docs.vars.p2">
 				Jech possui <strong>tipagem dinâmica</strong>, o que significa que você não precisa
 				declarar o tipo da variável - o interpretador descobre automaticamente!
 			</p>
 
-			<h3>Declarando Variáveis</h3>
+			<h3 data-i18n="docs.vars.declaring">Declarando Variáveis</h3>
 			<pre><code><span class="comment">// Variáveis de string</span>
 <span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Alice"</span>;
 <span class="keyword">keep</span> <span class="variable">greeting</span> = <span class="string">"Hello"</span>;
@@ -298,16 +298,16 @@ make
 <span class="keyword">keep</span> <span class="variable">isActive</span> = <span class="number">true</span>;
 <span class="keyword">keep</span> <span class="variable">isComplete</span> = <span class="number">false</span>;</code></pre>
 
-			<h3>Usando Variáveis</h3>
-			<p>Depois de declarar uma variável, você pode usá-la em qualquer lugar do código:</p>
+			<h3 data-i18n="docs.vars.using">Usando Variáveis</h3>
+			<p data-i18n="docs.vars.usingP">Depois de declarar uma variável, você pode usá-la em qualquer lugar do código:</p>
 			<pre><code><span class="keyword">keep</span> <span class="variable">username</span> = <span class="string">"Bob"</span>;
 <span class="function">say</span>(<span class="variable">username</span>);  <span class="comment">// Exibe: Bob</span>
 
 <span class="keyword">keep</span> <span class="variable">points</span> = <span class="number">500</span>;
 <span class="function">say</span>(<span class="variable">points</span>);     <span class="comment">// Exibe: 500</span></code></pre>
 
-			<h3>Reatribuição de Variáveis</h3>
-			<p>
+			<h3 data-i18n="docs.vars.reassignment">Reatribuição de Variáveis</h3>
+			<p data-i18n="docs.vars.reassignmentP">
 				Você pode mudar o valor de uma variável depois de declará-la.
 				Note que na reatribuição você <strong>não usa</strong> a palavra <code>keep</code> novamente:
 			</p>
@@ -322,17 +322,17 @@ make
 <span class="variable">counter</span> = <span class="number">2</span>;
 <span class="function">say</span>(<span class="variable">counter</span>);  <span class="comment">// Exibe: 2</span></code></pre>
 
-			<div class="note">
+			<div class="note" data-i18n="docs.vars.important">
 				<strong>📝 Importante:</strong> Todas as declarações e atribuições devem terminar com ponto e vírgula
 				(<code>;</code>).
 				Esquecer o ponto e vírgula causará um erro de sintaxe!
 			</div>
 
-			<h2 id="tipos">🎨 Tipos de Dados</h2>
-			<p>Jech suporta quatro tipos principais de dados. Vamos explorar cada um em detalhes:</p>
+			<h2 id="tipos" data-i18n="docs.types.title">🎨 Tipos de Dados</h2>
+			<p data-i18n="docs.types.p">Jech suporta quatro tipos principais de dados. Vamos explorar cada um em detalhes:</p>
 
-			<h3>1. Números (Numbers)</h3>
-			<p>
+			<h3 data-i18n="docs.types.numbers">1. Números (Numbers)</h3>
+			<p data-i18n="docs.types.numbersP">
 				Jech trabalha com números inteiros e decimais (ponto flutuante).
 				Não há distinção entre int e float - todos são tratados como números.
 			</p>
@@ -350,8 +350,8 @@ make
 <span class="keyword">keep</span> <span class="variable">debt</span> = <span class="number">-50</span>;
 <span class="keyword">keep</span> <span class="variable">temperature</span> = <span class="number">-10.5</span>;</code></pre>
 
-			<h3>2. Strings (Texto)</h3>
-			<p>
+			<h3 data-i18n="docs.types.strings">2. Strings (Texto)</h3>
+			<p data-i18n="docs.types.stringsP">
 				Strings são sequências de caracteres delimitadas por aspas duplas (<code>"</code>).
 				Elas podem conter letras, números, espaços e caracteres especiais.
 			</p>
@@ -361,8 +361,8 @@ make
 <span class="keyword">keep</span> <span class="variable">special</span> = <span class="string">"Caracteres especiais: @#$%"</span>;
 <span class="keyword">keep</span> <span class="variable">empty</span> = <span class="string">""</span>;  <span class="comment">// String vazia</span></code></pre>
 
-			<h3>3. Booleanos (true/false)</h3>
-			<p>
+			<h3 data-i18n="docs.types.booleans">3. Booleanos (true/false)</h3>
+			<p data-i18n="docs.types.booleansP">
 				Booleanos representam valores lógicos: verdadeiro (<code>true</code>) ou falso (<code>false</code>).
 				São muito úteis em condicionais e controle de fluxo.
 			</p>
@@ -371,8 +371,8 @@ make
 <span class="keyword">keep</span> <span class="variable">isLoggedIn</span> = <span class="number">true</span>;
 <span class="keyword">keep</span> <span class="variable">debugMode</span> = <span class="number">false</span>;</code></pre>
 
-			<h3>4. Arrays (Listas)</h3>
-			<p>
+			<h3 data-i18n="docs.types.arrays">4. Arrays (Listas)</h3>
+			<p data-i18n="docs.types.arraysP">
 				Arrays são coleções ordenadas de valores. Podem conter números, strings ou valores mistos.
 			</p>
 			<pre><code><span class="comment">// Array de números</span>
@@ -387,13 +387,13 @@ make
 <span class="comment">// Array misto (diferentes tipos)</span>
 <span class="keyword">keep</span> <span class="variable">mixed</span> = [<span class="number">1</span>, <span class="string">"texto"</span>, <span class="number">true</span>, <span class="number">3.14</span>];</code></pre>
 
-			<h2 id="operadores">🔢 Operadores Aritméticos</h2>
-			<p>
+			<h2 id="operadores" data-i18n="docs.operators.title">🔢 Operadores Aritméticos</h2>
+			<p data-i18n="docs.operators.p">
 				Jech suporta as quatro operações matemáticas básicas. Você pode usar operadores
 				diretamente em expressões ou modificar variáveis existentes.
 			</p>
 
-			<h3>Adição (+)</h3>
+			<h3 data-i18n="docs.operators.addition">Adição (+)</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">sum</span> = <span class="number">5</span> + <span class="number">3</span>;
 <span class="function">say</span>(<span class="variable">sum</span>);  <span class="comment">// Exibe: 8</span>
 
@@ -402,7 +402,7 @@ make
 <span class="variable">total</span> = <span class="variable">total</span> + <span class="number">50</span>;
 <span class="function">say</span>(<span class="variable">total</span>);  <span class="comment">// Exibe: 150</span></code></pre>
 
-			<h3>Subtração (-)</h3>
+			<h3 data-i18n="docs.operators.subtraction">Subtração (-)</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">difference</span> = <span class="number">20</span> - <span class="number">8</span>;
 <span class="function">say</span>(<span class="variable">difference</span>);  <span class="comment">// Exibe: 12</span>
 
@@ -411,7 +411,7 @@ make
 <span class="variable">balance</span> = <span class="variable">balance</span> - <span class="number">250</span>;
 <span class="function">say</span>(<span class="variable">balance</span>);  <span class="comment">// Exibe: 750</span></code></pre>
 
-			<h3>Multiplicação (*)</h3>
+			<h3 data-i18n="docs.operators.multiplication">Multiplicação (*)</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">product</span> = <span class="number">4</span> * <span class="number">5</span>;
 <span class="function">say</span>(<span class="variable">product</span>);  <span class="comment">// Exibe: 20</span>
 
@@ -420,7 +420,7 @@ make
 <span class="variable">quantity</span> = <span class="variable">quantity</span> * <span class="number">10</span>;
 <span class="function">say</span>(<span class="variable">quantity</span>);  <span class="comment">// Exibe: 30</span></code></pre>
 
-			<h3>Divisão (/)</h3>
+			<h3 data-i18n="docs.operators.division">Divisão (/)</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">quotient</span> = <span class="number">100</span> / <span class="number">4</span>;
 <span class="function">say</span>(<span class="variable">quotient</span>);  <span class="comment">// Exibe: 25</span>
 
@@ -429,8 +429,8 @@ make
 <span class="variable">half</span> = <span class="variable">half</span> / <span class="number">2</span>;
 <span class="function">say</span>(<span class="variable">half</span>);  <span class="comment">// Exibe: 25</span></code></pre>
 
-			<h3>Operações Combinadas</h3>
-			<p>Você pode encadear múltiplas operações:</p>
+			<h3 data-i18n="docs.operators.combined">Operações Combinadas</h3>
+			<p data-i18n="docs.operators.combinedP">Você pode encadear múltiplas operações:</p>
 			<pre><code><span class="keyword">keep</span> <span class="variable">result</span> = <span class="number">10</span>;
 <span class="variable">result</span> = <span class="variable">result</span> + <span class="number">5</span>;   <span class="comment">// 15</span>
 <span class="variable">result</span> = <span class="variable">result</span> * <span class="number">2</span>;   <span class="comment">// 30</span>
@@ -438,33 +438,33 @@ make
 <span class="variable">result</span> = <span class="variable">result</span> / <span class="number">5</span>;   <span class="comment">// 4</span>
 <span class="function">say</span>(<span class="variable">result</span>);  <span class="comment">// Exibe: 4</span></code></pre>
 
-			<h3>Exemplo Prático: Carrinho de Compras</h3>
+			<h3 data-i18n="docs.operators.practical">Exemplo Prático: Carrinho de Compras</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">cartTotal</span> = <span class="number">0</span>;
 <span class="variable">cartTotal</span> = <span class="variable">cartTotal</span> + <span class="number">25</span>;   <span class="comment">// Adiciona item 1</span>
 <span class="variable">cartTotal</span> = <span class="variable">cartTotal</span> + <span class="number">15</span>;   <span class="comment">// Adiciona item 2</span>
 <span class="variable">cartTotal</span> = <span class="variable">cartTotal</span> + <span class="number">10</span>;   <span class="comment">// Adiciona item 3</span>
 <span class="function">say</span>(<span class="variable">cartTotal</span>);  <span class="comment">// Exibe: 50</span></code></pre>
 
-			<h2 id="concatenacao">🔗 Concatenação de Strings</h2>
-			<p>
+			<h2 id="concatenacao" data-i18n="docs.concat.title">🔗 Concatenação de Strings</h2>
+			<p data-i18n="docs.concat.p">
 				Em Jech, você pode juntar (concatenar) strings usando o operador <code>+</code>.
 				Isso é muito útil para construir mensagens dinâmicas.
 			</p>
 
-			<h3>Concatenação Básica</h3>
+			<h3 data-i18n="docs.concat.basic">Concatenação Básica</h3>
 			<pre><code><span class="comment">// Juntando duas strings literais</span>
 <span class="function">say</span>(<span class="string">"Hello"</span> + <span class="string">"World"</span>);  <span class="comment">// Exibe: HelloWorld</span>
 
 <span class="comment">// Com espaço</span>
 <span class="function">say</span>(<span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="string">"World"</span>);  <span class="comment">// Exibe: Hello World</span></code></pre>
 
-			<h3>Concatenação com Variáveis</h3>
+			<h3 data-i18n="docs.concat.vars">Concatenação com Variáveis</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">firstName</span> = <span class="string">"João"</span>;
 <span class="keyword">keep</span> <span class="variable">lastName</span> = <span class="string">"Lucas"</span>;
 <span class="keyword">keep</span> <span class="variable">fullName</span> = <span class="variable">firstName</span> + <span class="string">" "</span> + <span class="variable">lastName</span>;
 <span class="function">say</span>(<span class="variable">fullName</span>);  <span class="comment">// Exibe: João Lucas</span></code></pre>
 
-			<h3>Misturando Variáveis e Literais</h3>
+			<h3 data-i18n="docs.concat.mixed">Misturando Variáveis e Literais</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">greeting</span> = <span class="string">"Hello"</span>;
 <span class="function">say</span>(<span class="variable">greeting</span> + <span class="string">" World!"</span>);  <span class="comment">// Exibe: Hello World!</span>
 
@@ -472,7 +472,7 @@ make
 <span class="keyword">keep</span> <span class="variable">message</span> = <span class="string">"User: "</span> + <span class="variable">username</span> + <span class="string">"!"</span>;
 <span class="function">say</span>(<span class="variable">message</span>);  <span class="comment">// Exibe: User: joaoluke!</span></code></pre>
 
-			<h3>Exemplo Prático: Construindo Mensagens</h3>
+			<h3 data-i18n="docs.concat.practical">Exemplo Prático: Construindo Mensagens</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">status</span> = <span class="string">"active"</span>;
 <span class="keyword">keep</span> <span class="variable">message</span> = <span class="string">"User is "</span> + <span class="variable">status</span>;
 <span class="function">say</span>(<span class="variable">message</span>);  <span class="comment">// Exibe: User is active</span>
@@ -483,32 +483,32 @@ make
 <span class="keyword">keep</span> <span class="variable">step4</span> = <span class="variable">step3</span> + <span class="string">" fox"</span>;
 <span class="function">say</span>(<span class="variable">step4</span>);  <span class="comment">// Exibe: The quick brown fox</span></code></pre>
 
-			<div class="warning">
+			<div class="warning" data-i18n="docs.concat.warning">
 				<strong>⚠️ Atenção:</strong> Concatenação de strings com <code>+</code> é diferente de adição numérica!
 				<code>"10" + "20"</code> resulta em <code>"1020"</code> (string), enquanto <code>10 + 20</code> resulta
 				em <code>30</code> (número).
 			</div>
 
-			<h2 id="condicionais">🔀 Condicionais - Tomando Decisões com when/else</h2>
-			<p>
+			<h2 id="condicionais" data-i18n="docs.conditionals.title">🔀 Condicionais - Tomando Decisões com when/else</h2>
+			<p data-i18n="docs.conditionals.p">
 				Condicionais permitem que seu programa tome decisões e execute diferentes códigos
 				baseado em condições. Em Jech, usamos <code>when</code> (quando) para criar estruturas condicionais.
 			</p>
 
-			<h3>Operadores de Comparação</h3>
-			<p>Antes de usar condicionais, você precisa conhecer os operadores de comparação:</p>
-			<pre><code><span class="comment">// Igualdade</span>
+			<h3 data-i18n="docs.conditionals.operators">Operadores de Comparação</h3>
+			<p data-i18n="docs.conditionals.operatorsP">Antes de usar condicionais, você precisa conhecer os operadores de comparação:</p>
+			<pre><code><span class="comment" data-i18n="docs.conditionals.comparisonComment1">// Igualdade</span>
 <span class="variable">x</span> == <span class="variable">y</span>    <span class="comment">// Igual a</span>
 <span class="variable">x</span> != <span class="variable">y</span>    <span class="comment">// Diferente de</span>
 
-<span class="comment">// Comparação numérica</span>
+<span class="comment" data-i18n="docs.conditionals.comparisonComment2">// Comparação numérica</span>
 <span class="variable">x</span> > <span class="variable">y</span>     <span class="comment">// Maior que</span>
 <span class="variable">x</span> < <span class="variable">y</span>     <span class="comment">// Menor que</span>
 <span class="variable">x</span> >= <span class="variable">y</span>    <span class="comment">// Maior ou igual a</span>
 <span class="variable">x</span> <= <span class="variable">y</span>    <span class="comment">// Menor ou igual a</span></code></pre>
 
-			<h3>when com Booleanos</h3>
-			<p>A forma mais simples de condicional usa valores booleanos diretamente:</p>
+			<h3 data-i18n="docs.conditionals.booleanTitle">when com Booleanos</h3>
+			<p data-i18n="docs.conditionals.booleanP">A forma mais simples de condicional usa valores booleanos diretamente:</p>
 			<pre><code><span class="comment">// Sempre executa (true)</span>
 <span class="keyword">when</span> (<span class="number">true</span>) {
     <span class="function">say</span>(<span class="string">"Isso sempre executa"</span>);
@@ -525,8 +525,8 @@ make
     <span class="function">say</span>(<span class="string">"Mensagem visível!"</span>);
 }</code></pre>
 
-			<h3>when com Comparações</h3>
-			<p>Você pode usar operadores de comparação para criar condições mais complexas:</p>
+			<h3 data-i18n="docs.conditionals.comparesTitle">when com Comparações</h3>
+			<p data-i18n="docs.conditionals.comparesP">Você pode usar operadores de comparação para criar condições mais complexas:</p>
 			<pre><code><span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
 
 <span class="keyword">when</span> (<span class="variable">age</span> > <span class="number">18</span>) {
@@ -545,16 +545,16 @@ make
     <span class="function">say</span>(<span class="string">"Pontuação perfeita!"</span>);
 }</code></pre>
 
-			<h3>when com Strings</h3>
-			<p>Você também pode comparar strings usando <code>==</code>:</p>
+			<h3 data-i18n="docs.conditionals.stringsTitle">when com Strings</h3>
+			<p data-i18n="docs.conditionals.stringsP">Você também pode comparar strings usando <code>==</code>:</p>
 			<pre><code><span class="keyword">keep</span> <span class="variable">color</span> = <span class="string">"blue"</span>;
 
 <span class="keyword">when</span> (<span class="variable">color</span> == <span class="string">"blue"</span>) {
     <span class="function">say</span>(<span class="string">"A cor é azul"</span>);
 }</code></pre>
 
-			<h3>when/else - Lidando com Ambos os Casos</h3>
-			<p>
+			<h3 data-i18n="docs.conditionals.elseTitle">when/else - Lidando com Ambos os Casos</h3>
+			<p data-i18n="docs.conditionals.elseP">
 				Use <code>else</code> para executar código quando a condição é falsa.
 				Isso cria uma estrutura "se-senão":
 			</p>
@@ -577,8 +577,8 @@ make
     <span class="function">say</span>(<span class="string">"Por favor, faça login"</span>);
 }</code></pre>
 
-			<h3>Múltiplas Condições (else when)</h3>
-			<p>Para testar várias condições em sequência, use <code>else when</code>:</p>
+			<h3 data-i18n="docs.conditionals.multipleTitle">Múltiplas Condições (else when)</h3>
+			<p data-i18n="docs.conditionals.multipleP">Para testar várias condições em sequência, use <code>else when</code>:</p>
 			<pre><code><span class="keyword">keep</span> <span class="variable">grade</span> = <span class="number">85</span>;
 
 <span class="keyword">when</span> (<span class="variable">grade</span> >= <span class="number">90</span>) {
@@ -597,7 +597,7 @@ make
     <span class="function">say</span>(<span class="string">"Reprovado"</span>);
 }</code></pre>
 
-			<h3>Exemplo Prático: Sistema de Autenticação</h3>
+			<h3 data-i18n="docs.conditionals.practical1">Exemplo Prático: Sistema de Autenticação</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">username</span> = <span class="string">"admin"</span>;
 <span class="keyword">keep</span> <span class="variable">isAuthenticated</span> = <span class="number">false</span>;
 
@@ -618,7 +618,7 @@ make
     <span class="function">say</span>(<span class="string">"Faça login primeiro"</span>);
 }</code></pre>
 
-			<h3>Exemplo Prático: Verificação de Estoque</h3>
+			<h3 data-i18n="docs.conditionals.practical2">Exemplo Prático: Verificação de Estoque</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">inventory</span> = <span class="number">5</span>;
 
 <span class="keyword">when</span> (<span class="variable">inventory</span> > <span class="number">10</span>) {
@@ -646,30 +646,33 @@ make
 <span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"maçã"</span>, <span class="string">"banana"</span>, <span class="string">"laranja"</span>];
 
 <span class="comment">// Array vazio</span>
-<span class="keyword">keep</span> <span class="variable">empty</span> = [];
-
-<span class="comment">// Array misto (diferentes tipos)</span>
-<span class="keyword">keep</span> <span class="variable">mixed</span> = [<span class="number">1</span>, <span class="string">"texto"</span>, <span class="number">true</span>, <span class="number">3.14</span>];</code></pre>
-
-			<h3>Acessando Elementos</h3>
-			<p>
-				Arrays em Jech são <strong>indexados a partir de 0</strong>. Isso significa que o
-				primeiro elemento está no índice 0, o segundo no índice 1, e assim por diante.
+			<h2 id="arrays" data-i18n="docs.arrays.title">📊 Trabalhando com Arrays</h2>
+			<p data-i18n="docs.arrays.p">
+				Arrays em Jech são indexados em zero e dinâmicos. Você pode acessar, modificar e
+				percorrer listas de valores facilmente.
 			</p>
-			<pre><code><span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"maçã"</span>, <span class="string">"banana"</span>, <span class="string">"laranja"</span>];
 
-<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">0</span>]);  <span class="comment">// Exibe: maçã (primeiro elemento)</span>
-<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">1</span>]);  <span class="comment">// Exibe: banana (segundo elemento)</span>
-<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">2</span>]);  <span class="comment">// Exibe: laranja (terceiro elemento)</span></code></pre>
+			<h3 data-i18n="docs.arrays.access">Acessando Elementos</h3>
+			<pre><code><span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"Maçã"</span>, <span class="string">"Banana"</span>, <span class="string">"Uva"</span>];
 
-			<h3>Modificando Elementos</h3>
-			<p>Você pode alterar o valor de um elemento específico do array:</p>
-			<pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
-<span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);  <span class="comment">// Exibe: 1</span>
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">0</span>]);  <span class="comment">// Exibe: Maçã</span>
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">1</span>]);  <span class="comment">// Exibe: Banana</span>
+<span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">2</span>]);  <span class="comment">// Exibe: Uva</span></code></pre>
 
-<span class="comment">// Modificando o primeiro elemento</span>
-<span class="variable">numbers</span>[<span class="number">0</span>] = <span class="number">10</span>;
-<span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);  <span class="comment">// Exibe: 10</span></code></pre>
+			<h3 data-i18n="docs.arrays.modify">Modificando Elementos</h3>
+			<pre><code><span class="keyword">keep</span> <span class="variable">list</span> = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];
+<span class="variable">list</span>[<span class="number">1</span>] = <span class="number">99</span>;
+<span class="function">say</span>(<span class="variable">list</span>);  <span class="comment">// Exibe: [10, 99, 30]</span></code></pre>
+
+			<h3 data-i18n="docs.arrays.size">Tamanho do Array</h3>
+			<p data-i18n="docs.arrays.sizeP">Use o método <code>.size()</code> para obter a quantidade de elementos:</p>
+			<pre><code><span class="keyword">keep</span> <span class="variable">tags</span> = [<span class="string">"web"</span>, <span class="string">"dev"</span>, <span class="string">"code"</span>, <span class="string">"jech"</span>];
+<span class="function">say</span>(<span class="variable">tags</span>.size());  <span class="comment">// Exibe: 4</span></code></pre>
+
+			<h3 data-i18n="docs.arrays.practical">Exemplo Prático: Lista de Compras</h3>
+			<pre><code><span class="keyword">keep</span> <span class="variable">todo</span> = [<span class="string">"Estudar Jech"</span>, <span class="string">"Fazer café"</span>, <span class="string">"Codar"</span>];
+<span class="function">say</span>(<span class="string">"Total de tarefas: "</span> + <span class="variable">todo</span>.size());
+<span class="function">say</span>(<span class="string">"Primeira tarefa: "</span> + <span class="variable">todo</span>[<span class="number">0</span>]);</code></pre>
 
 			<h3>Método map - Transformando Arrays</h3>
 			<p>
@@ -715,52 +718,59 @@ make
 <span class="keyword">keep</span> <span class="variable">curved</span> = <span class="variable">scores</span>.map(+ <span class="number">5</span>);
 <span class="function">say</span>(<span class="variable">curved</span>);  <span class="comment">// [90, 95, 83, 97, 93]</span></code></pre>
 
-			<h2 id="funcoes">🔧 Funções - Reutilizando Código com do</h2>
-			<p>
-				Funções permitem agrupar código que pode ser reutilizado. Em Jech, usamos a
-				palavra-chave <code>do</code> para definir funções.
+			<h2 id="funcoes" data-i18n="docs.functions.title">🛠️ Funções - Organizando Código com do</h2>
+			<p data-i18n="docs.functions.p">
+				Funções permitem que você agrupe um bloco de código e o execute várias vezes.
+				Em Jech, usamos a palavra-chave <code>do</code> para definir uma função.
 			</p>
 
-			<h3>Função Simples (Sem Parâmetros)</h3>
-			<pre><code><span class="comment">// Definindo a função</span>
-<span class="keyword">do</span> <span class="function">hello</span>() {
-    <span class="function">say</span>(<span class="string">"Hello, World!"</span>);
+			<h3 data-i18n="docs.functions.declaring">Definindo uma Função</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">sayHello</span>() {
+    <span class="function">say</span>(<span class="string">"Olá de dentro da função!"</span>);
+}</code></pre>
+
+			<h3 data-i18n="docs.functions.calling">Chamando uma Função</h3>
+			<pre><code><span class="function">sayHello</span>();  <span class="comment">// Executa o código da função</span>
+<span class="function">sayHello</span>();  <span class="comment">// Pode ser chamada múltiplas vezes</span></code></pre>
+
+			<h3 data-i18n="docs.functions.params">Funções com Parâmetros</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
+    <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span> + <span class="string">"!"</span>);
 }
 
-<span class="comment">// Chamando a função</span>
-<span class="function">hello</span>();  <span class="comment">// Exibe: Hello, World!</span></code></pre>
+<span class="function">greet</span>(<span class="string">"Alice"</span>);  <span class="comment">// Exibe: Olá, Alice!</span>
+<span class="function">greet</span>(<span class="string">"Bob"</span>);    <span class="comment">// Exibe: Olá, Bob!</span></code></pre>
 
-			<h3>Função com Um Parâmetro</h3>
-			<pre><code><span class="comment">// Função que recebe um nome</span>
-<span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
-    <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
+			<h3 data-i18n="docs.functions.multipleParams">Múltiplos Parâmetros</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">add</span>(<span class="variable">a</span>, <span class="variable">b</span>) {
+    <span class="function">say</span>(<span class="variable">a</span> + <span class="variable">b</span>);
 }
 
-<span class="comment">// Chamando com diferentes valores</span>
-<span class="function">greet</span>(<span class="string">"João"</span>);   <span class="comment">// Exibe: Olá, João</span>
-<span class="function">greet</span>(<span class="string">"Maria"</span>);  <span class="comment">// Exibe: Olá, Maria</span></code></pre>
+<span class="function">add</span>(<span class="number">5</span>, <span class="number">3</span>);    <span class="comment">// Exibe: 8</span>
+<span class="function">add</span>(<span class="number">10</span>, <span class="number">20</span>);  <span class="comment">// Exibe: 30</span></code></pre>
 
-			<h3>Função com Múltiplos Parâmetros</h3>
-			<pre><code><span class="comment">// Função que recebe nome, idade e cidade</span>
-<span class="keyword">do</span> <span class="function">showPerson</span>(<span class="variable">name</span>, <span class="variable">age</span>, <span class="variable">city</span>) {
-    <span class="function">say</span>(<span class="variable">name</span>);
-    <span class="function">say</span>(<span class="variable">age</span>);
-    <span class="function">say</span>(<span class="variable">city</span>);
+			<h3 data-i18n="docs.functions.practical">Exemplo Prático: Calculadora de Área</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">calculateArea</span>(<span class="variable">width</span>, <span class="variable">height</span>) {
+    <span class="keyword">keep</span> <span class="variable">area</span> = <span class="variable">width</span> * <span class="variable">height</span>;
+    <span class="function">say</span>(<span class="string">"A área é: "</span> + <span class="variable">area</span>);
 }
 
-<span class="comment">// Chamando a função</span>
-<span class="function">showPerson</span>(<span class="string">"João"</span>, <span class="number">30</span>, <span class="string">"São Paulo"</span>);</code></pre>
+<span class="function">calculateArea</span>(<span class="number">5</span>, <span class="number">10</span>);  <span class="comment">// Exibe: A área é: 50</span>
+<span class="function">calculateArea</span>(<span class="number">7</span>, <span class="number">3</span>);   <span class="comment">// Exibe: A área é: 21</span></code></pre>
 
-			<h3>Função com Retorno</h3>
-			<p>Funções podem retornar valores usando <code>return</code>:</p>
-			<pre><code><span class="comment">// Função que soma dois números e retorna o resultado</span>
-<span class="keyword">do</span> <span class="function">soma</span>(<span class="variable">a</span>, <span class="variable">b</span>) {
-    <span class="keyword">return</span> <span class="variable">a</span> + <span class="variable">b</span>;
+			<div class="note" data-i18n="docs.functions.note">
+				<strong>💡 Dica:</strong> Funções ajudam a manter seu código limpo, organizado e evitam
+				repetição de lógica.
+			</div>
+
+			<h3 data-i18n="docs.functions.return">Função com Retorno</h3>
+			<p data-i18n="docs.functions.returnP">Funções podem retornar valores usando <code>return</code>:</p>
+			<pre><code><span class="keyword">do</span> <span class="function">double</span>(<span class="variable">n</span>) {
+    <span class="keyword">return</span> <span class="variable">n</span> * <span class="number">2</span>;
 }
 
-<span class="comment">// Usando o valor retornado</span>
-<span class="keyword">keep</span> <span class="variable">resultado</span> = <span class="function">soma</span>(<span class="number">3</span>, <span class="number">5</span>);
-<span class="function">say</span>(<span class="variable">resultado</span>);  <span class="comment">// Exibe: 8</span></code></pre>
+<span class="keyword">keep</span> <span class="variable">res</span> = <span class="function">double</span>(<span class="number">10</span>);
+<span class="function">say</span>(<span class="variable">res</span>);  <span class="comment">// Exibe: 20</span></code></pre>
 
 			<h3>Exemplo Prático: Calculadora</h3>
 			<pre><code><span class="keyword">do</span> <span class="function">add</span>(<span class="variable">x</span>, <span class="variable">y</span>) {
@@ -870,8 +880,58 @@ make
     <span class="function">say</span>(<span class="string">"Saque negado - saldo insuficiente"</span>);
 }</code></pre>
 
-			<h3>4. Monitoramento de Temperatura</h3>
-			<p>Sistema de alerta baseado em leituras de temperatura:</p>
+			<h2 id="exemplos-praticos" data-i18n="docs.practical.title">💡 Exemplos Práticos</h2>
+			<p data-i18n="docs.practical.desc">
+				Aqui estão alguns exemplos completos que combinam vários conceitos da linguagem
+				para resolver problemas reais.
+			</p>
+
+			<h3 data-i18n="docs.practical.calc.title">1. Calculadora de Média Escolar</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">calculateGrade</span>(<span class="variable">name</span>, <span class="variable">n1</span>, <span class="variable">n2</span>, <span class="variable">n3</span>) {
+    <span class="keyword">keep</span> <span class="variable">average</span> = (<span class="variable">n1</span> + <span class="variable">n2</span> + <span class="variable">n3</span>) / <span class="number">3</span>;
+    <span class="function">say</span>(<span class="string">"Aluno: "</span> + <span class="variable">name</span>);
+    <span class="function">say</span>(<span class="string">"Média: "</span> + <span class="variable">average</span>);
+
+    <span class="keyword">when</span> (<span class="variable">average</span> >= <span class="number">7</span>) {
+        <span class="function">say</span>(<span class="string">"Status: Aprovado! 🎉"</span>);
+    }
+    <span class="keyword">else</span> {
+        <span class="function">say</span>(<span class="string">"Status: Reprovado. Estude mais!"</span>);
+    }
+}
+
+<span class="function">calculateGrade</span>(<span class="string">"João"</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">9</span>);</code></pre>
+
+			<h3 data-i18n="docs.practical.ticket.title">2. Sistema de Bilheteria</h3>
+			<pre><code><span class="keyword">do</span> <span class="function">checkTicket</span>(<span class="variable">age</span>, <span class="variable">hasStudentCard</span>) {
+    <span class="keyword">keep</span> <span class="variable">price</span> = <span class="number">50</span>;
+
+    <span class="keyword">when</span> (<span class="variable">age</span> < <span class="number">12</span>) {
+        <span class="variable">price</span> = <span class="number">20</span>;
+        <span class="function">say</span>(<span class="string">"Desconto infantil aplicado"</span>);
+    }
+    <span class="keyword">else</span> <span class="keyword">when</span> (<span class="variable">hasStudentCard</span>) {
+        <span class="variable">price</span> = <span class="number">25</span>;
+        <span class="function">say</span>(<span class="string">"Meia-entrada para estudante"</span>);
+    }
+
+    <span class="function">say</span>(<span class="string">"Valor a pagar: R$ "</span> + <span class="variable">price</span>);
+}
+
+<span class="function">checkTicket</span>(<span class="number">10</span>, <span class="number">false</span>);
+<span class="function">checkTicket</span>(<span class="number">25</span>, <span class="number">true</span>);</code></pre>
+
+			<h3 data-i18n="docs.practical.shop.title">3. Carrinho de Compras com Taxa</h3>
+			<pre><code><span class="keyword">keep</span> <span class="variable">products</span> = [<span class="number">100</span>, <span class="number">250</span>, <span class="number">50</span>];
+<span class="keyword">keep</span> <span class="variable">subtotal</span> = <span class="variable">products</span>[<span class="number">0</span>] + <span class="variable">products</span>[<span class="number">1</span>] + <span class="variable">products</span>[<span class="number">2</span>];
+<span class="keyword">keep</span> <span class="variable">tax</span> = <span class="number">0.1</span>; <span class="comment">// 10% de imposto</span>
+
+<span class="keyword">keep</span> <span class="variable">finalPrice</span> = <span class="variable">subtotal</span> * (<span class="number">1</span> + <span class="variable">tax</span>);
+
+<span class="function">say</span>(<span class="string">"Subtotal: R$ "</span> + <span class="variable">subtotal</span>);
+<span class="function">say</span>(<span class="string">"Total com impostos: R$ "</span> + <span class="variable">finalPrice</span>);</code></pre>
+
+			<h3 data-i18n="docs.practical.temp.title">4. Monitoramento de Temperatura</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">location</span> = <span class="string">"Sala de Servidores"</span>;
 <span class="keyword">keep</span> <span class="variable">temperature</span> = <span class="number">28</span>;
 <span class="keyword">keep</span> <span class="variable">minTemp</span> = <span class="number">18</span>;
@@ -893,8 +953,7 @@ make
     <span class="function">say</span>(<span class="string">"Temperatura normal"</span>);
 }</code></pre>
 
-			<h3>5. Calculadora de Pontuação de Quiz</h3>
-			<p>Sistema completo de quiz com cálculo de nota final:</p>
+			<h3 data-i18n="docs.practical.quiz.title">5. Calculadora de Pontuação de Quiz</h3>
 			<pre><code><span class="keyword">keep</span> <span class="variable">studentName</span> = <span class="string">"Ana"</span>;
 <span class="keyword">keep</span> <span class="variable">score</span> = <span class="number">0</span>;
 <span class="keyword">keep</span> <span class="variable">totalQuestions</span> = <span class="number">5</span>;
@@ -920,11 +979,24 @@ make
     <span class="variable">score</span> = <span class="variable">score</span> + <span class="number">1</span>;
 }
 
+<span class="comment">// Questão 4</span>
+<span class="keyword">keep</span> <span class="variable">answer4</span> = <span class="string">"do"</span>;
+<span class="keyword">when</span> (<span class="variable">answer4</span> == <span class="string">"do"</span>) {
+    <span class="variable">score</span> = <span class="variable">score</span> + <span class="number">1</span>;
+}
+
+<span class="comment">// Questão 5</span>
+<span class="keyword">keep</span> <span class="variable">answer5</span> = <span class="string">"return"</span>;
+<span class="keyword">when</span> (<span class="variable">answer5</span> == <span class="string">"return"</span>) {
+    <span class="variable">score</span> = <span class="variable">score</span> + <span class="number">1</span>;
+}
+
 <span class="function">say</span>(<span class="string">"Pontuação final:"</span>);
 <span class="function">say</span>(<span class="variable">score</span>);
 
 <span class="comment">// Avaliar desempenho</span>
-<span class="keyword">keep</span> <span class="variable">percentage</span> = <span class="variable">score</span> * <span class="number">20</span>;  <span class="comment">// 5 questões = 20% cada</span>
+<span class="keyword">keep</span> <span class="variable">percentage</span> = (<span class="variable">score</span> / <span class="variable">totalQuestions</span>) * <span class="number">100</span>;
+<span class="function">say</span>(<span class="string">"Porcentagem: "</span> + <span class="variable">percentage</span> + <span class="string">"%"</span>);
 
 <span class="keyword">when</span> (<span class="variable">percentage</span> >= <span class="number">80</span>) {
     <span class="function">say</span>(<span class="string">"Excelente!"</span>);
@@ -936,60 +1008,41 @@ make
     <span class="function">say</span>(<span class="string">"Continue estudando"</span>);
 }</code></pre>
 
-			<div class="note">
+			<div class="note" data-i18n="docs.practical.note">
 				<strong>💡 Dica:</strong> Todos estes exemplos estão prontos para executar!
 				Copie e cole no <a href="playground.html" style="color: var(--primary);">playground</a>
 				para ver como funcionam na prática.
 			</div>
 
-			<div class="warning">
+			<div class="warning" data-i18n="docs.practical.warning">
 				<strong>⚠️ Importante:</strong> Jech está em desenvolvimento ativo.
 				Algumas funcionalidades podem mudar em versões futuras.
 			</div>
 
-			<div style="margin-top: 4rem; padding: 2rem; background: var(--dark-2); border-radius: 12px; text-align: center;">
-				<h3 style="margin-bottom: 1rem;">Pronto para começar?</h3>
-				<p style="margin-bottom: 1.5rem;">Teste seus conhecimentos no playground interativo!</p>
-				<a href="playground.html" class="btn btn-primary btn-large">
-					<span>▶</span> Abrir Playground
-				</a>
+			<div class="cta-section" style="margin-top: 4rem; padding: 2rem; background: var(--dark-2); border-radius: 12px; text-align: center;">
+				<h2 data-i18n="docs.cta.title">Pronto para começar?</h2>
+				<p data-i18n="docs.cta.desc">
+					Agora que você conhece o básico, que tal praticar o que aprendeu?
+					O playground é o melhor lugar para testar suas ideias.
+				</p>
+				<a href="/playground" class="btn btn-primary" data-i18n="docs.cta.btn">Ir para o Playground</a>
 			</div>
 		</main>
 	</div>
 
 	<footer class="footer">
-		<div class="container">
-			<div class="footer-content">
-				<div class="footer-section">
-					<h4>Jech</h4>
-					<p>Linguagem de programação educacional para aprender sobre interpretadores e compiladores.</p>
-				</div>
-
-				<div class="footer-section">
-					<h4>Links</h4>
-					<ul>
-						<li><a href="/">Início</a></li>
-						<li><a href="/playground">Playground</a></li>
-						<li><a href="/docs">Documentação</a></li>
-						<li><a href="/internals">Como Funciona</a></li>
-						<li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
-					</ul>
-				</div>
-
-				<div class="footer-section">
-					<h4>Tecnologias</h4>
-					<ul>
-						<li>C (Interpretador)</li>
-						<li>WebAssembly (Browser)</li>
-						<li>Emscripten (Compilação)</li>
-						<li>HTML/CSS/JS (Interface)</li>
-					</ul>
-				</div>
+		<div class="footer-content">
+			<div class="footer-logo">Jech</div>
+			<div class="footer-links">
+				<a href="/" data-i18n="nav.home">Home</a>
+				<a href="/playground" data-i18n="nav.playground">Playground</a>
+				<a href="/internals" data-i18n="nav.internals">Como Funciona</a>
+				<a href="/docs" data-i18n="nav.docs">Documentação</a>
+				<a href="https://github.com/joaoluke/jech" target="_blank">GitHub</a>
 			</div>
-
-			<div class="footer-bottom">
-				<p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
-			</div>
+			<p class="footer-copyright" data-i18n="footer.copyright">
+				&copy; 2026 Jech Programming Language. Criado para fins educacionais.
+			</p>
 		</div>
 	</footer>
 	<script src="js/i18n/translations.js"></script>

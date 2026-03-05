@@ -21,7 +21,7 @@
         <a href="/docs" data-i18n="nav.docs">Documentação</a>
         <a href="/internals" data-i18n="nav.internals">Como Funciona</a>
         <a href="https://github.com/joaoluke/jech" target="_blank" data-i18n="nav.github">GitHub</a>
-        
+
         <div class="language-selector">
           <span class="language-icon">🌐</span>
           <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -36,17 +36,17 @@
   <header class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Aprenda Como Linguagens de Programação Funcionam</h1>
-        <p class="hero-subtitle">
+        <h1 data-i18n="home.hero.title">Aprenda Como Linguagens de Programação Funcionam</h1>
+        <p class="hero-subtitle" data-i18n="home.hero.subtitle">
           Jech é uma linguagem de programação educacional que demonstra os
           fundamentos de interpretadores, compiladores e máquinas virtuais.
         </p>
         <div class="hero-buttons">
           <a href="/playground" class="btn btn-primary">
-            <span>▶</span> Testar no Playground
+            <span>▶</span> <span data-i18n="home.hero.ctaPlayground">Testar no Playground</span>
           </a>
           <a href="/docs" class="btn btn-secondary">
-            📚 Ver Documentação
+            📚 <span data-i18n="home.hero.ctaDocs">Ver Documentação</span>
           </a>
         </div>
       </div>
@@ -59,16 +59,16 @@
             <span class="dot green"></span>
             <span class="code-title">exemplo.jc</span>
           </div>
-          <pre class="code-content"><code><span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Mundo"</span>;
+          <pre class="code-content"><code><span class="keyword">keep</span> <span class="variable">name</span> = <span class="string" data-i18n="home.syntax.examples.world">"Mundo"</span>;
 <span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
 
-<span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
+<span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="variable">name</span>);
 
 <span class="keyword">when</span> (<span class="variable">age</span> > <span class="number">18</span>) {
-    <span class="function">say</span>(<span class="string">"Você é maior de idade!"</span>);
+    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.major">"Você é maior de idade!"</span>);
 }
 <span class="keyword">else</span> {
-    <span class="function">say</span>(<span class="string">"Você é menor de idade!"</span>);
+    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.minor">"Você é menor de idade!"</span>);
 }</code></pre>
         </div>
       </div>
@@ -77,12 +77,12 @@
 
   <section class="features">
     <div class="container">
-      <h2>Por Que Jech?</h2>
+      <h2 data-i18n="home.features.title">Por Que Jech?</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🎓</div>
-          <h3>Educacional</h3>
-          <p>
+          <h3 data-i18n="home.features.educational.title">Educacional</h3>
+          <p data-i18n="home.features.educational.description">
             Projetada para ensinar conceitos de compiladores, interpretadores
             e VMs de forma prática.
           </p>
@@ -90,8 +90,8 @@
 
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
-          <h3>Roda no Navegador</h3>
-          <p>
+          <h3 data-i18n="home.features.browser.title">Roda no Navegador</h3>
+          <p data-i18n="home.features.browser.description">
             Compilada para WebAssembly, execute código Jech diretamente no seu
             navegador.
           </p>
@@ -99,8 +99,8 @@
 
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Simples e Rápida</h3>
-          <p>
+          <h3 data-i18n="home.features.simple.title">Simples e Rápida</h3>
+          <p data-i18n="home.features.simple.description">
             Sintaxe clara e intuitiva, perfeita para aprender os fundamentos
             de programação.
           </p>
@@ -108,8 +108,8 @@
 
         <div class="feature-card">
           <div class="feature-icon">🔧</div>
-          <h3>Open Source</h3>
-          <p>
+          <h3 data-i18n="home.features.opensource.title">Open Source</h3>
+          <p data-i18n="home.features.opensource.description">
             Código aberto escrito em C, explore e aprenda com a implementação
             completa.
           </p>
@@ -117,8 +117,8 @@
 
         <div class="feature-card">
           <div class="feature-icon">📦</div>
-          <h3>Bytecode VM</h3>
-          <p>
+          <h3 data-i18n="home.features.bytecode.title">Bytecode VM</h3>
+          <p data-i18n="home.features.bytecode.description">
             Compila para bytecode e executa em uma máquina virtual
             customizada.
           </p>
@@ -126,8 +126,8 @@
 
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h3>Tipagem Dinâmica</h3>
-          <p>
+          <h3 data-i18n="home.features.dynamic.title">Tipagem Dinâmica</h3>
+          <p data-i18n="home.features.dynamic.description">
             Sistema de tipos flexível com suporte a números, strings e arrays.
           </p>
         </div>
@@ -137,39 +137,39 @@
 
   <section class="syntax-section">
     <div class="container">
-      <h2>Sintaxe Jech</h2>
+      <h2 data-i18n="home.syntax.title">Sintaxe Jech</h2>
       <div class="syntax-grid">
         <div class="syntax-example">
-          <h3>Variáveis</h3>
+          <h3 data-i18n="home.syntax.variables">Variáveis</h3>
           <pre><code><span class="keyword">keep</span> <span class="variable">x</span> = <span class="number">10</span>;
-<span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Jech"</span>;
+<span class="keyword">keep</span> <span class="variable">name</span> = <span class="string" data-i18n="home.syntax.examples.jech">"Jech"</span>;
 <span class="keyword">keep</span> <span class="variable">active</span> = <span class="number">1</span>;</code></pre>
         </div>
 
         <div class="syntax-example">
-          <h3>Condicionais</h3>
-          <pre><code><span class="keyword">when</span> (<span class="variable">x</span> > <span class="number">5</span>) {
-    <span class="function">say</span>(<span class="string">"X é maior que 5"</span>);
+          <h3 data-i18n="home.syntax.conditionals">Condicionais</h3>
+          <pre><code><span class="keyword">when</span> (<span class="variable">age</span> > <span class="number">18</span>) {
+    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.major">"Você é maior de idade!"</span>);
 }
 <span class="keyword">else</span> {
-    <span class="function">say</span>(<span class="string">"X é menor ou igual a 5"</span>);
+    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.minor">"Você é menor de idade!"</span>);
 }</code></pre>
         </div>
 
         <div class="syntax-example">
-          <h3>Arrays</h3>
+          <h3 data-i18n="home.syntax.arrays">Arrays</h3>
           <pre><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
 <span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);
 <span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">2</span>]);</code></pre>
         </div>
 
         <div class="syntax-example">
-          <h3>Funções</h3>
-          <pre><code><span class="keyword">task</span> <span class="function">greet</span>(<span class="variable">name</span>) {
-    <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span>);
+          <h3 data-i18n="home.syntax.functions">Funções</h3>
+          <pre><code><span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
+    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="variable">name</span>);
 }
 
-<span class="function">greet</span>(<span class="string">"Mundo"</span>);</code></pre>
+<span class="function">greet</span>(<span class="string" data-i18n="home.syntax.examples.world">"Mundo"</span>);</code></pre>
         </div>
       </div>
     </div>
@@ -177,44 +177,44 @@
 
   <section class="architecture">
     <div class="container">
-      <h2>Arquitetura do Interpretador</h2>
+      <h2 data-i18n="home.architecture.title">Arquitetura do Interpretador</h2>
       <div class="arch-diagram">
         <div class="arch-step">
           <div class="arch-box">
-            <h4>1. Código Fonte</h4>
-            <p>Arquivo .jc</p>
+            <h4 data-i18n="home.architecture.step1.title">1. Código Fonte</h4>
+            <p data-i18n="home.architecture.step1.desc">Arquivo .jc</p>
           </div>
           <div class="arch-arrow">↓</div>
         </div>
 
         <div class="arch-step">
           <div class="arch-box">
-            <h4>2. Tokenizer</h4>
-            <p>Análise Léxica</p>
+            <h4 data-i18n="home.architecture.step2.title">2. Tokenizer</h4>
+            <p data-i18n="home.architecture.step2.desc">Análise Léxica</p>
           </div>
           <div class="arch-arrow">↓</div>
         </div>
 
         <div class="arch-step">
           <div class="arch-box">
-            <h4>3. Parser</h4>
-            <p>Análise Sintática (AST)</p>
+            <h4 data-i18n="home.architecture.step3.title">3. Parser</h4>
+            <p data-i18n="home.architecture.step3.desc">Análise Sintática (AST)</p>
           </div>
           <div class="arch-arrow">↓</div>
         </div>
 
         <div class="arch-step">
           <div class="arch-box">
-            <h4>4. Compilador</h4>
-            <p>Geração de Bytecode</p>
+            <h4 data-i18n="home.architecture.step4.title">4. Compilador</h4>
+            <p data-i18n="home.architecture.step4.desc">Geração de Bytecode</p>
           </div>
           <div class="arch-arrow">↓</div>
         </div>
 
         <div class="arch-step">
           <div class="arch-box">
-            <h4>5. VM</h4>
-            <p>Execução</p>
+            <h4 data-i18n="home.architecture.step5.title">5. VM</h4>
+            <p data-i18n="home.architecture.step5.desc">Execução</p>
           </div>
         </div>
       </div>
@@ -223,16 +223,16 @@
 
   <section class="cta">
     <div class="container">
-      <h2>Comece Agora!</h2>
-      <p>
+      <h2 data-i18n="home.cta.title">Comece Agora!</h2>
+      <p data-i18n="home.cta.phrase">
         Experimente Jech no playground interativo ou explore o código fonte.
       </p>
       <div class="cta-buttons">
         <a href="/playground" class="btn btn-primary btn-large">
-          <span>▶</span> Abrir Playground
+          <span>▶</span> <span data-i18n="home.cta.btnPlayground">Abrir Playground</span>
         </a>
         <a href="https://github.com/joaoluke/jech" target="_blank" class="btn btn-secondary btn-large">
-          <span>⭐</span> Ver no GitHub
+          <span>⭐</span> <span data-i18n="home.cta.btnGithub">Ver no GitHub</span>
         </a>
       </div>
     </div>
@@ -243,25 +243,25 @@
       <div class="footer-content">
         <div class="footer-section">
           <h4>Jech</h4>
-          <p>
+          <p data-i18n="home.footer.description">
             Linguagem de programação educacional para aprender sobre
             interpretadores e compiladores.
           </p>
         </div>
 
         <div class="footer-section">
-          <h4>Links</h4>
+          <h4 data-i18n="home.footer.links">Links</h4>
           <ul>
-            <li><a href="/">Início</a></li>
-            <li><a href="/playground">Playground</a></li>
-            <li><a href="/docs">Documentação</a></li>
-            <li><a href="/internals">Como Funciona</a></li>
-            <li><a href="https://github.com/joaoluke/jech">GitHub</a></li>
+            <li><a href="/" data-i18n="nav.home">Início</a></li>
+            <li><a href="/playground" data-i18n="nav.playground">Playground</a></li>
+            <li><a href="/docs" data-i18n="nav.docs">Documentação</a></li>
+            <li><a href="/internals" data-i18n="nav.internals">Como Funciona</a></li>
+            <li><a href="https://github.com/joaoluke/jech" data-i18n="nav.github">GitHub</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4>Tecnologias</h4>
+          <h4 data-i18n="home.footer.technologies">Tecnologias</h4>
           <ul>
             <li>C (Interpretador)</li>
             <li>WebAssembly (Browser)</li>
@@ -272,7 +272,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>
+        <p data-i18n="home.footer.copyright">
           &copy; 2026 Jech Programming Language. Open Source sob MIT License.
         </p>
       </div>
