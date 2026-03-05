@@ -1,121 +1,131 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Playground - Jech</title>
-    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/variables.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/playground.css" />
-    <link rel="stylesheet" href="styles/language-selector.css" />
-    <script src="js/playground/wasm-loader.js"></script>
-  </head>
 
-  <body>
-    <nav class="navbar">
-      <div class="container">
-        <a href="/" class="logo"
-          ><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a
-        >
-        <div class="nav-links">
-          <a href="/" data-i18n="nav.home">Início</a>
-          <a href="/playground" class="active" data-i18n="nav.playground"
-            >Playground</a
-          >
-          <a href="/docs" data-i18n="nav.docs">Documentação</a>
-          <a href="/internals" data-i18n="nav.internals">Como Funciona</a>
-          <a
-            href="https://github.com/joaoluke/jech"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="github-icon" data-i18n="nav.github">GitHub</span>
-          </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playground - Jech</title>
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="src/input.css" />
+  <script src="js/playground/wasm-loader.js"></script>
+</head>
 
-          <div class="language-selector">
-            <span class="language-icon">🌐</span>
-            <select
-              id="languageSelector"
-              onchange="I18n.setLanguage(this.value)"
-            >
-              <option value="pt-BR">🇧🇷 PT</option>
-              <option value="en">🇺🇸 EN</option>
-            </select>
-          </div>
+<body>
+  <nav
+    class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+    <div class="container flex justify-between items-center">
+      <a href="/" class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+        <img src="images/JECH.png" alt="JECH Logo"
+          class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
+          style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
+        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+      </a>
+      <div class="nav-links flex items-center gap-8">
+        <a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+          data-i18n="nav.home">Início</a>
+        <a href="/playground"
+          class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+          data-i18n="nav.playground">Playground</a>
+        <a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+          data-i18n="nav.docs">Documentação</a>
+        <a href="/internals" class="font-medium text-text-secondary hover:text-primary transition-colors"
+          data-i18n="nav.internals">Como Funciona</a>
+        <a href="https://github.com/joaoluke/jech" target="_blank"
+          class="font-medium text-text-secondary hover:text-primary transition-colors" data-i18n="nav.github">GitHub</a>
+
+        <div class="language-selector">
+          <span class="language-icon">🌐</span>
+          <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
+            <option value="pt-BR">🇧🇷 PT</option>
+            <option value="en">🇺🇸 EN</option>
+          </select>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <div class="playground-container">
-      <div class="playground-header">
-        <h1 class="playground-title" data-i18n="playground.title">Jech Playground</h1>
-        <div class="playground-controls">
-          <button
-            id="runBtn"
-            class="playground-btn playground-btn-primary"
-            disabled
-          >
-            <span class="run-icon">▶</span> <span data-i18n="playground.run">Executar</span> (Ctrl+Enter)
-          </button>
-          <button
-            id="clearBtn"
-            class="playground-btn playground-btn-secondary"
-            disabled
-          >
-            <span class="clear-icon">🗑️</span> <span data-i18n="playground.clear">Limpar</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="playground-main">
-        <div class="playground-panel">
-          <div class="playground-panel-header">
-            <span>📝</span> <span data-i18n="playground.sourceCode">Código Fonte</span>
-          </div>
-          <div class="playground-panel-content">
-            <textarea
-              id="editor"
-              spellcheck="false"
-              placeholder="Digite seu código Jech aqui..."
-              data-i18n-placeholder="playground.editorPlaceholder"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="playground-panel">
-          <div class="playground-panel-header"><span>📤</span> <span data-i18n="playground.output">Saída</span></div>
-          <div class="playground-panel-content">
-            <pre id="output" class="empty" data-i18n="playground.outputPlaceholder">A saída do seu código aparecerá aqui...</pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="playground-examples">
-        <span class="playground-examples-label" data-i18n="playground.examples">Exemplos:</span>
-        <button class="example-btn" onclick="loadExample('hello')" data-i18n="playground.exampleHello">
-          👋 Olá Mundo
+  <div class="playground-container flex flex-col h-[calc(100vh-80px)] bg-bg-dark py-8 px-0">
+    <div class="playground-header px-8 pb-6 flex justify-between items-center flex-wrap gap-4">
+      <h1
+        class="playground-title text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+        data-i18n="playground.title">Jech Playground</h1>
+      <div class="playground-controls flex gap-4 flex-wrap">
+        <button id="runBtn"
+          class="playground-btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+          disabled>
+          <span class="run-icon">▶</span> <span data-i18n="playground.run">Executar</span> (Ctrl+Enter)
         </button>
-        <button class="example-btn" onclick="loadExample('variables')" data-i18n="playground.exampleVariables">
-          🔢 Variáveis
+        <button id="clearBtn"
+          class="playground-btn btn-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+          disabled>
+          <span class="clear-icon">🗑️</span> <span data-i18n="playground.clear">Limpar</span>
         </button>
-        <button class="example-btn" onclick="loadExample('conditionals')" data-i18n="playground.exampleConditionals">
-          🔀 Condicionais
-        </button>
-      </div>
-
-      <div id="status" class="playground-status" data-i18n="playground.status.initializing">
-        <span class="loader"></span> Inicializando o interpretador Jech...
       </div>
     </div>
 
-    <script>
+    <div
+      class="playground-main flex-1 grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-bg-dark-3/30 overflow-hidden rounded-lg mx-8 shadow-2xl">
+      <div class="playground-panel bg-bg-dark-2 flex flex-col h-full overflow-hidden">
+        <div
+          class="playground-panel-header bg-bg-dark-3 px-6 py-4 font-semibold border-b border-bg-dark-3 flex items-center gap-2">
+          <span>📝</span> <span data-i18n="playground.sourceCode">Código Fonte</span>
+        </div>
+        <div class="playground-panel-content flex-1 overflow-auto relative">
+          <textarea id="editor"
+            class="w-full h-full font-mono text-sm leading-normal bg-transparent text-text-secondary p-6 border-none resize-none outline-none"
+            spellcheck="false" placeholder="Digite seu código Jech aqui..."
+            data-i18n-placeholder="playground.editorPlaceholder"></textarea>
+        </div>
+      </div>
+
+      <div class="playground-panel bg-bg-dark-2 flex flex-col h-full overflow-hidden border-l border-bg-dark-3/20">
+        <div
+          class="playground-panel-header bg-bg-dark-3 px-6 py-4 font-semibold border-b border-bg-dark-3 flex items-center gap-2">
+          <span>📤</span> <span data-i18n="playground.output">Saída</span></div>
+        <div class="playground-panel-content flex-1 overflow-auto relative">
+          <pre id="output"
+            class="p-6 font-mono text-sm white-space-pre-wrap text-success leading-normal min-h-full box-border empty:text-text-muted empty:italic"
+            data-i18n="playground.outputPlaceholder">A saída do seu código aparecerá aqui...</pre>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="playground-examples px-8 py-6 bg-bg-dark-2 border-t border-bg-dark-3 flex gap-4 flex-wrap items-center mt-auto">
+      <span class="playground-examples-label text-sm font-medium text-text-muted"
+        data-i18n="playground.examples">Exemplos:</span>
+      <button
+        class="example-btn bg-bg-dark-3 text-text-secondary px-4 py-2 border border-bg-dark-3 rounded-md text-sm cursor-pointer transition-all hover:bg-primary hover:text-white hover:border-primary"
+        onclick="loadExample('hello')" data-i18n="playground.exampleHello">
+        👋 Olá Mundo
+      </button>
+      <button
+        class="example-btn bg-bg-dark-3 text-text-secondary px-4 py-2 border border-bg-dark-3 rounded-md text-sm cursor-pointer transition-all hover:bg-primary hover:text-white hover:border-primary"
+        onclick="loadExample('variables')" data-i18n="playground.exampleVariables">
+        🔢 Variáveis
+      </button>
+      <button
+        class="example-btn bg-bg-dark-3 text-text-secondary px-4 py-2 border border-bg-dark-3 rounded-md text-sm cursor-pointer transition-all hover:bg-primary hover:text-white hover:border-primary"
+        onclick="loadExample('conditionals')" data-i18n="playground.exampleConditionals">
+        🔀 Condicionais
+      </button>
+    </div>
+
+    <div id="status"
+      class="playground-status p-4 px-8 bg-primary text-white text-sm text-center font-medium transition-all duration-300"
+      data-i18n="playground.status.initializing">
+      <span
+        class="loader inline-block w-4 h-4 border-2 border-white/30 rounded-full border-t-white animate-spin mr-2 align-middle"></span>
+      Inicializando o interpretador Jech...
+    </div>
+  </div>
+
+  <script>
       const examples = {
         hello: 'say("👋 Olá, Mundo!");\n',
         variables:
@@ -325,8 +335,9 @@
       } else {
         initEditor();
       }
-    </script>
-    <script src="js/i18n/translations.js"></script>
-    <script src="js/i18n/i18n.js"></script>
-  </body>
+  </script>
+  <script src="js/i18n/translations.js"></script>
+  <script src="js/i18n/i18n.js"></script>
+</body>
+
 </html>

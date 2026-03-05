@@ -112,23 +112,7 @@ const translations = {
       }
     },
 
-    docs: {
-      title: "Documentação Completa Jech",
-      sidebar: {
-        intro: "Introdução",
-        installation: "Instalação",
-        gettingStarted: "Primeiros Passos",
-        say: "Comando say",
-        variables: "Variáveis (keep)",
-        types: "Tipos de Dados",
-        operators: "Operadores",
-        concatenation: "Concatenação",
-        conditionals: "Condicionais (when/else)",
-        arrays: "Arrays",
-        functions: "Funções (do)",
-        examples: "Exemplos Práticos"
-      }
-    },
+
 
     internals: {
       title: "Por Trás dos Panos",
@@ -291,17 +275,21 @@ const translations = {
     docs: {
       sidebar: {
         title: "Conteúdo",
-        intro: "Introdução",
-        install: "Instalação",
-        steps: "Primeiros Passos",
-        say: "Comando say",
-        vars: "Variáveis (keep)",
-        types: "Tipos de Dados",
+        gettingStarted: "Primeiros Passos",
+        introduction: "Introdução",
+        installation: "Instalação",
+        helloWorld: "Olá Mundo",
+        syntax: "Sintaxe",
+        variables: "Variáveis",
+        dataTypes: "Tipos de Dados",
         operators: "Operadores",
-        concat: "Concatenação",
-        conditionals: "Condicionais (when/else)",
+        conditionals: "Condicionais",
+        loops: "Loops",
+        functions: "Funções",
+        advanced: "Avançado",
         arrays: "Arrays",
-        functions: "Funções (do)",
+        scope: "Escopo",
+        errorHandling: "Erros",
         examples: "Exemplos Práticos"
       },
       title: "📚 Documentação Completa Jech",
@@ -601,23 +589,7 @@ const translations = {
       }
     },
 
-    docs: {
-      title: "Complete Jech Documentation",
-      sidebar: {
-        intro: "Introduction",
-        installation: "Installation",
-        gettingStarted: "Getting Started",
-        say: "say Command",
-        variables: "Variables (keep)",
-        types: "Data Types",
-        operators: "Operators",
-        concatenation: "Concatenation",
-        conditionals: "Conditionals (when/else)",
-        arrays: "Arrays",
-        functions: "Functions (do)",
-        examples: "Practical Examples"
-      }
-    },
+
 
     internals: {
       title: "Behind the Scenes",
@@ -778,17 +750,21 @@ const translations = {
     docs: {
       sidebar: {
         title: "Contents",
-        intro: "Introduction",
-        install: "Installation",
-        steps: "First Steps",
-        say: "say Command",
-        vars: "Variables (keep)",
-        types: "Data Types",
+        gettingStarted: "Getting Started",
+        introduction: "Introduction",
+        installation: "Installation",
+        helloWorld: "Hello World",
+        syntax: "Syntax",
+        variables: "Variables",
+        dataTypes: "Data Types",
         operators: "Operators",
-        concat: "Concatenation",
-        conditionals: "Conditionals (when/else)",
+        conditionals: "Conditionals",
+        loops: "Loops",
+        functions: "Functions",
+        advanced: "Advanced",
         arrays: "Arrays",
-        functions: "Functions (do)",
+        scope: "Scope",
+        errorHandling: "Errors",
         examples: "Practical Examples"
       },
       title: "📚 Complete Jech Documentation",

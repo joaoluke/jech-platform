@@ -11,24 +11,33 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="styles/variables.css">
-	<link rel="stylesheet" href="styles/styles.css">
-	<link rel="stylesheet" href="styles/internals.css">
-	<link rel="stylesheet" href="styles/language-selector.css">
+	<link rel="stylesheet" href="src/input.css">
 </head>
 
-<body>
-	<nav class="navbar">
-		<div class="container">
-			<a href="/" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img">JECH</a>
-			<div class="nav-links">
-				<a href="/" data-i18n="nav.home">Início</a>
-				<a href="/playground" data-i18n="nav.playground">Playground</a>
-				<a href="/docs" data-i18n="nav.docs">Documentação</a>
-				<a href="/internals" class="active" data-i18n="nav.internals">Como Funciona</a>
-				<a href="https://github.com/joaoluke/jech" target="_blank" rel="noopener noreferrer">
-					<span class="github-icon" data-i18n="nav.github">GitHub</span>
-				</a>
+<body class="bg-bg-dark text-text-secondary font-sans leading-relaxed">
+	<nav
+		class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+		<div class="container flex justify-between items-center">
+			<a href="/"
+				class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+				<img src="images/JECH.png" alt="JECH Logo"
+					class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
+					style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
+				<span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+			</a>
+			<div class="nav-links flex items-center gap-8">
+				<a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.home">Início</a>
+				<a href="/playground" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.playground">Playground</a>
+				<a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.docs">Documentação</a>
+				<a href="/internals"
+					class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+					data-i18n="nav.internals">Como Funciona</a>
+				<a href="https://github.com/joaoluke/jech" target="_blank"
+					class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.github">GitHub</a>
 
 				<div class="language-selector">
 					<span class="language-icon">🌐</span>
@@ -41,149 +50,206 @@
 		</div>
 	</nav>
 
-	<div class="internals-container">
-		<header class="internals-header">
-			<h1 data-i18n="internals.title">🔍 Por Trás dos Panos</h1>
-			<p class="subtitle" data-i18n="internals.subtitle">Entenda como seu código Jech é processado e executado</p>
+	<div class="internals-container max-w-[1400px] mx-auto py-24 px-8">
+		<header
+			class="internals-header text-center mb-16 p-12 bg-gradient-to-br from-bg-dark-2 to-bg-dark-3 rounded-2xl border border-bg-dark-3/20">
+			<h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+				data-i18n="internals.title">🔍 Por Trás dos Panos</h1>
+			<p class="subtitle text-xl text-text-muted m-0" data-i18n="internals.subtitle">Entenda como seu código Jech
+				é processado e executado</p>
 		</header>
 
-		<section class="intro-section">
-			<div class="intro-card">
-				<h2 data-i18n="internals.whatYouWillLearn">🎯 O que você vai aprender</h2>
-				<p>
-					Nesta página, você vai descobrir como o comando <code>say("hello world");</code>
+		<section class="intro-section mb-16">
+			<div class="intro-card bg-bg-dark-2 p-10 rounded-xl border border-bg-dark-3/20 shadow-xl">
+				<h2 class="text-2xl font-bold text-primary mb-4" data-i18n="internals.whatYouWillLearn">🎯 O que você
+					vai aprender</h2>
+				<p class="text-lg leading-relaxed text-text-muted">
+					Nesta página, você vai descobrir como o comando <code
+						class="bg-bg-dark-3 px-2 py-1 rounded text-primary font-mono">say("hello world");</code>
 					passa por cada etapa do nosso compilador/interpretador até ser executado.
 					Vamos explorar todas as fases: desde a análise léxica até a execução final.
 				</p>
 			</div>
 		</section>
 
-		<section class="interactive-demo">
-			<h2 data-i18n="internals.interactiveDemo">🚀 Demonstração Interativa</h2>
-			<p data-i18n="internals.demoPrompt">Digite um código Jech e veja como ele é processado em cada etapa:</p>
+		<section class="interactive-demo mb-16">
+			<h2 class="text-3xl font-bold mb-4 text-text-secondary" data-i18n="internals.interactiveDemo">🚀
+				Demonstração Interativa</h2>
+			<p class="text-lg text-text-muted mb-8" data-i18n="internals.demoPrompt">Digite um código Jech e veja como
+				ele é processado em cada etapa:</p>
 
-			<div class="demo-container">
-				<div class="code-input-section">
-					<label for="codeInput" data-i18n="internals.sourceCodeLabel">Código Fonte:</label>
-					<textarea id="codeInput" placeholder='say("hello world");'>say("hello world");</textarea>
-					<button id="analyzeBtn" class="btn-analyze"><span data-i18n="internals.analyzeBtn">🔬 Analisar Código</span></button>
+			<div class="demo-container bg-bg-dark-2 p-10 rounded-xl border border-bg-dark-3/20 shadow-2xl">
+				<div class="code-input-section mb-12">
+					<label for="codeInput" class="block text-lg font-semibold text-text-secondary mb-3"
+						data-i18n="internals.sourceCodeLabel">Código Fonte:</label>
+					<textarea id="codeInput"
+						class="w-full min-h-[120px] bg-bg-dark border border-bg-dark-3/30 rounded-lg p-4 text-text-secondary font-mono text-base resize-vertical mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+						placeholder='say("hello world");'>say("hello world");</textarea>
+					<button id="analyzeBtn" class="btn btn-primary btn-large px-8 py-4"><span
+							data-i18n="internals.analyzeBtn">🔬 Analisar Código</span></button>
 				</div>
 
-				<div class="pipeline-visualization">
+				<div class="pipeline-visualization flex flex-col gap-4">
 					<div class="pipeline-step" data-step="1">
-						<div class="step-header">
-							<span class="step-number">1</span>
-							<h3 data-i18n="internals.pipeline.lexer.title">📝 Análise Léxica (Lexer)</h3>
-							<span class="step-status">⏳</span>
+						<div class="step-header flex items-center gap-4 mb-4">
+							<span
+								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">1</span>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
+								data-i18n="internals.pipeline.lexer.title">📝 Análise Léxica (Lexer)</h3>
+							<span class="step-status text-xl">⏳</span>
 						</div>
-						<div class="step-description">
-							<p data-i18n="internals.pipeline.lexer.description">O código fonte é dividido em <strong>tokens</strong> (unidades mínimas de significado).
+						<div class="step-description pl-14 mb-4">
+							<p class="text-text-muted leading-normal mb-2"
+								data-i18n="internals.pipeline.lexer.description">O código fonte é dividido em
+								<strong>tokens</strong> (unidades mínimas de significado).
 							</p>
-							<p class="tech-detail" data-i18n="internals.pipeline.lexer.detail">Cada caractere é lido e agrupado em categorias: palavras-chave,
+							<p class="tech-detail italic text-sm text-text-muted opacity-70"
+								data-i18n="internals.pipeline.lexer.detail">Cada caractere é lido e agrupado em
+								categorias: palavras-chave,
 								identificadores, operadores, literais, etc.</p>
 						</div>
-						<div class="step-output" id="lexerOutput">
-							<div class="output-placeholder">Aguardando análise...</div>
+						<div class="step-output ml-14 bg-bg-dark-3 p-4 rounded-lg font-mono text-sm max-h-[400px] overflow-y-auto"
+							id="lexerOutput">
+							<div class="output-placeholder text-text-muted italic">Aguardando análise...</div>
 						</div>
 					</div>
 
-					<div class="pipeline-arrow">↓</div>
+					<div class="pipeline-arrow text-center text-3xl text-primary my-2">↓</div>
 
 					<div class="pipeline-step" data-step="2">
-						<div class="step-header">
-							<span class="step-number">2</span>
-							<h3 data-i18n="internals.pipeline.parser.title">🌳 Análise Sintática (Parser)</h3>
-							<span class="step-status">⏳</span>
+						<div class="step-header flex items-center gap-4 mb-4">
+							<span
+								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">2</span>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
+								data-i18n="internals.pipeline.parser.title">🌳 Análise Sintática (Parser)</h3>
+							<span class="step-status text-xl">⏳</span>
 						</div>
-						<div class="step-description">
-							<p data-i18n="internals.pipeline.parser.description">Os tokens são organizados em uma <strong>Árvore Sintática Abstrata (AST)</strong>.</p>
-							<p class="tech-detail" data-i18n="internals.pipeline.parser.detail">O parser verifica se a sequência de tokens segue as regras
+						<div class="step-description pl-14 mb-4">
+							<p class="text-text-muted leading-normal mb-2"
+								data-i18n="internals.pipeline.parser.description">Os tokens são organizados em uma
+								<strong>Árvore Sintática Abstrata (AST)</strong>.
+							</p>
+							<p class="tech-detail italic text-sm text-text-muted opacity-70"
+								data-i18n="internals.pipeline.parser.detail">O parser verifica se a sequência de tokens
+								segue as regras
 								gramaticais da linguagem.</p>
 						</div>
-						<div class="step-output" id="parserOutput">
-							<div class="output-placeholder">Aguardando análise...</div>
+						<div class="step-output ml-14 bg-bg-dark-3 p-4 rounded-lg font-mono text-sm max-h-[400px] overflow-y-auto"
+							id="parserOutput">
+							<div class="output-placeholder text-text-muted italic">Aguardando análise...</div>
 						</div>
 					</div>
 
-					<div class="pipeline-arrow">↓</div>
+					<div class="pipeline-arrow text-center text-3xl text-primary my-2">↓</div>
 
 					<div class="pipeline-step" data-step="3">
-						<div class="step-header">
-							<span class="step-number">3</span>
-							<h3 data-i18n="internals.pipeline.semantic.title">🔍 Análise Semântica</h3>
-							<span class="step-status">⏳</span>
+						<div class="step-header flex items-center gap-4 mb-4">
+							<span
+								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">3</span>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
+								data-i18n="internals.pipeline.semantic.title">🔍 Análise Semântica</h3>
+							<span class="step-status text-xl">⏳</span>
 						</div>
-						<div class="step-description">
-							<p data-i18n="internals.pipeline.semantic.description">Verifica se o código faz <strong>sentido lógico</strong>.</p>
-							<p class="tech-detail" data-i18n="internals.pipeline.semantic.detail">Checa tipos de dados, escopo de variáveis, e se funções/variáveis
+						<div class="step-description pl-14 mb-4">
+							<p class="text-text-muted leading-normal mb-2"
+								data-i18n="internals.pipeline.semantic.description">Verifica se o código faz
+								<strong>sentido lógico</strong>.
+							</p>
+							<p class="tech-detail italic text-sm text-text-muted opacity-70"
+								data-i18n="internals.pipeline.semantic.detail">Checa tipos de dados, escopo de
+								variáveis, e se funções/variáveis
 								foram declaradas antes de serem usadas.</p>
 						</div>
-						<div class="step-output" id="semanticOutput">
-							<div class="output-placeholder">Aguardando análise...</div>
+						<div class="step-output ml-14 bg-bg-dark-3 p-4 rounded-lg font-mono text-sm max-h-[400px] overflow-y-auto"
+							id="semanticOutput">
+							<div class="output-placeholder text-text-muted italic">Aguardando análise...</div>
 						</div>
 					</div>
 
-					<div class="pipeline-arrow">↓</div>
+					<div class="pipeline-arrow text-center text-3xl text-primary my-2">↓</div>
 
 					<div class="pipeline-step" data-step="4">
-						<div class="step-header">
-							<span class="step-number">4</span>
-							<h3 data-i18n="internals.pipeline.codegen.title">⚙️ Geração de Código Intermediário</h3>
-							<span class="step-status">⏳</span>
+						<div class="step-header flex items-center gap-4 mb-4">
+							<span
+								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">4</span>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
+								data-i18n="internals.pipeline.codegen.title">⚙️ Geração de Código Intermediário</h3>
+							<span class="step-status text-xl">⏳</span>
 						</div>
-						<div class="step-description">
-							<p data-i18n="internals.pipeline.codegen.description">A AST é convertida em <strong>bytecode</strong> ou código intermediário.</p>
-							<p class="tech-detail" data-i18n="internals.pipeline.codegen.detail">Este formato é mais fácil de executar e otimizar que a AST original.
+						<div class="step-description pl-14 mb-4">
+							<p class="text-text-muted leading-normal mb-2"
+								data-i18n="internals.pipeline.codegen.description">A AST é convertida em
+								<strong>bytecode</strong> ou código intermediário.
+							</p>
+							<p class="tech-detail italic text-sm text-text-muted opacity-70"
+								data-i18n="internals.pipeline.codegen.detail">Este formato é mais fácil de executar e
+								otimizar que a AST original.
 							</p>
 						</div>
-						<div class="step-output" id="irOutput">
-							<div class="output-placeholder">Aguardando análise...</div>
+						<div class="step-output ml-14 bg-bg-dark-3 p-4 rounded-lg font-mono text-sm max-h-[400px] overflow-y-auto"
+							id="irOutput">
+							<div class="output-placeholder text-text-muted italic">Aguardando análise...</div>
 						</div>
 					</div>
 
-					<div class="pipeline-arrow">↓</div>
+					<div class="pipeline-arrow text-center text-3xl text-primary my-2">↓</div>
 
 					<div class="pipeline-step" data-step="5">
-						<div class="step-header">
-							<span class="step-number">5</span>
-							<h3 data-i18n="internals.pipeline.runtime.title">🎯 Execução (Runtime)</h3>
-							<span class="step-status">⏳</span>
+						<div class="step-header flex items-center gap-4 mb-4">
+							<span
+								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">5</span>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
+								data-i18n="internals.pipeline.runtime.title">🎯 Execução (Runtime)</h3>
+							<span class="step-status text-xl">⏳</span>
 						</div>
-						<div class="step-description">
-							<p data-i18n="internals.pipeline.runtime.description">O código intermediário é <strong>executado</strong> pela máquina virtual.</p>
-							<p class="tech-detail" data-i18n="internals.pipeline.runtime.detail">A VM interpreta cada instrução e executa as operações
+						<div class="step-description pl-14 mb-4">
+							<p class="text-text-muted leading-normal mb-2"
+								data-i18n="internals.pipeline.runtime.description">O código intermediário é
+								<strong>executado</strong> pela máquina virtual.
+							</p>
+							<p class="tech-detail italic text-sm text-text-muted opacity-70"
+								data-i18n="internals.pipeline.runtime.detail">A VM interpreta cada instrução e executa
+								as operações
 								correspondentes.</p>
 						</div>
-						<div class="step-output" id="executionOutput">
-							<div class="output-placeholder">Aguardando análise...</div>
+						<div class="step-output ml-14 bg-bg-dark-3 p-4 rounded-lg font-mono text-sm max-h-[400px] overflow-y-auto"
+							id="executionOutput">
+							<div class="output-placeholder text-text-muted italic">Aguardando análise...</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="detailed-explanation">
-			<h2 data-i18n="internals.detailed.title">📚 Explicação Detalhada de Cada Etapa</h2>
+		<section class="detailed-explanation mb-16">
+			<h2 class="text-3xl font-bold mb-8 text-text-secondary" data-i18n="internals.detailed.title">📚 Explicação
+				Detalhada de Cada Etapa</h2>
 
 			<div class="explanation-card">
-				<div class="card-header">
-					<span class="card-icon">📝</span>
-					<h3 data-i18n="internals.detailed.lexer.title">1. Análise Léxica (Lexer/Tokenizer)</h3>
+				<div class="card-header flex items-center gap-4 p-6 bg-bg-dark-3 border-b border-bg-dark-3/20">
+					<span class="card-icon text-3xl">📝</span>
+					<h3 class="m-0 text-primary text-xl font-bold" data-i18n="internals.detailed.lexer.title">1. Análise
+						Léxica (Lexer/Tokenizer)</h3>
 				</div>
-				<div class="card-content">
-					<p><strong data-i18n="internals.detailed.lexer.what">O que faz:</strong> <span data-i18n="internals.detailed.lexer.whatDesc">Transforma o código fonte (string) em uma sequência de tokens.</span></p>
+				<div class="card-content p-6">
+					<p class="text-text-muted leading-relaxed mb-6"><strong data-i18n="internals.detailed.lexer.what">O
+							que faz:</strong> <span data-i18n="internals.detailed.lexer.whatDesc">Transforma o código
+							fonte (string) em uma sequência de tokens.</span></p>
 
-					<div class="example-box">
-						<h4 data-i18n="internals.detailed.lexer.example">Exemplo:</h4>
-						<div class="code-comparison">
-							<div class="before">
-								<strong data-i18n="internals.detailed.lexer.input">Entrada:</strong>
-								<pre><code>say("hello world");</code></pre>
+					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
+						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.lexer.example">
+							Exemplo:</h4>
+						<div class="code-comparison grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 items-center">
+							<div class="before bg-bg-dark-3 p-4 rounded">
+								<strong class="block text-text-secondary text-sm mb-2"
+									data-i18n="internals.detailed.lexer.input">Entrada:</strong>
+								<pre class="m-0 text-text-muted"><code>say("hello world");</code></pre>
 							</div>
-							<div class="arrow">→</div>
-							<div class="after">
-								<strong data-i18n="internals.detailed.lexer.output">Saída (Tokens):</strong>
-								<pre><code>[
+							<div class="arrow text-3xl text-primary md:rotate-0 rotate-90 mx-auto">→</div>
+							<div class="after bg-bg-dark-3 p-4 rounded">
+								<strong class="block text-text-secondary text-sm mb-2"
+									data-i18n="internals.detailed.lexer.output">Saída (Tokens):</strong>
+								<pre class="m-0 text-text-muted"><code>[
   { type: 'IDENTIFIER', value: 'say' },
   { type: 'LPAREN', value: '(' },
   { type: 'STRING', value: 'hello world' },
@@ -194,245 +260,372 @@
 						</div>
 					</div>
 
-					<div class="tech-details">
-						<h4 data-i18n="internals.detailed.lexer.how">Como funciona:</h4>
-						<ul>
-							<li data-i18n="internals.detailed.lexer.howList.0">Lê o código caractere por caractere</li>
-							<li data-i18n="internals.detailed.lexer.howList.1">Ignora espaços em branco e comentários</li>
-							<li data-i18n="internals.detailed.lexer.howList.2">Agrupa caracteres em tokens significativos</li>
-							<li data-i18n="internals.detailed.lexer.howList.3">Identifica o tipo de cada token (palavra-chave, operador, literal, etc.)</li>
+					<div class="tech-details mt-6">
+						<h4 class="text-text-secondary font-bold mb-4 text-base"
+							data-i18n="internals.detailed.lexer.how">Como funciona:</h4>
+						<ul class="list-none p-0">
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.lexer.howList.0">Lê o código caractere por caractere</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.lexer.howList.1">Ignora espaços em branco e comentários
+							</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.lexer.howList.2">Agrupa caracteres em tokens
+								significativos</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.lexer.howList.3">Identifica o tipo de cada token
+								(palavra-chave, operador, literal, etc.)</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="explanation-card">
-				<div class="card-header">
-					<span class="card-icon">🌳</span>
-					<h3 data-i18n="internals.detailed.parser.title">2. Análise Sintática (Parser)</h3>
+				<div class="card-header flex items-center gap-4 p-6 bg-bg-dark-3 border-b border-bg-dark-3/20">
+					<span class="card-icon text-3xl">🌳</span>
+					<h3 class="m-0 text-primary text-xl font-bold" data-i18n="internals.detailed.parser.title">2.
+						Análise Sintática (Parser)</h3>
 				</div>
-				<div class="card-content">
-					<p><strong data-i18n="internals.detailed.parser.what">O que faz:</strong> <span data-i18n="internals.detailed.parser.whatDesc">Organiza os tokens em uma estrutura hierárquica (AST) que representa
-						a estrutura do programa.</span></p>
+				<div class="card-content p-6">
+					<p class="text-text-muted leading-relaxed mb-6"><strong data-i18n="internals.detailed.parser.what">O
+							que faz:</strong> <span data-i18n="internals.detailed.parser.whatDesc">Organiza os tokens em
+							uma estrutura hierárquica (AST) que representa
+							a estrutura do programa.</span></p>
 
-					<div class="example-box">
-						<h4 data-i18n="internals.detailed.parser.example">Exemplo:</h4>
+					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
+						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.parser.example">
+							Exemplo:</h4>
 						<div class="ast-visualization">
-							<pre><code>CallExpression
+							<pre class="bg-bg-dark-3 p-4 rounded text-text-secondary leading-relaxed"><code>CallExpression
 ├── callee: Identifier("say")
 └── arguments:
     └── StringLiteral("hello world")</code></pre>
 						</div>
 					</div>
 
-					<div class="tech-details">
-						<h4 data-i18n="internals.detailed.parser.how">Como funciona:</h4>
-						<ul>
-							<li data-i18n="internals.detailed.parser.howList.0">Consome tokens da esquerda para a direita</li>
-							<li data-i18n="internals.detailed.parser.howList.1">Aplica regras gramaticais da linguagem</li>
-							<li data-i18n="internals.detailed.parser.howList.2">Constrói uma árvore que representa a estrutura do código</li>
-							<li data-i18n="internals.detailed.parser.howList.3">Detecta erros de sintaxe (parênteses não fechados, etc.)</li>
+					<div class="tech-details mt-6">
+						<h4 class="text-text-secondary font-bold mb-4 text-base"
+							data-i18n="internals.detailed.parser.how">Como funciona:</h4>
+						<ul class="list-none p-0">
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.parser.howList.0">Consome tokens da esquerda para a
+								direita</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.parser.howList.1">Aplica regras gramaticais da linguagem
+							</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.parser.howList.2">Constrói uma árvore que representa a
+								estrutura do código</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.parser.howList.3">Detecta erros de sintaxe (parênteses não
+								fechados, etc.)</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="explanation-card">
-				<div class="card-header">
-					<span class="card-icon">🔍</span>
-					<h3 data-i18n="internals.detailed.semantic.title">3. Análise Semântica</h3>
+				<div class="card-header flex items-center gap-4 p-6 bg-bg-dark-3 border-b border-bg-dark-3/20">
+					<span class="card-icon text-3xl">🔍</span>
+					<h3 class="m-0 text-primary text-xl font-bold" data-i18n="internals.detailed.semantic.title">3.
+						Análise Semântica</h3>
 				</div>
-				<div class="card-content">
-					<p><strong data-i18n="internals.detailed.semantic.what">O que faz:</strong> <span data-i18n="internals.detailed.semantic.whatDesc">Verifica se o código faz sentido do ponto de vista lógico.</span></p>
+				<div class="card-content p-6">
+					<p class="text-text-muted leading-relaxed mb-6"><strong
+							data-i18n="internals.detailed.semantic.what">O que faz:</strong> <span
+							data-i18n="internals.detailed.semantic.whatDesc">Verifica se o código faz sentido do ponto
+							de vista lógico.</span></p>
 
-					<div class="example-box">
-						<h4 data-i18n="internals.detailed.semantic.checks">Verificações realizadas:</h4>
-						<ul class="check-list">
-							<li>✅ <span data-i18n="internals.detailed.semantic.checkList.0">A função <code>say</code> existe?</span></li>
-							<li>✅ <span data-i18n="internals.detailed.semantic.checkList.1">O número de argumentos está correto?</span></li>
-							<li>✅ <span data-i18n="internals.detailed.semantic.checkList.2">Os tipos de dados são compatíveis?</span></li>
-							<li>✅ <span data-i18n="internals.detailed.semantic.checkList.3">As variáveis foram declaradas antes do uso?</span></li>
+					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
+						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.semantic.checks">
+							Verificações realizadas:</h4>
+						<ul class="check-list list-none p-0">
+							<li class="py-2 text-text-muted text-base">✅ <span
+									data-i18n="internals.detailed.semantic.checkList.0">A função <code>say</code>
+									existe?</span></li>
+							<li class="py-2 text-text-muted text-base">✅ <span
+									data-i18n="internals.detailed.semantic.checkList.1">O número de argumentos está
+									correto?</span></li>
+							<li class="py-2 text-text-muted text-base">✅ <span
+									data-i18n="internals.detailed.semantic.checkList.2">Os tipos de dados são
+									compatíveis?</span></li>
+							<li class="py-2 text-text-muted text-base">✅ <span
+									data-i18n="internals.detailed.semantic.checkList.3">As variáveis foram declaradas
+									antes do uso?</span></li>
 						</ul>
 					</div>
 
-					<div class="tech-details">
-						<h4 data-i18n="internals.detailed.semantic.how">Como funciona:</h4>
-						<ul>
-							<li data-i18n="internals.detailed.semantic.howList.0">Percorre a AST verificando regras semânticas</li>
-							<li data-i18n="internals.detailed.semantic.howList.1">Mantém uma tabela de símbolos (variáveis e funções declaradas)</li>
-							<li data-i18n="internals.detailed.semantic.howList.2">Verifica compatibilidade de tipos</li>
-							<li data-i18n="internals.detailed.semantic.howList.3">Detecta erros como variáveis não declaradas ou tipos incompatíveis</li>
+					<div class="tech-details mt-6">
+						<h4 class="text-text-secondary font-bold mb-4 text-base"
+							data-i18n="internals.detailed.semantic.how">Como funciona:</h4>
+						<ul class="list-none p-0">
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.semantic.howList.0">Percorre a AST verificando regras
+								semânticas</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.semantic.howList.1">Mantém uma tabela de símbolos
+								(variáveis e funções declaradas)</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.semantic.howList.2">Verifica compatibilidade de tipos</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.semantic.howList.3">Detecta erros como variáveis não
+								declaradas ou tipos incompatíveis</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="explanation-card">
-				<div class="card-header">
-					<span class="card-icon">⚙️</span>
-					<h3 data-i18n="internals.detailed.codegen.title">4. Geração de Código Intermediário</h3>
+				<div class="card-header flex items-center gap-4 p-6 bg-bg-dark-3 border-b border-bg-dark-3/20">
+					<span class="card-icon text-3xl">⚙️</span>
+					<h3 class="m-0 text-primary text-xl font-bold" data-i18n="internals.detailed.codegen.title">4.
+						Geração de Código Intermediário</h3>
 				</div>
-				<div class="card-content">
-					<p><strong data-i18n="internals.detailed.codegen.what">O que faz:</strong> <span data-i18n="internals.detailed.codegen.whatDesc">Converte a AST em instruções mais simples e otimizadas.</span></p>
+				<div class="card-content p-6">
+					<p class="text-text-muted leading-relaxed mb-6"><strong
+							data-i18n="internals.detailed.codegen.what">O que faz:</strong> <span
+							data-i18n="internals.detailed.codegen.whatDesc">Converte a AST em instruções mais simples e
+							otimizadas.</span></p>
 
-					<div class="example-box">
-						<h4 data-i18n="internals.detailed.codegen.example">Exemplo de Bytecode:</h4>
-						<pre><code>LOAD_CONST    "hello world"    ; Carrega a string
+					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
+						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.codegen.example">
+							Exemplo de Bytecode:</h4>
+						<pre class="text-text-muted leading-relaxed"><code>LOAD_CONST    "hello world"    ; Carrega a string
 LOAD_GLOBAL   say              ; Carrega a função say
 CALL_FUNCTION 1                ; Chama com 1 argumento
 POP_TOP                        ; Remove resultado da pilha</code></pre>
 					</div>
 
-					<div class="tech-details">
-						<h4 data-i18n="internals.detailed.codegen.how">Como funciona:</h4>
-						<ul>
-							<li data-i18n="internals.detailed.codegen.howList.0">Traduz cada nó da AST em instruções simples</li>
-							<li data-i18n="internals.detailed.codegen.howList.1">Usa uma representação baseada em pilha</li>
-							<li data-i18n="internals.detailed.codegen.howList.2">Aplica otimizações básicas</li>
-							<li data-i18n="internals.detailed.codegen.howList.3">Gera código independente de plataforma</li>
+					<div class="tech-details mt-6">
+						<h4 class="text-text-secondary font-bold mb-4 text-base"
+							data-i18n="internals.detailed.codegen.how">Como funciona:</h4>
+						<ul class="list-none p-0">
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.codegen.howList.0">Traduz cada nó da AST em instruções
+								simples</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.codegen.howList.1">Usa uma representação baseada em pilha
+							</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.codegen.howList.2">Aplica otimizações básicas</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.codegen.howList.3">Gera código independente de plataforma
+							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="explanation-card">
-				<div class="card-header">
-					<span class="card-icon">🎯</span>
-					<h3 data-i18n="internals.detailed.runtime.title">5. Execução (Runtime)</h3>
+				<div class="card-header flex items-center gap-4 p-6 bg-bg-dark-3 border-b border-bg-dark-3/20">
+					<span class="card-icon text-3xl">🎯</span>
+					<h3 class="m-0 text-primary text-xl font-bold" data-i18n="internals.detailed.runtime.title">5.
+						Execução (Runtime)</h3>
 				</div>
-				<div class="card-content">
-					<p><strong data-i18n="internals.detailed.runtime.what">O que faz:</strong> <span data-i18n="internals.detailed.runtime.whatDesc">Executa as instruções do bytecode usando uma máquina virtual.</span></p>
+				<div class="card-content p-6">
+					<p class="text-text-muted leading-relaxed mb-6"><strong
+							data-i18n="internals.detailed.runtime.what">O que faz:</strong> <span
+							data-i18n="internals.detailed.runtime.whatDesc">Executa as instruções do bytecode usando uma
+							máquina virtual.</span></p>
 
-					<div class="example-box">
-						<h4 data-i18n="internals.detailed.runtime.process">Processo de Execução:</h4>
-						<ol class="execution-steps">
-							<li data-i18n="internals.detailed.runtime.processList.0">VM lê a instrução <code>LOAD_CONST "hello world"</code></li>
-							<li data-i18n="internals.detailed.runtime.processList.1">Empilha a string na pilha de operandos</li>
-							<li data-i18n="internals.detailed.runtime.processList.2">Lê <code>LOAD_GLOBAL say</code> e empilha a função</li>
-							<li data-i18n="internals.detailed.runtime.processList.3">Executa <code>CALL_FUNCTION 1</code>: desempilha função e argumento, executa</li>
-							<li data-i18n="internals.detailed.runtime.processList.4">A função <code>say</code> imprime "hello world" no console</li>
-							<li data-i18n="internals.detailed.runtime.processList.5"><code>POP_TOP</code> remove o resultado da pilha</li>
+					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
+						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.runtime.process">
+							Processo de Execução:</h4>
+						<ol class="execution-steps pl-6 list-decimal">
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.0">VM lê a instrução
+								<code>LOAD_CONST "hello world"</code></li>
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.1">Empilha a string na pilha de
+								operandos</li>
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.2">Lê <code>LOAD_GLOBAL say</code> e
+								empilha a função</li>
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.3">Executa
+								<code>CALL_FUNCTION 1</code>: desempilha função e argumento, executa</li>
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.4">A função <code>say</code> imprime
+								"hello world" no console</li>
+							<li class="py-2 text-text-muted leading-normal"
+								data-i18n="internals.detailed.runtime.processList.5"><code>POP_TOP</code> remove o
+								resultado da pilha</li>
 						</ol>
 					</div>
 
-					<div class="tech-details">
-						<h4 data-i18n="internals.detailed.runtime.how">Como funciona:</h4>
-						<ul>
-							<li data-i18n="internals.detailed.runtime.howList.0">Mantém uma pilha de operandos e frames de chamada</li>
-							<li data-i18n="internals.detailed.runtime.howList.1">Executa instruções em um loop (fetch-decode-execute)</li>
-							<li data-i18n="internals.detailed.runtime.howList.2">Gerencia memória para variáveis e objetos</li>
-							<li data-i18n="internals.detailed.runtime.howList.3">Interage com funções nativas (como <code>say</code>)</li>
+					<div class="tech-details mt-6">
+						<h4 class="text-text-secondary font-bold mb-4 text-base"
+							data-i18n="internals.detailed.runtime.how">Como funciona:</h4>
+						<ul class="list-none p-0">
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.runtime.howList.0">Mantém uma pilha de operandos e frames
+								de chamada</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.runtime.howList.1">Executa instruções em um loop
+								(fetch-decode-execute)</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.runtime.howList.2">Gerencia memória para variáveis e
+								objetos</li>
+							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+								data-i18n="internals.detailed.runtime.howList.3">Interage com funções nativas (como
+								<code>say</code>)</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="architecture-section">
-			<h2 data-i18n="internals.architecture.title">🏗️ Arquitetura do Jech</h2>
+		<section class="architecture-section mb-16">
+			<h2 class="text-3xl font-bold mb-8 text-text-secondary" data-i18n="internals.architecture.title">🏗️
+				Arquitetura do Jech</h2>
 
-			<div class="architecture-diagram">
-				<div class="arch-layer">
-					<div class="layer-title" data-i18n="internals.architecture.frontend">Frontend</div>
-					<div class="layer-components">
-						<div class="component">Lexer</div>
-						<div class="component">Parser</div>
-						<div class="component">Semantic Analyzer</div>
+			<div class="architecture-diagram bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-8 mb-8">
+				<div class="arch-layer bg-bg-dark border-2 border-bg-dark-3/20 rounded-lg p-6">
+					<div class="layer-title text-center text-xl font-bold text-primary mb-4"
+						data-i18n="internals.architecture.frontend">Frontend</div>
+					<div class="layer-components flex justify-center gap-4 flex-wrap">
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Lexer</div>
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Parser</div>
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Semantic Analyzer</div>
 					</div>
 				</div>
 
-				<div class="arch-arrow">↓</div>
+				<div class="arch-arrow text-center text-3xl text-primary my-4">↓</div>
 
-				<div class="arch-layer">
-					<div class="layer-title" data-i18n="internals.architecture.middleend">Middle-end</div>
-					<div class="layer-components">
-						<div class="component">AST Optimizer</div>
-						<div class="component">IR Generator</div>
+				<div class="arch-layer bg-bg-dark border-2 border-bg-dark-3/20 rounded-lg p-6">
+					<div class="layer-title text-center text-xl font-bold text-primary mb-4"
+						data-i18n="internals.architecture.middleend">Middle-end</div>
+					<div class="layer-components flex justify-center gap-4 flex-wrap">
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							AST Optimizer</div>
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							IR Generator</div>
 					</div>
 				</div>
 
-				<div class="arch-arrow">↓</div>
+				<div class="arch-arrow text-center text-3xl text-primary my-4">↓</div>
 
-				<div class="arch-layer">
-					<div class="layer-title" data-i18n="internals.architecture.backend">Backend</div>
-					<div class="layer-components">
-						<div class="component">Virtual Machine</div>
-						<div class="component">Runtime Library</div>
-						<div class="component">Memory Manager</div>
+				<div class="arch-layer bg-bg-dark border-2 border-bg-dark-3/20 rounded-lg p-6">
+					<div class="layer-title text-center text-xl font-bold text-primary mb-4"
+						data-i18n="internals.architecture.backend">Backend</div>
+					<div class="layer-components flex justify-center gap-4 flex-wrap">
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Virtual Machine</div>
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Runtime Library</div>
+						<div
+							class="component bg-bg-dark-3 border border-bg-dark-3/20 px-6 py-3 rounded text-text-secondary font-medium">
+							Memory Manager</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="tech-stack">
-				<h3 data-i18n="internals.techStack.title">🛠️ Stack Tecnológica</h3>
-				<div class="tech-grid">
-					<div class="tech-item">
-						<strong data-i18n="internals.techStack.core">Linguagem Core:</strong>
-						<span data-i18n="internals.techStack.coreDesc">C</span>
+			<div class="tech-stack bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-8">
+				<h3 class="text-primary font-bold mb-6 text-xl" data-i18n="internals.techStack.title">🛠️ Stack
+					Tecnológica</h3>
+				<div class="tech-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
+						<strong class="block text-text-secondary text-sm mb-2"
+							data-i18n="internals.techStack.core">Linguagem Core:</strong>
+						<span class="text-text-muted text-base" data-i18n="internals.techStack.coreDesc">C</span>
 					</div>
-					<div class="tech-item">
-						<strong data-i18n="internals.techStack.web">Compilação Web:</strong>
-						<span data-i18n="internals.techStack.webDesc">Emscripten → WebAssembly</span>
+					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
+						<strong class="block text-text-secondary text-sm mb-2"
+							data-i18n="internals.techStack.web">Compilação Web:</strong>
+						<span class="text-text-muted text-base" data-i18n="internals.techStack.webDesc">Emscripten →
+							WebAssembly</span>
 					</div>
-					<div class="tech-item">
-						<strong data-i18n="internals.techStack.ui">Interface:</strong>
-						<span data-i18n="internals.techStack.uiDesc">HTML5 + CSS3 + JavaScript</span>
+					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
+						<strong class="block text-text-secondary text-sm mb-2"
+							data-i18n="internals.techStack.ui">Interface:</strong>
+						<span class="text-text-muted text-base" data-i18n="internals.techStack.uiDesc">HTML5 + CSS3 +
+							Tailwind</span>
 					</div>
-					<div class="tech-item">
-						<strong data-i18n="internals.techStack.runtime">Execução:</strong>
-						<span data-i18n="internals.techStack.runtimeDesc">WASM VM no Browser</span>
+					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
+						<strong class="block text-text-secondary text-sm mb-2"
+							data-i18n="internals.techStack.runtime">Execução:</strong>
+						<span class="text-text-muted text-base" data-i18n="internals.techStack.runtimeDesc">WASM VM no
+							Browser</span>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="resources-section">
-			<h2 data-i18n="internals.resources.title">📖 Recursos Adicionais</h2>
+		<section class="resources-section mb-16">
+			<h2 class="text-3xl font-bold mb-8 text-text-secondary" data-i18n="internals.resources.title">📖 Recursos
+				Adicionais</h2>
 
-			<div class="resources-grid">
-				<a href="playground.html" class="resource-card">
-					<span class="resource-icon">🎮</span>
-					<h3 data-i18n="internals.resources.playground">Playground</h3>
-					<p data-i18n="internals.resources.playgroundDesc">Experimente o Jech no navegador e veja a execução em tempo real</p>
+			<div class="resources-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<a href="/playground"
+					class="resource-card bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-10 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_8_24_rgba(16,185,129,0.2)]">
+					<span class="resource-icon text-5xl block mb-4">🎮</span>
+					<h3 class="text-primary font-bold mb-2 text-xl" data-i18n="internals.resources.playground">
+						Playground</h3>
+					<p class="text-text-muted m-0 leading-normal" data-i18n="internals.resources.playgroundDesc">
+						Experimente o Jech no navegador e veja a execução em tempo real</p>
 				</a>
 
-				<a href="docs.html" class="resource-card">
-					<span class="resource-icon">📚</span>
-					<h3 data-i18n="internals.resources.docs">Documentação</h3>
-					<p data-i18n="internals.resources.docsDesc">Aprenda a sintaxe e recursos da linguagem Jech</p>
+				<a href="/docs"
+					class="resource-card bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-10 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_8_24_rgba(16,185,129,0.2)]">
+					<span class="resource-icon text-5xl block mb-4">📚</span>
+					<h3 class="text-primary font-bold mb-2 text-xl" data-i18n="internals.resources.docs">Documentação
+					</h3>
+					<p class="text-text-muted m-0 leading-normal" data-i18n="internals.resources.docsDesc">Aprenda a
+						sintaxe e recursos da linguagem Jech</p>
 				</a>
 
-				<a href="https://github.com/joaoluke/jech" target="_blank" class="resource-card">
-					<span class="resource-icon">💻</span>
-					<h3 data-i18n="internals.resources.github">Código Fonte</h3>
-					<p data-i18n="internals.resources.githubDesc">Explore a implementação completa no GitHub</p>
+				<a href="https://github.com/joaoluke/jech" target="_blank"
+					class="resource-card bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-10 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_8_24_rgba(16,185,129,0.2)]">
+					<span class="resource-icon text-5xl block mb-4">💻</span>
+					<h3 class="text-primary font-bold mb-2 text-xl" data-i18n="internals.resources.github">Código Fonte
+					</h3>
+					<p class="text-text-muted m-0 leading-normal" data-i18n="internals.resources.githubDesc">Explore a
+						implementação completa no GitHub</p>
 				</a>
 			</div>
 		</section>
 	</div>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="footer-content">
+	<footer class="footer bg-bg-dark-2 border-t border-bg-dark-3 py-12 pb-4">
+		<div class="container mx-auto px-4">
+			<div class="footer-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
 				<div class="footer-section">
-					<h4>Jech</h4>
-					<p data-i18n="home.footer.description">Linguagem de programação educacional para aprender sobre interpretadores e compiladores.</p>
+					<h4 class="text-primary font-bold mb-4 text-lg">Jech</h4>
+					<p class="text-text-muted leading-relaxed" data-i18n="home.footer.description">Linguagem de
+						programação educacional para aprender sobre interpretadores e compiladores.</p>
 				</div>
 
 				<div class="footer-section">
-					<h4 data-i18n="home.footer.links">Links</h4>
-					<ul>
-						<li><a href="/" data-i18n="nav.home">Início</a></li>
-						<li><a href="/playground" data-i18n="nav.playground">Playground</a></li>
-						<li><a href="/docs" data-i18n="nav.docs">Documentação</a></li>
-						<li><a href="/internals" data-i18n="nav.internals">Como Funciona</a></li>
-						<li><a href="https://github.com/joaoluke/jech" data-i18n="nav.github">GitHub</a></li>
+					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.links">Links</h4>
+					<ul class="list-none p-0 space-y-2">
+						<li><a href="/" class="text-text-muted hover:text-primary transition-colors"
+								data-i18n="nav.home">Início</a></li>
+						<li><a href="/playground" class="text-text-muted hover:text-primary transition-colors"
+								data-i18n="nav.playground">Playground</a></li>
+						<li><a href="/docs" class="text-text-muted hover:text-primary transition-colors"
+								data-i18n="nav.docs">Documentação</a></li>
+						<li><a href="/internals" class="text-text-muted hover:text-primary transition-colors"
+								data-i18n="nav.internals">Como Funciona</a></li>
+						<li><a href="https://github.com/joaoluke/jech"
+								class="text-text-muted hover:text-primary transition-colors"
+								data-i18n="nav.github">GitHub</a></li>
 					</ul>
 				</div>
 
 				<div class="footer-section">
-					<h4 data-i18n="home.footer.technologies">Tecnologias</h4>
-					<ul>
+					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.technologies">Tecnologias
+					</h4>
+					<ul class="list-none p-0 space-y-2 text-text-muted">
 						<li>C (Interpretador)</li>
 						<li>WebAssembly (Browser)</li>
 						<li>Emscripten (Compilação)</li>
@@ -441,8 +634,9 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 				</div>
 			</div>
 
-			<div class="footer-bottom">
-				<p data-i18n="home.footer.copyright">&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
+			<div class="footer-bottom text-center pt-8 border-t border-bg-dark-3 text-text-muted text-sm">
+				<p data-i18n="home.footer.copyright">&copy; 2026 Jech Programming Language. Open Source sob MIT License.
+				</p>
 			</div>
 		</div>
 	</footer>
