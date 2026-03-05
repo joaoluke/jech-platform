@@ -11,7 +11,7 @@ const translations = {
 
     home: {
       hero: {
-        title: "Aprenda a Criar Linguagens de Programação",
+        title: "Aprenda Como Linguagens de Programação Funcionam",
         subtitle:
           "Jech é uma linguagem educacional que demonstra como interpretadores e compiladores funcionam na prática.",
         ctaPlayground: "Experimentar no Playground",
@@ -126,6 +126,13 @@ const translations = {
       interactiveDemo: "Demonstração Interativa",
       demoPrompt:
         "Digite um código Jech e veja como ele é processado em cada etapa:",
+      examples: {
+        label: "Exemplo:",
+        hello: "👋 Hello World",
+        conditionals: "🔀 Condicionais",
+        arrays: "📦 Arrays",
+        functions: "⚙️ Funções"
+      },
       sourceCodeLabel: "Código Fonte:",
       analyzeBtn: "🔬 Analisar Código",
       pipeline: {
@@ -306,6 +313,12 @@ const translations = {
         title: "Introdução ao Jech",
         p1: "Bem-vindo à documentação oficial da linguagem de programação Jech! Esta linguagem foi criada com propósito educacional para demonstrar como interpretadores, compiladores e máquinas virtuais funcionam na prática.",
         p2: "Jech é uma linguagem de tipagem dinâmica com sintaxe clara e intuitiva, perfeita para aprender os fundamentos de linguagens de programação e entender como o código é processado desde a análise léxica até a execução."
+      },
+      story: {
+        title: "📖 História do JECH",
+        p1: "O Jech começou como uma curiosidade minha: eu queria entender como uma linguagem de programação é feita e como ela funciona por baixo dos panos.",
+        p2: "Com isso, veio a ideia de abrir esse processo ao público, criando uma documentação onde pessoas com pouco conhecimento em C, compiladores e interpretadores possam acompanhar e entender como tudo funciona.",
+        p3: "O nome JECH vem das iniciais dos meus filhos: Jonathan Edwards e Charles Haddon."
       },
       install: {
         title: "🚀 Instalação",
@@ -504,7 +517,7 @@ const translations = {
 
     home: {
       hero: {
-        title: "Learn to Build Programming Languages",
+        title: "Learn How Programming Languages Work",
         subtitle:
           "Jech is an educational language that demonstrates how interpreters and compilers work in practice.",
         ctaPlayground: "Try the Playground",
@@ -616,7 +629,15 @@ const translations = {
       subtitle: "Understand how your Jech code is processed and executed",
       whatYouWillLearn: "What you will learn",
       interactiveDemo: "Interactive Demo",
-      demoPrompt: "Type Jech code and see how it is processed at each stage:",
+      demoPrompt:
+        "Type some Jech code and see how it is processed at each stage:",
+      examples: {
+        label: "Example:",
+        hello: "👋 Hello World",
+        conditionals: "🔀 Conditionals",
+        arrays: "📦 Arrays",
+        functions: "⚙️ Functions"
+      },
       sourceCodeLabel: "Source Code:",
       analyzeBtn: "🔬 Analyze Code",
       pipeline: {
@@ -796,6 +817,12 @@ const translations = {
         title: "Introduction to Jech",
         p1: "Welcome to the official Jech programming language documentation! This language was created for educational purposes to demonstrate how interpreters, compilers, and virtual machines work in practice.",
         p2: "Jech is a dynamically typed language with a clear and intuitive syntax, perfect for learning the fundamentals of programming languages and understanding how code is processed from lexical analysis to execution."
+      },
+      story: {
+        title: "📖 JECH Story",
+        p1: "Jech started as a personal curiosity: I wanted to understand how a programming language is built and how it works behind the scenes.",
+        p2: "From that, the idea came to open this process to the public by writing documentation so that people with little knowledge of C, compilers, and interpreters can follow along and understand how everything works.",
+        p3: "The name JECH comes from the initials of my children: Jonathan Edwards and Charles Haddon."
       },
       install: {
         title: "🚀 Installation",

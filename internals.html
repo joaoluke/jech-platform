@@ -78,11 +78,26 @@
 
 			<div class="demo-container bg-bg-dark-2 p-10 rounded-xl border border-bg-dark-3/20 shadow-2xl">
 				<div class="code-input-section mb-12">
+					<label for="exampleSelect" class="block text-lg font-semibold text-text-secondary mb-3"
+						data-i18n="internals.examples.label">Exemplo:</label>
+					<select id="exampleSelect"
+						class="w-full bg-bg-dark border border-bg-dark-3/30 rounded-lg px-4 py-3 text-text-secondary text-base mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
+						<option value="hello" data-i18n="internals.examples.hello">👋 Hello World</option>
+						<option value="conditionals" data-i18n="internals.examples.conditionals">🔀 Condicionais</option>
+						<option value="arrays" data-i18n="internals.examples.arrays">📦 Arrays</option>
+						<option value="functions" data-i18n="internals.examples.functions">⚙️ Funções</option>
+					</select>
 					<label for="codeInput" class="block text-lg font-semibold text-text-secondary mb-3"
 						data-i18n="internals.sourceCodeLabel">Código Fonte:</label>
-					<textarea id="codeInput"
-						class="w-full min-h-[120px] bg-bg-dark border border-bg-dark-3/30 rounded-lg p-4 text-text-secondary font-mono text-base resize-vertical mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-						placeholder='say("hello world");'>say("hello world");</textarea>
+					<textarea id="codeInput" readonly
+						class="w-full min-h-[220px] bg-bg-dark border border-bg-dark-3/30 rounded-lg p-4 text-text-secondary font-mono text-base resize-none mb-4 focus:outline-none focus:border-bg-dark-3/30 focus:ring-0 opacity-95"
+						spellcheck="false">keep x = 10;
+
+when (x > 5) {
+    say("X é maior que 5");
+} else {
+    say("X é menor ou igual a 5");
+}</textarea>
 					<button id="analyzeBtn" class="btn btn-primary btn-large px-8 py-4"><span data-i18n="internals.analyzeBtn">🔬
 							Analisar Código</span></button>
 				</div>
