@@ -13,31 +13,58 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="src/input.css" />
   <script src="js/playground/wasm-loader.js"></script>
+  <style>
+    .playground-status {
+      padding: 0.75rem 2rem;
+      font-size: 0.875rem;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .playground-status.ready {
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border-top: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .playground-status.error {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border-top: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .playground-status.running {
+      background: rgba(181, 58, 46, 0.15);
+      color: #d4695f;
+      border-top: 1px solid rgba(181, 58, 46, 0.2);
+    }
+  </style>
 </head>
 
 <body>
   <nav
-    class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+    class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300">
     <div class="container flex justify-between items-center">
-      <a href="/" class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+      <a href="/" class="flex items-center gap-3 group">
         <img src="images/JECH.png" alt="JECH Logo"
-          class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
-          style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
-        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+          class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+          style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));" />
+        <span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
       </a>
-      <div class="nav-links flex items-center gap-8">
-        <a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+      <div class="flex items-center gap-6">
+        <a href="/" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.home">Início</a>
         <a href="/playground"
-          class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+          class="relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
           data-i18n="nav.playground">Playground</a>
-        <a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+        <a href="/docs" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.docs">Documentação</a>
-        <a href="/internals" class="font-medium text-text-secondary hover:text-primary transition-colors"
+        <a href="/internals" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.internals">Como Funciona</a>
         <a href="https://github.com/joaoluke/jech" target="_blank"
-          class="font-medium text-text-secondary hover:text-primary transition-colors" data-i18n="nav.github">GitHub</a>
-
+          class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
+          data-i18n="nav.github">GitHub</a>
         <div class="language-selector">
           <span class="language-icon">🌐</span>
           <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -86,7 +113,8 @@
       <div class="playground-panel bg-bg-dark-2 flex flex-col h-full overflow-hidden border-l border-bg-dark-3/20">
         <div
           class="playground-panel-header bg-bg-dark-3 px-6 py-4 font-semibold border-b border-bg-dark-3 flex items-center gap-2">
-          <span>📤</span> <span data-i18n="playground.output">Saída</span></div>
+          <span>📤</span> <span data-i18n="playground.output">Saída</span>
+        </div>
         <div class="playground-panel-content flex-1 overflow-auto relative">
           <pre id="output"
             class="p-6 font-mono text-sm white-space-pre-wrap text-success leading-normal min-h-full box-border empty:text-text-muted empty:italic"
@@ -116,8 +144,7 @@
       </button>
     </div>
 
-    <div id="status"
-      class="playground-status p-4 px-8 bg-primary text-white text-sm text-center font-medium transition-all duration-300"
+    <div id="status" class="playground-status border-t border-bg-dark-3/30 bg-bg-dark-2 text-text-muted"
       data-i18n="playground.status.initializing">
       <span
         class="loader inline-block w-4 h-4 border-2 border-white/30 rounded-full border-t-white animate-spin mr-2 align-middle"></span>
@@ -126,215 +153,215 @@
   </div>
 
   <script>
-      const examples = {
-        hello: 'say("👋 Olá, Mundo!");\n',
-        variables:
-          '// Variáveis e tipos básicos\nkeep nome = "Jech";\n\n// Concatenação de strings\nsay("Bem-vindo ao " + nome);\n\n// Operações matemáticas\nkeep x = 10;\nkeep y = 5;\nkeep soma = x + y;\n\nsay(soma);',
-        conditionals:
-          '// Estruturas condicionais\nkeep idade = 20;\n\nwhen (idade > 18) {\n  say("Você é maior de idade!");\n} else {\n  say("Você é menor de idade!");\n}\n'
-        // loops: '// Loops\nkeep i = 0;\n\n// Loop while\nwhile (i < 5) {\n  say("Contagem: " + i);\n  i = i + 1;\n}\n\n// Loop for\nfor (keep j = 0; j < 3; j = j + 1) {\n  say("Iteração: " + j);\n}',
-        // functions: '// Funções\ndo saudacao(nome) {\n  say("Olá, " + nome + "!");\n  return "Saudação enviada para " + nome;\n}\n\n// Chamando a função\nkeep mensagem = saudacao("Visitante");\nsay("Retorno: " + mensagem);'
-      };
+    const examples = {
+      hello: 'say("👋 Olá, Mundo!");\n',
+      variables:
+        '// Variáveis e tipos básicos\nkeep nome = "Jech";\n\n// Concatenação de strings\nsay("Bem-vindo ao " + nome);\n\n// Operações matemáticas\nkeep x = 10;\nkeep y = 5;\nkeep soma = x + y;\n\nsay(soma);',
+      conditionals:
+        '// Estruturas condicionais\nkeep idade = 20;\n\nwhen (idade > 18) {\n  say("Você é maior de idade!");\n} else {\n  say("Você é menor de idade!");\n}\n'
+      // loops: '// Loops\nkeep i = 0;\n\n// Loop while\nwhile (i < 5) {\n  say("Contagem: " + i);\n  i = i + 1;\n}\n\n// Loop for\nfor (keep j = 0; j < 3; j = j + 1) {\n  say("Iteração: " + j);\n}',
+      // functions: '// Funções\ndo saudacao(nome) {\n  say("Olá, " + nome + "!");\n  return "Saudação enviada para " + nome;\n}\n\n// Chamando a função\nkeep mensagem = saudacao("Visitante");\nsay("Retorno: " + mensagem);'
+    };
 
-      // Elementos da interface
-      const editor = document.getElementById("editor");
-      const output = document.getElementById("output");
-      const runBtn = document.getElementById("runBtn");
-      const clearBtn = document.getElementById("clearBtn");
-      const statusElement = document.querySelector(".playground-status");
+    // Elementos da interface
+    const editor = document.getElementById("editor");
+    const output = document.getElementById("output");
+    const runBtn = document.getElementById("runBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const statusElement = document.querySelector(".playground-status");
 
-      // Estado do interpretador
-      let isReady = false;
+    // Estado do interpretador
+    let isReady = false;
 
-      // Inicializar o interpretador Jech
-      async function initJech() {
-        try {
-          updateStatus("⏳ " + I18n.t('playground.status.initializing'));
+    // Inicializar o interpretador Jech
+    async function initJech() {
+      try {
+        updateStatus("⏳ " + I18n.t('playground.status.initializing'));
 
-          // Configurar callback para receber a saída do WASM
-          JechWASM.setOutputCallback((text) => {
-            output.textContent = text;
-            output.classList.remove("empty");
-            output.scrollTop = output.scrollHeight;
-          });
+        // Configurar callback para receber a saída do WASM
+        JechWASM.setOutputCallback((text) => {
+          output.textContent = text;
+          output.classList.remove("empty");
+          output.scrollTop = output.scrollHeight;
+        });
 
-          // Inicializar o módulo WASM
-          await JechWASM.init();
+        // Inicializar o módulo WASM
+        await JechWASM.init();
 
-          // Verificar se o módulo foi inicializado corretamente
-          if (!JechWASM.isInitialized()) {
-            throw new Error("Falha ao inicializar o interpretador Jech");
-          }
-
-          // Obter a versão do interpretador
-          const version = await JechWASM.getVersion();
-          console.log(`Jech ${version} ${I18n.t('playground.status.ready').replace('{version}', version)}`);
-
-          // Atualizar estado
-          isReady = true;
-          runBtn.disabled = false;
-          clearBtn.disabled = false;
-          updateStatus(`✅ ${I18n.t('playground.status.ready', { version })}`, "ready");
-
-          // Carregar exemplo inicial
-          loadExample("hello");
-        } catch (error) {
-          console.error("Erro ao inicializar o interpretador Jech:", error);
-          const errorMessage = I18n.t('playground.status.errorInit', { error: error.message });
-          updateStatus(`❌ ${errorMessage}`, "error");
-          appendOutput(`Erro crítico: ${error.message}`, true);
+        // Verificar se o módulo foi inicializado corretamente
+        if (!JechWASM.isInitialized()) {
+          throw new Error("Falha ao inicializar o interpretador Jech");
         }
+
+        // Obter a versão do interpretador
+        const version = await JechWASM.getVersion();
+        console.log(`Jech ${version} ${I18n.t('playground.status.ready').replace('{version}', version)}`);
+
+        // Atualizar estado
+        isReady = true;
+        runBtn.disabled = false;
+        clearBtn.disabled = false;
+        updateStatus(`✅ ${I18n.t('playground.status.ready', { version })}`, "ready");
+
+        // Carregar exemplo inicial
+        loadExample("hello");
+      } catch (error) {
+        console.error("Erro ao inicializar o interpretador Jech:", error);
+        const errorMessage = I18n.t('playground.status.errorInit', { error: error.message });
+        updateStatus(`❌ ${errorMessage}`, "error");
+        appendOutput(`Erro crítico: ${error.message}`, true);
+      }
+    }
+
+    // Carregar exemplo
+    function loadExample(name) {
+      if (examples[name]) {
+        editor.value = examples[name];
+
+        // Rolar para o topo do editor
+        editor.scrollTop = 0;
+
+        // Mostrar mensagem de exemplo carregado
+        updateStatus(
+          `✅ ${I18n.t('playground.status.exampleLoaded', { name: name.replace(/([A-Z])/g, " $1").trim() })}`
+        );
+
+        // Focar no editor
+        editor.focus();
+
+        // Ajustar altura do editor
+        updateEditorHeight();
+      } else {
+        updateStatus(`❌ ${I18n.t('playground.status.exampleNotFound')}`, "error");
+      }
+    }
+
+    // Atualizar status
+    function updateStatus(message, type = "") {
+      statusElement.textContent = message;
+      statusElement.className =
+        "playground-status" + (type ? ` ${type}` : "");
+    }
+
+    // Executar código
+    async function runCode() {
+      if (!isReady) {
+        updateStatus(
+          `❌ ${I18n.t('playground.status.notReady')}`,
+          "error"
+        );
+        return;
       }
 
-      // Carregar exemplo
-      function loadExample(name) {
-        if (examples[name]) {
-          editor.value = examples[name];
-
-          // Rolar para o topo do editor
-          editor.scrollTop = 0;
-
-          // Mostrar mensagem de exemplo carregado
-          updateStatus(
-            `✅ ${I18n.t('playground.status.exampleLoaded', { name: name.replace(/([A-Z])/g, " $1").trim() })}`
-          );
-
-          // Focar no editor
-          editor.focus();
-
-          // Ajustar altura do editor
-          updateEditorHeight();
-        } else {
-          updateStatus(`❌ ${I18n.t('playground.status.exampleNotFound')}`, "error");
-        }
+      const code = editor.value.trim();
+      if (!code) {
+        updateStatus(`❌ ${I18n.t('playground.status.noCode')}`, "error");
+        return;
       }
 
-      // Atualizar status
-      function updateStatus(message, type = "") {
-        statusElement.textContent = message;
-        statusElement.className =
-          "playground-status" + (type ? ` ${type}` : "");
-      }
+      // Limpar saída anterior
+      clearOutput();
 
-      // Executar código
-      async function runCode() {
-        if (!isReady) {
-          updateStatus(
-            `❌ ${I18n.t('playground.status.notReady')}`,
-            "error"
-          );
-          return;
-        }
-
-        const code = editor.value.trim();
-        if (!code) {
-          updateStatus(`❌ ${I18n.t('playground.status.noCode')}`, "error");
-          return;
-        }
-
-        // Limpar saída anterior
-        clearOutput();
-
-        // Mostrar o código que está sendo executado
-        const codePreview = document.createElement("div");
-        codePreview.className = "code-preview";
-        codePreview.innerHTML = `
+      // Mostrar o código que está sendo executado
+      const codePreview = document.createElement("div");
+      codePreview.className = "code-preview";
+      codePreview.innerHTML = `
           <div class="code-preview-header">🚀 ${I18n.t('playground.status.executing')}</div>
           <div class="code-separator">-------------------</div>
           <pre>${code.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
           <div class="code-separator">-------------------</div>
         `;
-        output.appendChild(codePreview);
+      output.appendChild(codePreview);
 
-        // Executar o código
-        const startTime = performance.now();
-        updateStatus(`⚡ ${I18n.t('playground.status.running')}`, "running");
+      // Executar o código
+      const startTime = performance.now();
+      updateStatus(`⚡ ${I18n.t('playground.status.running')}`, "running");
 
-        try {
-          // Executar o código usando o JechWASM
-          const result = await JechWASM.execute(code);
-          const executionTime = (
-            (performance.now() - startTime) /
-            1000
-          ).toFixed(2);
+      try {
+        // Executar o código usando o JechWASM
+        const result = await JechWASM.execute(code);
+        const executionTime = (
+          (performance.now() - startTime) /
+          1000
+        ).toFixed(2);
 
-          if (result) {
-            updateStatus(
-              `✅ ${I18n.t('playground.status.success', { time: executionTime })}`,
-              "success"
-            );
-          } else {
-            updateStatus(
-              `❌ ${I18n.t('playground.status.error')} (${executionTime}s)`,
-              "error"
-            );
-          }
-        } catch (error) {
-          console.error("Erro ao executar código:", error);
-          const errorMessage = error.message || "Erro desconhecido";
-          appendOutput(`❌ Erro: ${errorMessage}`, true);
-          updateStatus(`❌ ${I18n.t('playground.status.error')}`, "error");
+        if (result) {
+          updateStatus(
+            `✅ ${I18n.t('playground.status.success', { time: executionTime })}`,
+            "success"
+          );
+        } else {
+          updateStatus(
+            `❌ ${I18n.t('playground.status.error')} (${executionTime}s)`,
+            "error"
+          );
         }
+      } catch (error) {
+        console.error("Erro ao executar código:", error);
+        const errorMessage = error.message || "Erro desconhecido";
+        appendOutput(`❌ Erro: ${errorMessage}`, true);
+        updateStatus(`❌ ${I18n.t('playground.status.error')}`, "error");
+      }
+    }
+
+    // Limpar saída
+    function clearOutput() {
+      output.textContent = I18n.t('playground.outputPlaceholder');
+      output.className = "empty";
+      JechWASM.clearOutput();
+    }
+
+    function appendOutput(text, isError = false) {
+      if (output.classList.contains("empty")) {
+        output.textContent = "";
+        output.className = "";
       }
 
-      // Limpar saída
-      function clearOutput() {
-        output.textContent = I18n.t('playground.outputPlaceholder');
-        output.className = "empty";
-        JechWASM.clearOutput();
-      }
+      const line = document.createElement("div");
+      line.className = isError ? "output-line error" : "output-line";
 
-      function appendOutput(text, isError = false) {
-        if (output.classList.contains("empty")) {
-          output.textContent = "";
-          output.className = "";
+      const lines = text.split("\n");
+      lines.forEach((lineText, index) => {
+        if (index > 0) {
+          output.appendChild(document.createElement("br"));
         }
-
-        const line = document.createElement("div");
-        line.className = isError ? "output-line error" : "output-line";
-
-        const lines = text.split("\n");
-        lines.forEach((lineText, index) => {
-          if (index > 0) {
-            output.appendChild(document.createElement("br"));
-          }
-          if (lineText) {
-            const textNode = document.createTextNode(lineText);
-            output.appendChild(textNode);
-          }
-        });
-
-        output.scrollTop = output.scrollHeight;
-      }
-
-      runBtn.addEventListener("click", runCode);
-      clearBtn.addEventListener("click", clearOutput);
-
-      document.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-          e.preventDefault();
-          runCode();
+        if (lineText) {
+          const textNode = document.createTextNode(lineText);
+          output.appendChild(textNode);
         }
       });
 
-      function updateEditorHeight() {
-        editor.style.height = "auto";
-        editor.style.height = editor.scrollHeight + "px";
-      }
+      output.scrollTop = output.scrollHeight;
+    }
 
-      function initEditor() {
-        editor.addEventListener("input", updateEditorHeight);
-        window.addEventListener("resize", updateEditorHeight);
-        updateEditorHeight();
+    runBtn.addEventListener("click", runCode);
+    clearBtn.addEventListener("click", clearOutput);
 
-        initJech();
+    document.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
+        runCode();
       }
+    });
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initEditor);
-      } else {
-        initEditor();
-      }
+    function updateEditorHeight() {
+      editor.style.height = "auto";
+      editor.style.height = editor.scrollHeight + "px";
+    }
+
+    function initEditor() {
+      editor.addEventListener("input", updateEditorHeight);
+      window.addEventListener("resize", updateEditorHeight);
+      updateEditorHeight();
+
+      initJech();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initEditor);
+    } else {
+      initEditor();
+    }
   </script>
   <script src="js/i18n/translations.js"></script>
   <script src="js/i18n/i18n.js"></script>

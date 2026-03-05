@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #10b981;
-  --color-primary-dark: #059669;
-  --color-primary-light: #a7f3d0;
-  --color-primary-hover: #0d9668;
+  /* Brand color — extracted from JECH logo (brick red) */
+  --color-primary: #b53a2e;
+  --color-primary-dark: #8b2b21;
+  --color-primary-light: #d4695f;
+  --color-primary-hover: #a03427;
 
   --color-secondary: #3b82f6;
   --color-secondary-dark: #2563eb;
   --color-secondary-light: #93c5fd;
   --color-secondary-hover: #2563eb;
 
-  --color-accent: #8b5cf6;
-  --color-accent-dark: #7c3aed;
-  --color-accent-light: #c4b5fd;
+  --color-accent: #e8875a;
+  --color-accent-dark: #d4642a;
+  --color-accent-light: #f5b896;
 
   --color-bg-dark: #0f172a;
   --color-bg-dark-2: #1e293b;
@@ -27,9 +28,9 @@
   --color-text-disabled: #64748b;
   --color-text-inverse: #0f172a;
 
-  --color-success: #10b981;
-  --color-success-light: #6ee7b7;
-  --color-success-dark: #047857;
+  --color-success: #22c55e;
+  --color-success-light: #86efac;
+  --color-success-dark: #15803d;
 
   --color-error: #ef4444;
   --color-error-light: #fca5a5;
@@ -43,8 +44,10 @@
   --color-info-light: #7dd3fc;
   --color-info-dark: #0284c7;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:
+    "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.75rem;
@@ -52,8 +55,8 @@
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
 
-  --shadow-primary: 0 4px 15px -3px rgba(16, 185, 129, 0.3);
-  --shadow-primary-lg: 0 8px 25px -5px rgba(16, 185, 129, 0.4);
+  --shadow-primary: 0 4px 15px -3px rgba(181, 58, 46, 0.35);
+  --shadow-primary-lg: 0 8px 25px -5px rgba(181, 58, 46, 0.45);
 }
 
 /* Base styles and some original utility classes that might be useful during migration */
@@ -70,11 +73,28 @@
 
   .btn-primary {
     @apply bg-primary text-white shadow-primary hover:-translate-y-0.5 hover:shadow-primary-lg;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-accent) 100%
+    );
   }
 
   .btn-secondary {
     @apply bg-bg-dark-2 text-text-secondary border border-bg-dark-3 hover:bg-bg-dark-3 hover:-translate-y-0.5 hover:shadow-md hover:border-primary hover:text-primary-light;
+  }
+
+  .btn-large {
+    @apply px-7 py-4 text-base;
+  }
+
+  /* Pipeline architecture (horizontal) */
+  .arch-pipeline-step {
+    @apply bg-bg-dark-2 border border-bg-dark-3/40 rounded-xl px-8 py-6 text-center min-w-[120px] hover:border-primary/50 transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .arch-pipeline-arrow {
+    @apply text-2xl text-primary/50 font-bold hidden lg:block select-none;
   }
 
   .container {
@@ -178,8 +198,12 @@
 
 /* Animations from styles.css */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
