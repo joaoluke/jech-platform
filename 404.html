@@ -1,48 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Página não encontrada - Jech</title>
 	<link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-	<link rel="stylesheet" href="styles/variables.css" />
-	<link rel="stylesheet" href="styles/styles.css" />
-	<link rel="stylesheet" href="styles/language-selector.css" />
-	<style>
-		.error-container {
-			min-height: 80vh;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			padding: 2rem;
-		}
-
-		.error-code {
-			font-size: 8rem;
-			font-weight: 700;
-			background: linear-gradient(135deg, var(--primary), var(--secondary));
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			margin: 0;
-		}
-
-		.error-message {
-			font-size: 1.5rem;
-			color: var(--text);
-			margin: 1rem 0 2rem;
-		}
-
-		.error-links {
-			display: flex;
-			gap: 1rem;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-	</style>
+	<link rel="stylesheet" href="src/input.css" />
 	<script>
 		// Tenta redirecionar URLs limpas para as páginas corretas
 		(function () {
@@ -61,46 +25,55 @@
 </head>
 
 <body>
-	<nav class="navbar">
-		<div class="container">
-			<a href="/" class="logo"><img src="images/JECH.png" alt="JECH Logo" class="logo-img" />JECH</a>
-			<div class="nav-links">
-				<a href="/" data-i18n="nav.home">Início</a>
-				<a href="/playground" data-i18n="nav.playground">Playground</a>
-				<a href="/docs" data-i18n="nav.docs">Documentação</a>
-				<a href="/internals" data-i18n="nav.internals">Como Funciona</a>
-				<a href="https://github.com/joaoluke/jech" target="_blank" data-i18n="nav.github">GitHub</a>
-				
-				<div class="language-selector">
-					<span class="language-icon">🌐</span>
-					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
-						<option value="pt-BR">🇧🇷 PT</option>
-						<option value="en">🇺🇸 EN</option>
-					</select>
-				</div>
+	<nav
+		class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+		<div class="container flex justify-between items-center">
+			<a href="/"
+				class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+				<img src="images/JECH.png" alt="JECH Logo"
+					class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
+					style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
+				<span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+			</a>
+			<div class="nav-links flex items-center gap-8">
+				<a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.home">Início</a>
+				<a href="/playground" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.playground">Playground</a>
+				<a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.docs">Documentação</a>
+				<a href="/internals" class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.internals">Como Funciona</a>
+				<a href="https://github.com/joaoluke/jech" target="_blank"
+					class="font-medium text-text-secondary hover:text-primary transition-colors"
+					data-i18n="nav.github">GitHub</a>
 			</div>
 		</div>
 	</nav>
 
-	<div class="error-container">
-		<h1 class="error-code">404</h1>
-		<p class="error-message">Página não encontrada</p>
-		<p style="color: var(--text-muted); margin-bottom: 2rem;">
+	<div class="min-h-[80vh] flex flex-col items-center justify-center text-center px-8 py-16">
+		<h1
+			class="text-[8rem] font-bold leading-none bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent mb-0">
+			404
+		</h1>
+		<p class="text-2xl text-text-secondary my-4">Página não encontrada</p>
+		<p class="text-text-muted mb-8 max-w-md">
 			A página que você está procurando não existe ou foi movida.
 		</p>
-		<div class="error-links">
+		<div class="flex flex-wrap gap-4 justify-center">
 			<a href="/" class="btn btn-primary">Voltar ao Início</a>
 			<a href="/playground" class="btn btn-secondary">Ir para o Playground</a>
 		</div>
 	</div>
 
-	<footer class="footer">
+	<footer class="footer bg-bg-dark-2 border-t border-bg-dark-3 py-6">
 		<div class="container">
-			<div class="footer-bottom">
+			<div class="text-center text-text-muted text-sm">
 				<p>&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
 			</div>
 		</div>
 	</footer>
+
 	<script src="js/i18n/translations.js"></script>
 	<script src="js/i18n/i18n.js"></script>
 </body>
