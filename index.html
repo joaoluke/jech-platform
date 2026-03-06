@@ -6,33 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jech - Linguagem de Programação Educacional</title>
   <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="src/input.css" />
 </head>
 
 <body>
   <nav
-    class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+    class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300">
     <div class="container flex justify-between items-center">
-      <a href="index.html"
-        class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+      <a href="index.html" class="flex items-center gap-3 group">
         <img src="images/JECH.png" alt="JECH Logo"
-          class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
-          style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
-        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+          class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+          style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));" />
+        <span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
       </a>
-      <div class="nav-links flex items-center gap-8">
+      <div class="flex items-center gap-6">
         <a href="/"
-          class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+          class="relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
           data-i18n="nav.home">Início</a>
-        <a href="/playground" class="font-medium text-text-secondary hover:text-primary transition-colors"
+        <a href="/playground" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.playground">Playground</a>
-        <a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+        <a href="/docs" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.docs">Documentação</a>
-        <a href="/internals" class="font-medium text-text-secondary hover:text-primary transition-colors"
+        <a href="/internals" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
           data-i18n="nav.internals">Como Funciona</a>
         <a href="https://github.com/joaoluke/jech" target="_blank"
-          class="font-medium text-text-secondary hover:text-primary transition-colors" data-i18n="nav.github">GitHub</a>
-
+          class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
+          data-i18n="nav.github">GitHub</a>
         <div class="language-selector">
           <span class="language-icon">🌐</span>
           <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -44,22 +48,37 @@
     </div>
   </nav>
 
-  <header class="hero relative py-24 overflow-hidden bg-gradient-to-br from-bg-dark to-bg-dark-2">
-    <!-- Efeito de brilho de fundo -->
-    <div
-      class="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.2),transparent_70%)]">
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <header class="relative py-28 overflow-hidden bg-bg-dark">
+    <div class="absolute inset-0 pointer-events-none">
+      <div
+        class="absolute top-0 right-0 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(181,58,46,0.07),transparent_60%)]">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(181,58,46,0.04),transparent_60%)]">
+      </div>
+      <div class="absolute inset-0 opacity-[0.025]"
+        style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 64px 64px;">
+      </div>
     </div>
 
-    <div class="container grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div class="hero-content relative z-10">
-        <h1
-          class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-white to-primary bg-clip-text text-transparent tracking-tighter"
-          data-i18n="home.hero.title">Aprenda Como Linguagens de Programação Funcionam</h1>
-        <p class="hero-subtitle text-xl text-text-muted mb-8 leading-relaxed" data-i18n="home.hero.subtitle">
+    <div class="container grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+      <!-- Left -->
+      <div class="slide-up">
+        <div
+          class="inline-flex items-center gap-2 bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 text-sm font-medium text-primary mb-8">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Open Source &middot; C &middot; WebAssembly
+        </div>
+        <h1 class="text-5xl lg:text-[3.6rem] font-black leading-[1.1] mb-6 text-text-primary tracking-tight"
+          data-i18n="home.hero.title">
+          Aprenda Como Linguagens de Programação Funcionam
+        </h1>
+        <p class="text-lg text-text-muted leading-relaxed mb-10 max-w-lg" data-i18n="home.hero.subtitle">
           Jech é uma linguagem de programação educacional que demonstra os
           fundamentos de interpretadores, compiladores e máquinas virtuais.
         </p>
-        <div class="hero-buttons flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-3">
           <a href="/playground" class="btn btn-primary btn-large">
             <span>▶</span> <span data-i18n="home.hero.ctaPlayground">Testar no Playground</span>
           </a>
@@ -69,246 +88,295 @@
         </div>
       </div>
 
-      <div class="hero-code shrink-0">
+      <!-- Right: code window -->
+      <div class="fade-in relative">
         <div
-          class="code-window bg-bg-dark-2 rounded-lg overflow-hidden shadow-2xl border border-bg-dark-3/30 transition-all hover:-translate-y-1 hover:shadow-primary/30 hover:border-primary/30">
-          <div class="code-header bg-bg-dark-3 px-4 py-3 flex items-center gap-2 border-b border-bg-dark-3">
-            <span class="dot w-3 h-3 rounded-full bg-red-500"></span>
-            <span class="dot w-3 h-3 rounded-full bg-yellow-500"></span>
-            <span class="dot w-3 h-3 rounded-full bg-green-500"></span>
-            <span class="code-title ml-auto text-xs text-text-muted">exemplo.jc</span>
+          class="bg-bg-dark-2 rounded-xl overflow-hidden shadow-2xl border border-bg-dark-3/50 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+          <div class="bg-bg-dark-3 px-5 py-3 flex items-center gap-2 border-b border-bg-dark-3/60">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-auto text-xs text-text-muted font-mono">exemplo.jc</span>
           </div>
-          <pre class="code-content p-6 font-mono text-sm leading-relaxed overflow-x-auto"><code><span class="keyword">keep</span> <span class="variable">name</span> = <span class="string" data-i18n="home.syntax.examples.world">"Mundo"</span>;
-<span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
+          <pre class="p-7 font-mono text-sm leading-7 overflow-x-auto"><code><span class="text-text-muted text-xs">// Variáveis e tipos</span>
+<span class="text-primary font-semibold">keep</span> <span class="text-blue-300">nome</span> = <span class="text-amber-300" data-i18n="home.syntax.examples.world">"Mundo"</span>;
+<span class="text-primary font-semibold">keep</span> <span class="text-blue-300">idade</span> = <span class="text-emerald-400">25</span>;
 
-<span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="variable">name</span>);
+<span class="text-text-muted text-xs">// Saída e concatenação</span>
+<span class="text-sky-400">say</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="text-blue-300">nome</span>);
 
-<span class="keyword">when</span> (<span class="variable">age</span> &gt; <span class="number">18</span>) {
-    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.major">"Você é maior de idade!"</span>);
-}
-<span class="keyword">else</span> {
-    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.minor">"Você é menor de idade!"</span>);
+<span class="text-text-muted text-xs">// Condicional</span>
+<span class="text-primary font-semibold">when</span> (<span class="text-blue-300">idade</span> &gt; <span class="text-emerald-400">18</span>) {
+    <span class="text-sky-400">say</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.major">"Maior de idade!"</span>);
 }</code></pre>
         </div>
+        <div class="absolute -right-6 -bottom-6 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
       </div>
     </div>
   </header>
 
-  <section class="features py-24 bg-bg-dark">
+  <!-- ── STATS BAR ─────────────────────────────────────────── -->
+  <div class="bg-bg-dark-2 border-y border-bg-dark-3/30 py-5">
+    <div class="container flex flex-wrap justify-center gap-10 lg:gap-16">
+      <div class="flex items-center gap-3">
+        <span class="text-primary font-black text-xl">C</span>
+        <span class="text-text-muted text-sm">Implementado em C</span>
+      </div>
+      <div class="w-px bg-bg-dark-3/50 hidden sm:block self-stretch"></div>
+      <div class="flex items-center gap-3">
+        <span class="text-primary font-black text-xl">WASM</span>
+        <span class="text-text-muted text-sm">Roda no Navegador</span>
+      </div>
+      <div class="w-px bg-bg-dark-3/50 hidden sm:block self-stretch"></div>
+      <div class="flex items-center gap-3">
+        <span class="text-primary font-black text-xl">MIT</span>
+        <span class="text-text-muted text-sm">Licença Open Source</span>
+      </div>
+      <div class="w-px bg-bg-dark-3/50 hidden sm:block self-stretch"></div>
+      <div class="flex items-center gap-3">
+        <span class="text-primary font-black text-xl">VM</span>
+        <span class="text-text-muted text-sm">Bytecode Virtual Machine</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FEATURES ──────────────────────────────────────────── -->
+  <section class="py-24 bg-bg-dark">
     <div class="container">
-      <h2 class="text-4xl font-bold text-center mb-12" data-i18n="home.features.title">Por Que Jech?</h2>
-      <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
-          <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">🎓</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.educational.title">Educacional</h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.educational.description">
-            Projetada para ensinar conceitos de compiladores, interpretadores
-            e VMs de forma prática.
-          </p>
-        </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-text-primary mb-4" data-i18n="home.features.title">Por Que Jech?
+        </h2>
+        <p class="text-text-muted max-w-xl mx-auto text-base">Uma linguagem educacional para entender o que acontece por
+          baixo dos panos de qualquer compilador.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
           <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">🌐</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.browser.title">Roda no Navegador
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            🎓</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.educational.title">Educacional
           </h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.browser.description">
-            Compilada para WebAssembly, execute código Jech diretamente no seu
-            navegador.
-          </p>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.educational.description">Projetada
+            para ensinar conceitos de compiladores, interpretadores e VMs de forma prática.</p>
         </div>
 
         <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
           <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">⚡</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.simple.title">Simples e Rápida</h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.simple.description">
-            Sintaxe clara e intuitiva, perfeita para aprender os fundamentos
-            de programação.
-          </p>
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            🌐</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.browser.title">Roda no
+            Navegador</h3>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.browser.description">Compilada
+            para WebAssembly, execute código Jech diretamente no seu navegador.</p>
         </div>
 
         <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
           <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">🔓</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.opensource.title">Open Source</h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.opensource.description">
-            Código aberto escrito em C, explore e aprenda com a implementação
-            completa.
-          </p>
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            ⚡</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.simple.title">Simples e Rápida
+          </h3>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.simple.description">Sintaxe clara
+            e intuitiva, perfeita para aprender os fundamentos de programação.</p>
         </div>
 
         <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
           <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">⚙️</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.bytecode.title">Bytecode VM</h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.bytecode.description">
-            Compila para bytecode e executa em uma máquina virtual
-            customizada.
-          </p>
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            🔓</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.opensource.title">Open Source
+          </h3>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.opensource.description">Código
+            aberto escrito em C, explore e aprenda com a implementação completa.</p>
         </div>
 
         <div
-          class="feature-card bg-bg-dark-2 p-10 rounded-lg border border-bg-dark-3/20 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-primary/30 relative overflow-hidden group">
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
           <div
-            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity">
-          </div>
-          <div class="feature-icon text-5xl mb-4">🎯</div>
-          <h3 class="text-2xl font-bold mb-4 text-primary" data-i18n="home.features.dynamic.title">Tipagem Dinâmica</h3>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.features.dynamic.description">
-            Sistema de tipos flexível com suporte a números, strings e arrays.
-          </p>
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            ⚙️</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.bytecode.title">Bytecode VM
+          </h3>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.bytecode.description">Compila para
+            bytecode e executa em uma máquina virtual customizada.</p>
         </div>
+
+        <div
+          class="bg-bg-dark-2 p-8 rounded-xl border border-bg-dark-3/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 group">
+          <div
+            class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-2xl mb-5 group-hover:bg-primary/20 transition-colors">
+            🎯</div>
+          <h3 class="text-base font-bold mb-2 text-text-primary" data-i18n="home.features.dynamic.title">Tipagem
+            Dinâmica</h3>
+          <p class="text-text-muted text-sm leading-relaxed" data-i18n="home.features.dynamic.description">Sistema de
+            tipos flexível com suporte a números, strings e arrays.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="syntax-section py-24 bg-bg-dark-2">
+  <!-- ── SYNTAX ─────────────────────────────────────────────── -->
+  <section class="py-24 bg-bg-dark-2">
     <div class="container">
-      <h2 class="text-4xl font-bold text-center mb-12" data-i18n="home.syntax.title">Sintaxe Jech</h2>
-      <div class="syntax-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-text-primary mb-4" data-i18n="home.syntax.title">Sintaxe Jech
+        </h2>
+        <p class="text-text-muted">Limpa, legível e intuitiva.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
         <div
-          class="syntax-example bg-bg-dark p-8 rounded-lg border border-bg-dark-3/20 transition-all hover:border-primary hover:shadow-primary/20 flex flex-col h-full">
-          <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="home.syntax.variables">Variáveis</h3>
-          <pre class="bg-bg-dark-3 p-4 rounded-lg overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">x</span> = <span class="number">10</span>;
-<span class="keyword">keep</span> <span class="variable">name</span> = <span class="string" data-i18n="home.syntax.examples.jech">"Jech"</span>;
-<span class="keyword">keep</span> <span class="variable">active</span> = <span class="number">1</span>;</code></pre>
+          class="bg-bg-dark rounded-xl border border-bg-dark-3/30 overflow-hidden hover:border-primary/40 transition-all duration-300">
+          <div class="px-5 py-3 border-b border-bg-dark-3/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-sm font-semibold text-text-secondary" data-i18n="home.syntax.variables">Variáveis</span>
+          </div>
+          <pre
+            class="p-5 font-mono text-sm leading-7 overflow-x-auto"><code><span class="text-primary font-semibold">keep</span> <span class="text-blue-300">x</span> = <span class="text-emerald-400">10</span>;
+<span class="text-primary font-semibold">keep</span> <span class="text-blue-300">nome</span> = <span class="text-amber-300" data-i18n="home.syntax.examples.jech">"Jech"</span>;
+<span class="text-primary font-semibold">keep</span> <span class="text-blue-300">ativo</span> = <span class="text-emerald-400">1</span>;</code></pre>
         </div>
 
         <div
-          class="syntax-example bg-bg-dark p-8 rounded-lg border border-bg-dark-3/20 transition-all hover:border-primary hover:shadow-primary/20 flex flex-col h-full">
-          <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="home.syntax.conditionals">Condicionais</h3>
-          <pre class="bg-bg-dark-3 p-4 rounded-lg overflow-x-auto text-sm"><code><span class="keyword">when</span> (<span class="variable">age</span> &gt; <span class="number">18</span>) {
-    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.major">"Você é maior de idade!"</span>);
-}
-<span class="keyword">else</span> {
-    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.minor">"Você é menor de idade!"</span>);
+          class="bg-bg-dark rounded-xl border border-bg-dark-3/30 overflow-hidden hover:border-primary/40 transition-all duration-300">
+          <div class="px-5 py-3 border-b border-bg-dark-3/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-sm font-semibold text-text-secondary"
+              data-i18n="home.syntax.conditionals">Condicionais</span>
+          </div>
+          <pre class="p-5 font-mono text-sm leading-7 overflow-x-auto"><code><span class="text-primary font-semibold">when</span> (<span class="text-blue-300">age</span> &gt; <span class="text-emerald-400">18</span>) {
+  <span class="text-sky-400">say</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.major">"Maior!"</span>);
+} <span class="text-primary font-semibold">else</span> {
+  <span class="text-sky-400">say</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.minor">"Menor!"</span>);
 }</code></pre>
         </div>
 
         <div
-          class="syntax-example bg-bg-dark p-8 rounded-lg border border-bg-dark-3/20 transition-all hover:border-primary hover:shadow-primary/20 flex flex-col h-full">
-          <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="home.syntax.arrays">Arrays</h3>
-          <pre class="bg-bg-dark-3 p-4 rounded-lg overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
-<span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">0</span>]);
-<span class="function">say</span>(<span class="variable">numbers</span>[<span class="number">2</span>]);</code></pre>
+          class="bg-bg-dark rounded-xl border border-bg-dark-3/30 overflow-hidden hover:border-primary/40 transition-all duration-300">
+          <div class="px-5 py-3 border-b border-bg-dark-3/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-sm font-semibold text-text-secondary" data-i18n="home.syntax.arrays">Arrays</span>
+          </div>
+          <pre
+            class="p-5 font-mono text-sm leading-7 overflow-x-auto"><code><span class="text-primary font-semibold">keep</span> <span class="text-blue-300">nums</span> = [<span class="text-emerald-400">1</span>, <span class="text-emerald-400">2</span>, <span class="text-emerald-400">3</span>];
+<span class="text-sky-400">say</span>(<span class="text-blue-300">nums</span>[<span class="text-emerald-400">0</span>]);
+<span class="text-sky-400">say</span>(<span class="text-blue-300">nums</span>[<span class="text-emerald-400">2</span>]);</code></pre>
         </div>
 
         <div
-          class="syntax-example bg-bg-dark p-8 rounded-lg border border-bg-dark-3/20 transition-all hover:border-primary hover:shadow-primary/20 flex flex-col h-full">
-          <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="home.syntax.functions">Funções</h3>
+          class="bg-bg-dark rounded-xl border border-bg-dark-3/30 overflow-hidden hover:border-primary/40 transition-all duration-300">
+          <div class="px-5 py-3 border-b border-bg-dark-3/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-sm font-semibold text-text-secondary" data-i18n="home.syntax.functions">Funções</span>
+          </div>
           <pre
-            class="bg-bg-dark-3 p-4 rounded-lg overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
-    <span class="function">say</span>(<span class="string" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="variable">name</span>);
+            class="p-5 font-mono text-sm leading-7 overflow-x-auto"><code><span class="text-primary font-semibold">do</span> <span class="text-sky-400">greet</span>(<span class="text-blue-300">nome</span>) {
+  <span class="text-sky-400">say</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.hello">"Olá, "</span> + <span class="text-blue-300">nome</span>);
 }
-
-<span class="function">greet</span>(<span class="string" data-i18n="home.syntax.examples.world">"Mundo"</span>);</code></pre>
+<span class="text-sky-400">greet</span>(<span class="text-amber-300" data-i18n="home.syntax.examples.world">"Mundo"</span>);</code></pre>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="architecture py-24 bg-bg-dark">
+  <!-- ── ARCHITECTURE ──────────────────────────────────────── -->
+  <section class="py-24 bg-bg-dark">
     <div class="container">
-      <h2 class="text-4xl font-bold text-center mb-12" data-i18n="home.architecture.title">Arquitetura do Interpretador
-      </h2>
-      <div class="arch-diagram flex flex-col items-center gap-0">
-        <div class="arch-step flex flex-col items-center">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-text-primary mb-4" data-i18n="home.architecture.title">
+          Arquitetura do Interpretador</h2>
+        <p class="text-text-muted">Como seu código <code class="text-primary font-mono">.jc</code> é executado passo a
+          passo.</p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-3">
+
+        <div class="arch-pipeline-step">
           <div
-            class="arch-box bg-bg-dark-2 px-12 py-8 rounded-lg border-2 border-primary text-center min-w-[300px] relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-primary/30 group">
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-xl font-bold mb-2 text-primary" data-i18n="home.architecture.step1.title">1. Código Fonte
-            </h4>
-            <p class="text-text-muted" data-i18n="home.architecture.step1.desc">Arquivo .jc</p>
-          </div>
-          <div class="arch-arrow text-3xl text-primary my-4">↓</div>
+            class="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center text-primary font-black text-sm mb-3 mx-auto">
+            1</div>
+          <h4 class="font-bold text-text-primary text-sm text-center mb-1" data-i18n="home.architecture.step1.title">
+            Código Fonte</h4>
+          <p class="text-xs text-text-muted text-center" data-i18n="home.architecture.step1.desc">Arquivo .jc</p>
+        </div>
+        <div class="arch-pipeline-arrow">→</div>
+
+        <div class="arch-pipeline-step">
+          <div
+            class="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center text-primary font-black text-sm mb-3 mx-auto">
+            2</div>
+          <h4 class="font-bold text-text-primary text-sm text-center mb-1" data-i18n="home.architecture.step2.title">
+            Tokenizer</h4>
+          <p class="text-xs text-text-muted text-center" data-i18n="home.architecture.step2.desc">Análise Léxica</p>
+        </div>
+        <div class="arch-pipeline-arrow">→</div>
+
+        <div class="arch-pipeline-step">
+          <div
+            class="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center text-primary font-black text-sm mb-3 mx-auto">
+            3</div>
+          <h4 class="font-bold text-text-primary text-sm text-center mb-1" data-i18n="home.architecture.step3.title">
+            Parser</h4>
+          <p class="text-xs text-text-muted text-center" data-i18n="home.architecture.step3.desc">Análise Sintática
+            (AST)</p>
+        </div>
+        <div class="arch-pipeline-arrow">→</div>
+
+        <div class="arch-pipeline-step">
+          <div
+            class="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center text-primary font-black text-sm mb-3 mx-auto">
+            4</div>
+          <h4 class="font-bold text-text-primary text-sm text-center mb-1" data-i18n="home.architecture.step4.title">
+            Compilador</h4>
+          <p class="text-xs text-text-muted text-center" data-i18n="home.architecture.step4.desc">Geração de Bytecode
+          </p>
+        </div>
+        <div class="arch-pipeline-arrow">→</div>
+
+        <div class="arch-pipeline-step">
+          <div
+            class="w-10 h-10 bg-primary/15 rounded-full flex items-center justify-center text-primary font-black text-sm mb-3 mx-auto">
+            5</div>
+          <h4 class="font-bold text-text-primary text-sm text-center mb-1" data-i18n="home.architecture.step5.title">VM
+          </h4>
+          <p class="text-xs text-text-muted text-center" data-i18n="home.architecture.step5.desc">Execução</p>
         </div>
 
-        <div class="arch-step flex flex-col items-center">
-          <div
-            class="arch-box bg-bg-dark-2 px-12 py-8 rounded-lg border-2 border-primary text-center min-w-[300px] relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-primary/30 group">
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-xl font-bold mb-2 text-primary" data-i18n="home.architecture.step2.title">2. Tokenizer</h4>
-            <p class="text-text-muted" data-i18n="home.architecture.step2.desc">Análise Léxica</p>
-          </div>
-          <div class="arch-arrow text-3xl text-primary my-4">↓</div>
-        </div>
+      </div>
 
-        <div class="arch-step flex flex-col items-center">
-          <div
-            class="arch-box bg-bg-dark-2 px-12 py-8 rounded-lg border-2 border-primary text-center min-w-[300px] relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-primary/30 group">
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-xl font-bold mb-2 text-primary" data-i18n="home.architecture.step3.title">3. Parser</h4>
-            <p class="text-text-muted" data-i18n="home.architecture.step3.desc">Análise Sintática (AST)</p>
-          </div>
-          <div class="arch-arrow text-3xl text-primary my-4">↓</div>
-        </div>
-
-        <div class="arch-step flex flex-col items-center">
-          <div
-            class="arch-box bg-bg-dark-2 px-12 py-8 rounded-lg border-2 border-primary text-center min-w-[300px] relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-primary/30 group">
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-xl font-bold mb-2 text-primary" data-i18n="home.architecture.step4.title">4. Compilador</h4>
-            <p class="text-text-muted" data-i18n="home.architecture.step4.desc">Geração de Bytecode</p>
-          </div>
-          <div class="arch-arrow text-3xl text-primary my-4">↓</div>
-        </div>
-
-        <div class="arch-step flex flex-col items-center">
-          <div
-            class="arch-box bg-bg-dark-2 px-12 py-8 rounded-lg border-2 border-primary text-center min-w-[300px] relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-primary/30 group">
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-xl font-bold mb-2 text-primary" data-i18n="home.architecture.step5.title">5. VM</h4>
-            <p class="text-text-muted" data-i18n="home.architecture.step5.desc">Execução</p>
-          </div>
-        </div>
+      <div class="text-center mt-12">
+        <a href="/internals" class="btn btn-secondary">
+          🔍 Explorar Arquitetura Completa
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="cta py-32 bg-gradient-to-br from-bg-dark-2 to-bg-dark text-center relative overflow-hidden">
-    <!-- Efeito de brilho de fundo -->
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="py-28 bg-bg-dark-2 text-center relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
       <div
-        class="absolute top-0 left-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.1),transparent_50%)]">
-      </div>
-      <div
-        class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_80%_70%,rgba(139,92,246,0.1),transparent_50%)]">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(181,58,46,0.09),transparent_55%)]">
       </div>
     </div>
-
     <div class="container relative z-10">
-      <h2 class="text-4xl font-bold mb-4" data-i18n="home.cta.title">Comece Agora!</h2>
-      <p class="text-xl text-text-muted mb-8" data-i18n="home.cta.phrase">
+      <div
+        class="inline-flex items-center gap-2 bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 text-sm font-medium text-primary mb-8">
+        ✦ Gratuito e Open Source
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black text-text-primary mb-6 tracking-tight" data-i18n="home.cta.title">
+        Comece Agora!</h2>
+      <p class="text-lg text-text-muted mb-10 max-w-lg mx-auto" data-i18n="home.cta.phrase">
         Experimente Jech no playground interativo ou explore o código fonte.
       </p>
-      <div class="cta-buttons flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4">
         <a href="/playground" class="btn btn-primary btn-large">
           <span>▶</span> <span data-i18n="home.cta.btnPlayground">Abrir Playground</span>
         </a>
@@ -319,48 +387,55 @@
     </div>
   </section>
 
-  <footer class="footer bg-bg-dark-2 border-t border-bg-dark-3 py-12 pb-4">
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="bg-bg-dark border-t border-bg-dark-3/30 py-14">
     <div class="container">
-      <div class="footer-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-        <div class="footer-section">
-          <h4 class="text-primary font-bold mb-4 text-lg">Jech</h4>
-          <p class="text-text-muted leading-relaxed" data-i18n="home.footer.description">
-            Linguagem de programação educacional para aprender sobre
-            interpretadores e compiladores.
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="images/JECH.png" alt="JECH Logo" class="w-7 h-7 object-contain opacity-90" />
+            <span class="text-lg font-black text-text-primary tracking-tight">JECH</span>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed max-w-xs" data-i18n="home.footer.description">
+            Linguagem de programação educacional para aprender sobre interpretadores e compiladores.
           </p>
         </div>
 
-        <div class="footer-section">
-          <h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.links">Links</h4>
-          <ul class="list-none space-y-2">
-            <li><a href="/" class="text-text-muted hover:text-primary transition-colors" data-i18n="nav.home">Início</a>
-            </li>
-            <li><a href="/playground" class="text-text-muted hover:text-primary transition-colors"
+        <div>
+          <h4 class="text-text-primary font-bold mb-4 text-xs uppercase tracking-widest" data-i18n="home.footer.links">
+            Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="/" class="text-text-muted hover:text-primary transition-colors text-sm"
+                data-i18n="nav.home">Início</a></li>
+            <li><a href="/playground" class="text-text-muted hover:text-primary transition-colors text-sm"
                 data-i18n="nav.playground">Playground</a></li>
-            <li><a href="/docs" class="text-text-muted hover:text-primary transition-colors"
+            <li><a href="/docs" class="text-text-muted hover:text-primary transition-colors text-sm"
                 data-i18n="nav.docs">Documentação</a></li>
-            <li><a href="/internals" class="text-text-muted hover:text-primary transition-colors"
+            <li><a href="/internals" class="text-text-muted hover:text-primary transition-colors text-sm"
                 data-i18n="nav.internals">Como Funciona</a></li>
-            <li><a href="https://github.com/joaoluke/jech" class="text-text-muted hover:text-primary transition-colors"
-                data-i18n="nav.github">GitHub</a></li>
+            <li><a href="https://github.com/joaoluke/jech" target="_blank"
+                class="text-text-muted hover:text-primary transition-colors text-sm" data-i18n="nav.github">GitHub</a>
+            </li>
           </ul>
         </div>
 
-        <div class="footer-section">
-          <h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.technologies">Tecnologias</h4>
-          <ul class="list-none space-y-2">
-            <li class="text-text-muted">C (Interpretador)</li>
-            <li class="text-text-muted">WebAssembly (Browser)</li>
-            <li class="text-text-muted">Emscripten (Compilação)</li>
-            <li class="text-text-muted">HTML/CSS/JS (Interface)</li>
+        <div>
+          <h4 class="text-text-primary font-bold mb-4 text-xs uppercase tracking-widest"
+            data-i18n="home.footer.technologies">Tecnologias</h4>
+          <ul class="space-y-2.5">
+            <li class="text-text-muted text-sm">C (Interpretador)</li>
+            <li class="text-text-muted text-sm">WebAssembly (Browser)</li>
+            <li class="text-text-muted text-sm">Emscripten (Compilação)</li>
+            <li class="text-text-muted text-sm">HTML / CSS / JS</li>
           </ul>
         </div>
+
       </div>
-
-      <div class="footer-bottom text-center pt-8 border-t border-bg-dark-3 text-text-muted text-sm">
-        <p data-i18n="home.footer.copyright">
-          &copy; 2026 Jech Programming Language. Open Source sob MIT License.
-        </p>
+      <div
+        class="border-t border-bg-dark-3/30 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-text-muted text-xs">
+        <p data-i18n="home.footer.copyright">&copy; 2026 Jech Programming Language. Open Source sob MIT License.</p>
+        <span>Built with ♥</span>
       </div>
     </div>
   </footer>

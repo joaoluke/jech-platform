@@ -6,39 +6,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Como Funciona - Jech</title>
 	<link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-		rel="stylesheet">
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+		rel="stylesheet" />
 	<link rel="stylesheet" href="src/input.css">
 </head>
 
 <body class="bg-bg-dark text-text-secondary font-sans leading-relaxed">
 	<nav
-		class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+		class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300">
 		<div class="container flex justify-between items-center">
-			<a href="/"
-				class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+			<a href="/" class="flex items-center gap-3 group">
 				<img src="images/JECH.png" alt="JECH Logo"
-					class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
-					style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
-				<span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+					class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+					style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));" />
+				<span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
 			</a>
-			<div class="nav-links flex items-center gap-8">
-				<a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+			<div class="flex items-center gap-6">
+				<a href="/" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.home">Início</a>
-				<a href="/playground" class="font-medium text-text-secondary hover:text-primary transition-colors"
+				<a href="/playground" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.playground">Playground</a>
-				<a href="/docs" class="font-medium text-text-secondary hover:text-primary transition-colors"
+				<a href="/docs" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.docs">Documentação</a>
 				<a href="/internals"
-					class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+					class="relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
 					data-i18n="nav.internals">Como Funciona</a>
 				<a href="https://github.com/joaoluke/jech" target="_blank"
-					class="font-medium text-text-secondary hover:text-primary transition-colors"
+					class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.github">GitHub</a>
-
 				<div class="language-selector">
 					<span class="language-icon">🌐</span>
 					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -80,13 +78,28 @@
 
 			<div class="demo-container bg-bg-dark-2 p-10 rounded-xl border border-bg-dark-3/20 shadow-2xl">
 				<div class="code-input-section mb-12">
+					<label for="exampleSelect" class="block text-lg font-semibold text-text-secondary mb-3"
+						data-i18n="internals.examples.label">Exemplo:</label>
+					<select id="exampleSelect"
+						class="w-full bg-bg-dark border border-bg-dark-3/30 rounded-lg px-4 py-3 text-text-secondary text-base mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
+						<option value="hello" data-i18n="internals.examples.hello">👋 Hello World</option>
+						<option value="conditionals" data-i18n="internals.examples.conditionals">🔀 Condicionais</option>
+						<option value="arrays" data-i18n="internals.examples.arrays">📦 Arrays</option>
+						<option value="functions" data-i18n="internals.examples.functions">⚙️ Funções</option>
+					</select>
 					<label for="codeInput" class="block text-lg font-semibold text-text-secondary mb-3"
 						data-i18n="internals.sourceCodeLabel">Código Fonte:</label>
-					<textarea id="codeInput"
-						class="w-full min-h-[120px] bg-bg-dark border border-bg-dark-3/30 rounded-lg p-4 text-text-secondary font-mono text-base resize-vertical mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-						placeholder='say("hello world");'>say("hello world");</textarea>
-					<button id="analyzeBtn" class="btn btn-primary btn-large px-8 py-4"><span
-							data-i18n="internals.analyzeBtn">🔬 Analisar Código</span></button>
+					<textarea id="codeInput" readonly
+						class="w-full min-h-[220px] bg-bg-dark border border-bg-dark-3/30 rounded-lg p-4 text-text-secondary font-mono text-base resize-none mb-4 focus:outline-none focus:border-bg-dark-3/30 focus:ring-0 opacity-95"
+						spellcheck="false">keep x = 10;
+
+when (x > 5) {
+    say("X é maior que 5");
+} else {
+    say("X é menor ou igual a 5");
+}</textarea>
+					<button id="analyzeBtn" class="btn btn-primary btn-large px-8 py-4"><span data-i18n="internals.analyzeBtn">🔬
+							Analisar Código</span></button>
 				</div>
 
 				<div class="pipeline-visualization flex flex-col gap-4">
@@ -94,13 +107,13 @@
 						<div class="step-header flex items-center gap-4 mb-4">
 							<span
 								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">1</span>
-							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
-								data-i18n="internals.pipeline.lexer.title">📝 Análise Léxica (Lexer)</h3>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0" data-i18n="internals.pipeline.lexer.title">📝
+								Análise Léxica (Lexer)</h3>
 							<span class="step-status text-xl">⏳</span>
 						</div>
 						<div class="step-description pl-14 mb-4">
-							<p class="text-text-muted leading-normal mb-2"
-								data-i18n="internals.pipeline.lexer.description">O código fonte é dividido em
+							<p class="text-text-muted leading-normal mb-2" data-i18n="internals.pipeline.lexer.description">O código
+								fonte é dividido em
 								<strong>tokens</strong> (unidades mínimas de significado).
 							</p>
 							<p class="tech-detail italic text-sm text-text-muted opacity-70"
@@ -120,13 +133,13 @@
 						<div class="step-header flex items-center gap-4 mb-4">
 							<span
 								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">2</span>
-							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
-								data-i18n="internals.pipeline.parser.title">🌳 Análise Sintática (Parser)</h3>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0" data-i18n="internals.pipeline.parser.title">
+								🌳 Análise Sintática (Parser)</h3>
 							<span class="step-status text-xl">⏳</span>
 						</div>
 						<div class="step-description pl-14 mb-4">
-							<p class="text-text-muted leading-normal mb-2"
-								data-i18n="internals.pipeline.parser.description">Os tokens são organizados em uma
+							<p class="text-text-muted leading-normal mb-2" data-i18n="internals.pipeline.parser.description">Os tokens
+								são organizados em uma
 								<strong>Árvore Sintática Abstrata (AST)</strong>.
 							</p>
 							<p class="tech-detail italic text-sm text-text-muted opacity-70"
@@ -151,8 +164,8 @@
 							<span class="step-status text-xl">⏳</span>
 						</div>
 						<div class="step-description pl-14 mb-4">
-							<p class="text-text-muted leading-normal mb-2"
-								data-i18n="internals.pipeline.semantic.description">Verifica se o código faz
+							<p class="text-text-muted leading-normal mb-2" data-i18n="internals.pipeline.semantic.description">
+								Verifica se o código faz
 								<strong>sentido lógico</strong>.
 							</p>
 							<p class="tech-detail italic text-sm text-text-muted opacity-70"
@@ -172,13 +185,13 @@
 						<div class="step-header flex items-center gap-4 mb-4">
 							<span
 								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">4</span>
-							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
-								data-i18n="internals.pipeline.codegen.title">⚙️ Geração de Código Intermediário</h3>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0" data-i18n="internals.pipeline.codegen.title">
+								⚙️ Geração de Código Intermediário</h3>
 							<span class="step-status text-xl">⏳</span>
 						</div>
 						<div class="step-description pl-14 mb-4">
-							<p class="text-text-muted leading-normal mb-2"
-								data-i18n="internals.pipeline.codegen.description">A AST é convertida em
+							<p class="text-text-muted leading-normal mb-2" data-i18n="internals.pipeline.codegen.description">A AST é
+								convertida em
 								<strong>bytecode</strong> ou código intermediário.
 							</p>
 							<p class="tech-detail italic text-sm text-text-muted opacity-70"
@@ -198,13 +211,13 @@
 						<div class="step-header flex items-center gap-4 mb-4">
 							<span
 								class="step-number w-10 h-10 flex items-center justify-center bg-bg-dark-3 rounded-full font-bold text-primary text-xl">5</span>
-							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0"
-								data-i18n="internals.pipeline.runtime.title">🎯 Execução (Runtime)</h3>
+							<h3 class="flex-1 text-xl font-bold text-text-secondary m-0" data-i18n="internals.pipeline.runtime.title">
+								🎯 Execução (Runtime)</h3>
 							<span class="step-status text-xl">⏳</span>
 						</div>
 						<div class="step-description pl-14 mb-4">
-							<p class="text-text-muted leading-normal mb-2"
-								data-i18n="internals.pipeline.runtime.description">O código intermediário é
+							<p class="text-text-muted leading-normal mb-2" data-i18n="internals.pipeline.runtime.description">O código
+								intermediário é
 								<strong>executado</strong> pela máquina virtual.
 							</p>
 							<p class="tech-detail italic text-sm text-text-muted opacity-70"
@@ -247,8 +260,8 @@
 							</div>
 							<div class="arrow text-3xl text-primary md:rotate-0 rotate-90 mx-auto">→</div>
 							<div class="after bg-bg-dark-3 p-4 rounded">
-								<strong class="block text-text-secondary text-sm mb-2"
-									data-i18n="internals.detailed.lexer.output">Saída (Tokens):</strong>
+								<strong class="block text-text-secondary text-sm mb-2" data-i18n="internals.detailed.lexer.output">Saída
+									(Tokens):</strong>
 								<pre class="m-0 text-text-muted"><code>[
   { type: 'IDENTIFIER', value: 'say' },
   { type: 'LPAREN', value: '(' },
@@ -261,18 +274,22 @@
 					</div>
 
 					<div class="tech-details mt-6">
-						<h4 class="text-text-secondary font-bold mb-4 text-base"
-							data-i18n="internals.detailed.lexer.how">Como funciona:</h4>
+						<h4 class="text-text-secondary font-bold mb-4 text-base" data-i18n="internals.detailed.lexer.how">Como
+							funciona:</h4>
 						<ul class="list-none p-0">
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.lexer.howList.0">Lê o código caractere por caractere</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.lexer.howList.1">Ignora espaços em branco e comentários
 							</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.lexer.howList.2">Agrupa caracteres em tokens
 								significativos</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.lexer.howList.3">Identifica o tipo de cada token
 								(palavra-chave, operador, literal, etc.)</li>
 						</ul>
@@ -304,19 +321,23 @@
 					</div>
 
 					<div class="tech-details mt-6">
-						<h4 class="text-text-secondary font-bold mb-4 text-base"
-							data-i18n="internals.detailed.parser.how">Como funciona:</h4>
+						<h4 class="text-text-secondary font-bold mb-4 text-base" data-i18n="internals.detailed.parser.how">Como
+							funciona:</h4>
 						<ul class="list-none p-0">
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.parser.howList.0">Consome tokens da esquerda para a
 								direita</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.parser.howList.1">Aplica regras gramaticais da linguagem
 							</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.parser.howList.2">Constrói uma árvore que representa a
 								estrutura do código</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.parser.howList.3">Detecta erros de sintaxe (parênteses não
 								fechados, etc.)</li>
 						</ul>
@@ -331,43 +352,47 @@
 						Análise Semântica</h3>
 				</div>
 				<div class="card-content p-6">
-					<p class="text-text-muted leading-relaxed mb-6"><strong
-							data-i18n="internals.detailed.semantic.what">O que faz:</strong> <span
-							data-i18n="internals.detailed.semantic.whatDesc">Verifica se o código faz sentido do ponto
+					<p class="text-text-muted leading-relaxed mb-6"><strong data-i18n="internals.detailed.semantic.what">O que
+							faz:</strong> <span data-i18n="internals.detailed.semantic.whatDesc">Verifica se o código faz sentido do
+							ponto
 							de vista lógico.</span></p>
 
 					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
 						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.semantic.checks">
 							Verificações realizadas:</h4>
 						<ul class="check-list list-none p-0">
-							<li class="py-2 text-text-muted text-base">✅ <span
-									data-i18n="internals.detailed.semantic.checkList.0">A função <code>say</code>
+							<li class="py-2 text-text-muted text-base">✅ <span data-i18n="internals.detailed.semantic.checkList.0">A
+									função <code>say</code>
 									existe?</span></li>
-							<li class="py-2 text-text-muted text-base">✅ <span
-									data-i18n="internals.detailed.semantic.checkList.1">O número de argumentos está
+							<li class="py-2 text-text-muted text-base">✅ <span data-i18n="internals.detailed.semantic.checkList.1">O
+									número de argumentos está
 									correto?</span></li>
-							<li class="py-2 text-text-muted text-base">✅ <span
-									data-i18n="internals.detailed.semantic.checkList.2">Os tipos de dados são
+							<li class="py-2 text-text-muted text-base">✅ <span data-i18n="internals.detailed.semantic.checkList.2">Os
+									tipos de dados são
 									compatíveis?</span></li>
-							<li class="py-2 text-text-muted text-base">✅ <span
-									data-i18n="internals.detailed.semantic.checkList.3">As variáveis foram declaradas
+							<li class="py-2 text-text-muted text-base">✅ <span data-i18n="internals.detailed.semantic.checkList.3">As
+									variáveis foram declaradas
 									antes do uso?</span></li>
 						</ul>
 					</div>
 
 					<div class="tech-details mt-6">
-						<h4 class="text-text-secondary font-bold mb-4 text-base"
-							data-i18n="internals.detailed.semantic.how">Como funciona:</h4>
+						<h4 class="text-text-secondary font-bold mb-4 text-base" data-i18n="internals.detailed.semantic.how">Como
+							funciona:</h4>
 						<ul class="list-none p-0">
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.semantic.howList.0">Percorre a AST verificando regras
 								semânticas</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.semantic.howList.1">Mantém uma tabela de símbolos
 								(variáveis e funções declaradas)</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.semantic.howList.2">Verifica compatibilidade de tipos</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.semantic.howList.3">Detecta erros como variáveis não
 								declaradas ou tipos incompatíveis</li>
 						</ul>
@@ -382,9 +407,9 @@
 						Geração de Código Intermediário</h3>
 				</div>
 				<div class="card-content p-6">
-					<p class="text-text-muted leading-relaxed mb-6"><strong
-							data-i18n="internals.detailed.codegen.what">O que faz:</strong> <span
-							data-i18n="internals.detailed.codegen.whatDesc">Converte a AST em instruções mais simples e
+					<p class="text-text-muted leading-relaxed mb-6"><strong data-i18n="internals.detailed.codegen.what">O que
+							faz:</strong> <span data-i18n="internals.detailed.codegen.whatDesc">Converte a AST em instruções mais
+							simples e
 							otimizadas.</span></p>
 
 					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
@@ -397,18 +422,22 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 					</div>
 
 					<div class="tech-details mt-6">
-						<h4 class="text-text-secondary font-bold mb-4 text-base"
-							data-i18n="internals.detailed.codegen.how">Como funciona:</h4>
+						<h4 class="text-text-secondary font-bold mb-4 text-base" data-i18n="internals.detailed.codegen.how">Como
+							funciona:</h4>
 						<ul class="list-none p-0">
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.codegen.howList.0">Traduz cada nó da AST em instruções
 								simples</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.codegen.howList.1">Usa uma representação baseada em pilha
 							</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.codegen.howList.2">Aplica otimizações básicas</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.codegen.howList.3">Gera código independente de plataforma
 							</li>
 						</ul>
@@ -423,52 +452,61 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 						Execução (Runtime)</h3>
 				</div>
 				<div class="card-content p-6">
-					<p class="text-text-muted leading-relaxed mb-6"><strong
-							data-i18n="internals.detailed.runtime.what">O que faz:</strong> <span
-							data-i18n="internals.detailed.runtime.whatDesc">Executa as instruções do bytecode usando uma
+					<p class="text-text-muted leading-relaxed mb-6"><strong data-i18n="internals.detailed.runtime.what">O que
+							faz:</strong> <span data-i18n="internals.detailed.runtime.whatDesc">Executa as instruções do bytecode
+							usando uma
 							máquina virtual.</span></p>
 
 					<div class="example-box bg-bg-dark border border-bg-dark-3/20 rounded-lg p-6 my-6">
 						<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="internals.detailed.runtime.process">
 							Processo de Execução:</h4>
 						<ol class="execution-steps pl-6 list-decimal">
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.0">VM lê a instrução
-								<code>LOAD_CONST "hello world"</code></li>
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.1">Empilha a string na pilha de
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.0">VM lê
+								a instrução
+								<code>LOAD_CONST "hello world"</code>
+							</li>
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.1">
+								Empilha a string na pilha de
 								operandos</li>
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.2">Lê <code>LOAD_GLOBAL say</code> e
-								empilha a função</li>
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.3">Executa
-								<code>CALL_FUNCTION 1</code>: desempilha função e argumento, executa</li>
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.4">A função <code>say</code> imprime
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.2">Lê
+								<code>LOAD_GLOBAL say</code> e
+								empilha a função
+							</li>
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.3">
+								Executa
+								<code>CALL_FUNCTION 1</code>: desempilha função e argumento, executa
+							</li>
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.4">A
+								função <code>say</code> imprime
 								"hello world" no console</li>
-							<li class="py-2 text-text-muted leading-normal"
-								data-i18n="internals.detailed.runtime.processList.5"><code>POP_TOP</code> remove o
-								resultado da pilha</li>
+							<li class="py-2 text-text-muted leading-normal" data-i18n="internals.detailed.runtime.processList.5">
+								<code>POP_TOP</code> remove o
+								resultado da pilha
+							</li>
 						</ol>
 					</div>
 
 					<div class="tech-details mt-6">
-						<h4 class="text-text-secondary font-bold mb-4 text-base"
-							data-i18n="internals.detailed.runtime.how">Como funciona:</h4>
+						<h4 class="text-text-secondary font-bold mb-4 text-base" data-i18n="internals.detailed.runtime.how">Como
+							funciona:</h4>
 						<ul class="list-none p-0">
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.runtime.howList.0">Mantém uma pilha de operandos e frames
 								de chamada</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.runtime.howList.1">Executa instruções em um loop
 								(fetch-decode-execute)</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.runtime.howList.2">Gerencia memória para variáveis e
 								objetos</li>
-							<li class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
+							<li
+								class="pl-6 relative py-2 text-text-muted before:content-['▸'] before:absolute before:left-0 before:text-primary"
 								data-i18n="internals.detailed.runtime.howList.3">Interage com funções nativas (como
-								<code>say</code>)</li>
+								<code>say</code>)
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -535,13 +573,13 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 					Tecnológica</h3>
 				<div class="tech-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
-						<strong class="block text-text-secondary text-sm mb-2"
-							data-i18n="internals.techStack.core">Linguagem Core:</strong>
+						<strong class="block text-text-secondary text-sm mb-2" data-i18n="internals.techStack.core">Linguagem
+							Core:</strong>
 						<span class="text-text-muted text-base" data-i18n="internals.techStack.coreDesc">C</span>
 					</div>
 					<div class="tech-item bg-bg-dark p-4 rounded-lg border border-bg-dark-3/20">
-						<strong class="block text-text-secondary text-sm mb-2"
-							data-i18n="internals.techStack.web">Compilação Web:</strong>
+						<strong class="block text-text-secondary text-sm mb-2" data-i18n="internals.techStack.web">Compilação
+							Web:</strong>
 						<span class="text-text-muted text-base" data-i18n="internals.techStack.webDesc">Emscripten →
 							WebAssembly</span>
 					</div>
@@ -608,16 +646,15 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 				<div class="footer-section">
 					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.links">Links</h4>
 					<ul class="list-none p-0 space-y-2">
-						<li><a href="/" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.home">Início</a></li>
+						<li><a href="/" class="text-text-muted hover:text-primary transition-colors" data-i18n="nav.home">Início</a>
+						</li>
 						<li><a href="/playground" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.playground">Playground</a></li>
 						<li><a href="/docs" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.docs">Documentação</a></li>
 						<li><a href="/internals" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.internals">Como Funciona</a></li>
-						<li><a href="https://github.com/joaoluke/jech"
-								class="text-text-muted hover:text-primary transition-colors"
+						<li><a href="https://github.com/joaoluke/jech" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.github">GitHub</a></li>
 					</ul>
 				</div>

@@ -11,7 +11,7 @@ const translations = {
 
     home: {
       hero: {
-        title: "Aprenda a Criar Linguagens de Programação",
+        title: "Aprenda Como Linguagens de Programação Funcionam",
         subtitle:
           "Jech é uma linguagem educacional que demonstra como interpretadores e compiladores funcionam na prática.",
         ctaPlayground: "Experimentar no Playground",
@@ -21,27 +21,33 @@ const translations = {
         title: "Por Que Jech?",
         educational: {
           title: "Educacional",
-          description: "Projetada para ensinar conceitos de compiladores, interpretadores e VMs de forma prática."
+          description:
+            "Projetada para ensinar conceitos de compiladores, interpretadores e VMs de forma prática."
         },
         browser: {
           title: "Roda no Navegador",
-          description: "Compilada para WebAssembly, execute código Jech diretamente no seu navegador."
+          description:
+            "Compilada para WebAssembly, execute código Jech diretamente no seu navegador."
         },
         simple: {
           title: "Simples e Rápida",
-          description: "Sintaxe clara e intuitiva, perfeita para aprender os fundamentos de programação."
+          description:
+            "Sintaxe clara e intuitiva, perfeita para aprender os fundamentos de programação."
         },
         opensource: {
           title: "Open Source",
-          description: "Código aberto escrito em C, explore e aprenda com a implementação completa."
+          description:
+            "Código aberto escrito em C, explore e aprenda com a implementação completa."
         },
         bytecode: {
           title: "Bytecode VM",
-          description: "Compila para bytecode e executa em uma máquina virtual customizada."
+          description:
+            "Compila para bytecode e executa em uma máquina virtual customizada."
         },
         dynamic: {
           title: "Tipagem Dinâmica",
-          description: "Sistema de tipos flexível com suporte a números, strings e arrays."
+          description:
+            "Sistema de tipos flexível com suporte a números, strings e arrays."
         }
       },
       syntax: {
@@ -70,7 +76,8 @@ const translations = {
       },
       cta: {
         title: "Comece Agora!",
-        phrase: "Experimente Jech no playground interativo ou explore o código fonte.",
+        phrase:
+          "Experimente Jech no playground interativo ou explore o código fonte.",
         btnPlayground: "Abrir Playground",
         btnGithub: "Ver no GitHub"
       },
@@ -112,8 +119,6 @@ const translations = {
       }
     },
 
-
-
     internals: {
       title: "Por Trás dos Panos",
       subtitle: "Entenda como seu código Jech é processado e executado",
@@ -121,6 +126,13 @@ const translations = {
       interactiveDemo: "Demonstração Interativa",
       demoPrompt:
         "Digite um código Jech e veja como ele é processado em cada etapa:",
+      examples: {
+        label: "Exemplo:",
+        hello: "👋 Hello World",
+        conditionals: "🔀 Condicionais",
+        arrays: "📦 Arrays",
+        functions: "⚙️ Funções"
+      },
       sourceCodeLabel: "Código Fonte:",
       analyzeBtn: "🔬 Analisar Código",
       pipeline: {
@@ -164,7 +176,8 @@ const translations = {
         lexer: {
           title: "1. Análise Léxica (Lexer/Tokenizer)",
           what: "O que faz:",
-          whatDesc: "Transforma o código fonte (string) em uma sequência de tokens.",
+          whatDesc:
+            "Transforma o código fonte (string) em uma sequência de tokens.",
           example: "Exemplo:",
           input: "Entrada:",
           output: "Saída (Tokens):",
@@ -179,7 +192,8 @@ const translations = {
         parser: {
           title: "2. Análise Sintática (Parser)",
           what: "O que faz:",
-          whatDesc: "Organiza os tokens em uma estrutura hierárquica (AST) que representa a estrutura do programa.",
+          whatDesc:
+            "Organiza os tokens em uma estrutura hierárquica (AST) que representa a estrutura do programa.",
           example: "Exemplo:",
           how: "Como funciona:",
           howList: [
@@ -192,7 +206,8 @@ const translations = {
         semantic: {
           title: "3. Análise Semântica",
           what: "O que faz:",
-          whatDesc: "Verifica se o código faz sentido do ponto de vista lógico.",
+          whatDesc:
+            "Verifica se o código faz sentido do ponto de vista lógico.",
           checks: "Verificações realizadas:",
           checkList: [
             "A função say existe?",
@@ -224,7 +239,8 @@ const translations = {
         runtime: {
           title: "5. Execução (Runtime)",
           what: "O que faz:",
-          whatDesc: "Executa as instruções do bytecode usando uma máquina virtual.",
+          whatDesc:
+            "Executa as instruções do bytecode usando uma máquina virtual.",
           process: "Processo de Execução:",
           processList: [
             'VM lê a instrução LOAD_CONST "hello world"',
@@ -294,11 +310,20 @@ const translations = {
       },
       title: "📚 Documentação Completa Jech",
       intro: {
+        title: "Introdução ao Jech",
         p1: "Bem-vindo à documentação oficial da linguagem de programação Jech! Esta linguagem foi criada com propósito educacional para demonstrar como interpretadores, compiladores e máquinas virtuais funcionam na prática.",
         p2: "Jech é uma linguagem de tipagem dinâmica com sintaxe clara e intuitiva, perfeita para aprender os fundamentos de linguagens de programação e entender como o código é processado desde a análise léxica até a execução."
       },
+      story: {
+        title: "📖 História do JECH",
+        p1: "O Jech começou como uma curiosidade minha: eu queria entender como uma linguagem de programação é feita e como ela funciona por baixo dos panos.",
+        p2: "Com isso, veio a ideia de abrir esse processo ao público, criando uma documentação onde pessoas com pouco conhecimento em C, compiladores e interpretadores possam acompanhar e entender como tudo funciona.",
+        p3: "O nome JECH vem das iniciais dos meus filhos: Jonathan Edwards e Charles Haddon."
+      },
       install: {
         title: "🚀 Instalação",
+        p1: 'Atualmente, a maneira mais fácil de experimentar Jech é através do nosso <a href="/playground" class="text-primary hover:underline">Playground Online</a>. Nenhuma instalação é necessária!',
+        p2: "Para rodar localmente, você precisará compilar o código fonte. No futuro, disponibilizaremos binários para os principais sistemas operacionais.",
         desc: "Existem duas formas de usar Jech:",
         playground: {
           title: "1. Playground Online (Recomendado para Iniciantes)",
@@ -321,7 +346,8 @@ const translations = {
         title: "🎯 Primeiros Passos",
         desc: 'Vamos começar com o programa mais simples possível em Jech: o famoso "Hello, World!".',
         comment: "// Seu primeiro programa Jech!",
-        explain: "Este programa usa o comando say para exibir uma mensagem na tela. Simples assim! Vamos entender cada parte:",
+        explain:
+          "Este programa usa o comando say para exibir uma mensagem na tela. Simples assim! Vamos entender cada parte:",
         item1: "Função nativa que imprime valores na saída",
         item2: "Uma string (texto entre aspas duplas)",
         item3: "Ponto e vírgula obrigatório no final de cada instrução"
@@ -342,7 +368,8 @@ const translations = {
         p2: "Jech possui tipagem dinâmica, o que significa que você não precisa declarar o tipo da variável - o interpretador descobre automaticamente!",
         declaring: "Declarando Variáveis",
         using: "Usando Variáveis",
-        usingP: "Depois de declarar uma variável, você pode usá-la em qualquer lugar do código:",
+        usingP:
+          "Depois de declarar uma variável, você pode usá-la em qualquer lugar do código:",
         reassignment: "Reatribuição de Variáveis",
         reassignmentP:
           "Você pode mudar o valor de uma variável depois de declará-la. Note que na reatribuição você não usa a palavra keep novamente:",
@@ -357,7 +384,7 @@ const translations = {
           "Jech trabalha com números inteiros e decimais (ponto flutuante). Não há distinção entre int e float - todos são tratados como números.",
         strings: "2. Strings (Texto)",
         stringsP:
-          "Strings são sequências de caracteres delimitadas por aspas duplas (\"). Elas podem conter letras, números, espaços e caracteres especiais.",
+          'Strings são sequências de caracteres delimitadas por aspas duplas ("). Elas podem conter letras, números, espaços e caracteres especiais.',
         booleans: "3. Booleanos (true/false)",
         booleansP:
           "Booleanos representam valores lógicos: verdadeiro (true) ou falso (false). São muito úteis em condicionais e controle de fluxo.",
@@ -414,15 +441,16 @@ const translations = {
         title: "📋 Arrays - Trabalhando com Listas",
         p: "Arrays (ou listas) são coleções ordenadas de valores. Eles permitem armazenar múltiplos valores em uma única variável e acessá-los por índice.",
         creating: "Criando Arrays",
-        creatingP: "Arrays são criados usando colchetes [] com valores separados por vírgula:",
+        creatingP:
+          "Arrays são criados usando colchetes [] com valores separados por vírgula:",
         accessing: "Acessando Elementos",
         accessingP:
           "Arrays em Jech são indexados a partir de 0. Isso significa que o primeiro elemento está no índice 0, o segundo no índice 1, e assim por diante.",
         modifying: "Modificando Elementos",
-        modifyingP: "Você pode alterar o valor de um elemento específico do array:",
+        modifyingP:
+          "Você pode alterar o valor de um elemento específico do array:",
         mapTitle: "Método map - Transformando Arrays",
-        mapP:
-          "O método map permite aplicar uma operação matemática a todos os elementos de um array de uma vez. É muito útil para transformações em massa.",
+        mapP: "O método map permite aplicar uma operação matemática a todos os elementos de um array de uma vez. É muito útil para transformações em massa.",
         practical1: "Exemplo Prático: Cálculo de Preços",
         practical2: "Exemplo Prático: Ajuste de Notas"
       },
@@ -460,7 +488,7 @@ const translations = {
         }
       },
       cta: {
-        tip: "<strong>💡 Dica:</strong> Todos estes exemplos estão prontos para executar! Copie e cole no <a href=\"playground.html\" style=\"color: var(--primary);\">playground</a> para ver como funcionam na prática.",
+        tip: '<strong>💡 Dica:</strong> Todos estes exemplos estão prontos para executar! Copie e cole no <a href="playground.html" style="color: var(--primary);">playground</a> para ver como funcionam na prática.',
         important:
           "<strong>⚠️ Importante:</strong> Jech está em desenvolvimento ativo. Algumas funcionalidades podem mudar em versões futuras.",
         ready: "Pronto para começar?",
@@ -489,7 +517,7 @@ const translations = {
 
     home: {
       hero: {
-        title: "Learn to Build Programming Languages",
+        title: "Learn How Programming Languages Work",
         subtitle:
           "Jech is an educational language that demonstrates how interpreters and compilers work in practice.",
         ctaPlayground: "Try the Playground",
@@ -499,27 +527,33 @@ const translations = {
         title: "Why Jech?",
         educational: {
           title: "Educational",
-          description: "Designed to teach compiler, interpreter, and VM concepts in a practical way."
+          description:
+            "Designed to teach compiler, interpreter, and VM concepts in a practical way."
         },
         browser: {
           title: "Runs in Browser",
-          description: "Compiled to WebAssembly, run Jech code directly in your browser."
+          description:
+            "Compiled to WebAssembly, run Jech code directly in your browser."
         },
         simple: {
           title: "Simple & Fast",
-          description: "Clear and intuitive syntax, perfect for learning programming fundamentals."
+          description:
+            "Clear and intuitive syntax, perfect for learning programming fundamentals."
         },
         opensource: {
           title: "Open Source",
-          description: "Open source code written in C, explore and learn from the complete implementation."
+          description:
+            "Open source code written in C, explore and learn from the complete implementation."
         },
         bytecode: {
           title: "Bytecode VM",
-          description: "Compiles to bytecode and executes in a custom virtual machine."
+          description:
+            "Compiles to bytecode and executes in a custom virtual machine."
         },
         dynamic: {
           title: "Dynamic Typing",
-          description: "Flexible type system with support for numbers, strings, and arrays."
+          description:
+            "Flexible type system with support for numbers, strings, and arrays."
         }
       },
       syntax: {
@@ -548,7 +582,8 @@ const translations = {
       },
       cta: {
         title: "Get Started Now!",
-        phrase: "Try Jech in the interactive playground or explore the source code.",
+        phrase:
+          "Try Jech in the interactive playground or explore the source code.",
         btnPlayground: "Open Playground",
         btnGithub: "View on GitHub"
       },
@@ -589,14 +624,20 @@ const translations = {
       }
     },
 
-
-
     internals: {
       title: "Behind the Scenes",
       subtitle: "Understand how your Jech code is processed and executed",
       whatYouWillLearn: "What you will learn",
       interactiveDemo: "Interactive Demo",
-      demoPrompt: "Type Jech code and see how it is processed at each stage:",
+      demoPrompt:
+        "Type some Jech code and see how it is processed at each stage:",
+      examples: {
+        label: "Example:",
+        hello: "👋 Hello World",
+        conditionals: "🔀 Conditionals",
+        arrays: "📦 Arrays",
+        functions: "⚙️ Functions"
+      },
       sourceCodeLabel: "Source Code:",
       analyzeBtn: "🔬 Analyze Code",
       pipeline: {
@@ -640,7 +681,8 @@ const translations = {
         lexer: {
           title: "1. Lexical Analysis (Lexer/Tokenizer)",
           what: "What it does:",
-          whatDesc: "Transforms the source code (string) into a sequence of tokens.",
+          whatDesc:
+            "Transforms the source code (string) into a sequence of tokens.",
           example: "Example:",
           input: "Input:",
           output: "Output (Tokens):",
@@ -655,7 +697,8 @@ const translations = {
         parser: {
           title: "2. Syntax Analysis (Parser)",
           what: "What it does:",
-          whatDesc: "Organizes tokens into a hierarchical structure (AST) that represents the program structure.",
+          whatDesc:
+            "Organizes tokens into a hierarchical structure (AST) that represents the program structure.",
           example: "Example:",
           how: "How it works:",
           howList: [
@@ -700,7 +743,8 @@ const translations = {
         runtime: {
           title: "5. Execution (Runtime)",
           what: "What it does:",
-          whatDesc: "Executes the bytecode instructions using a virtual machine.",
+          whatDesc:
+            "Executes the bytecode instructions using a virtual machine.",
           process: "Execution Process:",
           processList: [
             'VM reads the LOAD_CONST "hello world" instruction',
@@ -739,7 +783,8 @@ const translations = {
       resources: {
         title: "Additional Resources",
         playground: "Playground",
-        playgroundDesc: "Try Jech in the browser and see execution in real-time",
+        playgroundDesc:
+          "Try Jech in the browser and see execution in real-time",
         docs: "Documentation",
         docsDesc: "Learn Jech language syntax and features",
         github: "Source Code",
@@ -769,11 +814,20 @@ const translations = {
       },
       title: "📚 Complete Jech Documentation",
       intro: {
+        title: "Introduction to Jech",
         p1: "Welcome to the official Jech programming language documentation! This language was created for educational purposes to demonstrate how interpreters, compilers, and virtual machines work in practice.",
         p2: "Jech is a dynamically typed language with a clear and intuitive syntax, perfect for learning the fundamentals of programming languages and understanding how code is processed from lexical analysis to execution."
       },
+      story: {
+        title: "📖 JECH Story",
+        p1: "Jech started as a personal curiosity: I wanted to understand how a programming language is built and how it works behind the scenes.",
+        p2: "From that, the idea came to open this process to the public by writing documentation so that people with little knowledge of C, compilers, and interpreters can follow along and understand how everything works.",
+        p3: "The name JECH comes from the initials of my children: Jonathan Edwards and Charles Haddon."
+      },
       install: {
         title: "🚀 Installation",
+        p1: 'Currently, the easiest way to try Jech is through our <a href="/playground" class="text-primary hover:underline">Online Playground</a>. No installation is required!',
+        p2: "To run locally, you will need to compile the source code. In the future, we will provide binaries for the main operating systems.",
         desc: "There are two ways to use Jech:",
         playground: {
           title: "1. Online Playground (Recommended for Beginners)",
@@ -796,7 +850,8 @@ const translations = {
         title: "🎯 First Steps",
         desc: 'Let\'s start with the simplest possible program in Jech: the famous "Hello, World!".',
         comment: "// Your first Jech program!",
-        explain: "This program uses the say command to display a message on the screen. Simple as that! Let's understand each part:",
+        explain:
+          "This program uses the say command to display a message on the screen. Simple as that! Let's understand each part:",
         item1: "Native function that prints values to output",
         item2: "A string (text in double quotes)",
         item3: "Mandatory semicolon at the end of each instruction"
@@ -817,7 +872,8 @@ const translations = {
         p2: "Jech has dynamic typing, which means you don't need to declare the variable type - the interpreter finds out automatically!",
         declaring: "Declaring Variables",
         using: "Using Variables",
-        usingP: "After declaring a variable, you can use it anywhere in the code:",
+        usingP:
+          "After declaring a variable, you can use it anywhere in the code:",
         reassignment: "Variable Reassignment",
         reassignmentP:
           "You can change a variable's value after declaring it. Note that in reassignment you don't use the word keep again:",
@@ -865,13 +921,16 @@ const translations = {
         title: "🔀 Conditionals - Taking Decisions with when/else",
         p: "Conditionals allow your program to make decisions and execute different code based on conditions. In Jech, we use when (when) to create conditional structures.",
         operators: "Comparison Operators",
-        operatorsP: "Before using conditionals, you need to know the comparison operators:",
+        operatorsP:
+          "Before using conditionals, you need to know the comparison operators:",
         comparisonComment1: "// Equality",
         comparisonComment2: "// Numerical comparison",
         booleanTitle: "when with Booleans",
-        booleanP: "The simplest form of conditional uses boolean values directly:",
+        booleanP:
+          "The simplest form of conditional uses boolean values directly:",
         comparesTitle: "when with Comparisons",
-        comparesP: "You can use comparison operators to create more complex conditions:",
+        comparesP:
+          "You can use comparison operators to create more complex conditions:",
         stringsTitle: "when with Strings",
         stringsP: "You can also compare strings using ==:",
         elseTitle: "when/else - Handling Both Cases",
@@ -886,15 +945,15 @@ const translations = {
         title: "📋 Arrays - Working with Lists",
         p: "Arrays (or lists) are ordered collections of values. They allow storing multiple values in a single variable and accessing them by index.",
         creating: "Creating Arrays",
-        creatingP: "Arrays are created using brackets [] with values separated by commas:",
+        creatingP:
+          "Arrays are created using brackets [] with values separated by commas:",
         accessing: "Accessing Elements",
         accessingP:
           "Arrays in Jech are indexed starting from 0. This means the first element is at index 0, the second at index 1, and so on.",
         modifying: "Modifying Elements",
         modifyingP: "You can change the value of a specific array element:",
         mapTitle: "map Method - Transforming Arrays",
-        mapP:
-          "The map method allows applying a mathematical operation to all array elements at once. It's very useful for bulk transformations.",
+        mapP: "The map method allows applying a mathematical operation to all array elements at once. It's very useful for bulk transformations.",
         practical1: "Practical Example: Price Calculation",
         practical2: "Practical Example: Grade Adjustment"
       },

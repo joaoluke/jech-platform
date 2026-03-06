@@ -1,21 +1,60 @@
 class JechInternalsVisualizer {
   constructor() {
     this.codeInput = document.getElementById("codeInput");
+    this.exampleSelect = document.getElementById("exampleSelect");
     this.analyzeBtn = document.getElementById("analyzeBtn");
     this.steps = document.querySelectorAll(".pipeline-step");
 
+    this.examples = {
+      hello: 'say("hello world");',
+      conditionals: `keep x = 10;
+
+when (x > 5) {
+    say("X é maior que 5");
+} else {
+    say("X é menor ou igual a 5");
+}`,
+      arrays: `keep numbers = [1, 2, 3, 4, 5];
+
+say(numbers[0]);
+say(numbers[2]);`,
+      functions: `do sum(a, b) {
+    return a + b;
+}
+
+keep result = sum(2, 3);
+say(result);`
+    };
+
     this.setupEventListeners();
+    this.initializeExample();
   }
 
   setupEventListeners() {
     this.analyzeBtn.addEventListener("click", () => this.analyzeCode());
 
-    this.codeInput.addEventListener("keydown", (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-        e.preventDefault();
-        this.analyzeCode();
-      }
-    });
+    if (this.exampleSelect) {
+      this.exampleSelect.addEventListener("change", () =>
+        this.setSelectedExample()
+      );
+    }
+  }
+
+  initializeExample() {
+    if (this.exampleSelect && this.examples.hello) {
+      this.exampleSelect.value = "hello";
+    }
+    this.setSelectedExample();
+  }
+
+  setSelectedExample() {
+    if (!this.exampleSelect || !this.codeInput) {
+      return;
+    }
+
+    const key = this.exampleSelect.value;
+    const code = this.examples[key] || "";
+    this.codeInput.value = code;
   }
 
   async analyzeCode() {
@@ -198,7 +237,7 @@ class JechInternalsVisualizer {
     let i = 0;
 
     while (i < code.length) {
-      let char = code[i];
+      const char = code[i];
 
       if (/\s/.test(char)) {
         i++;
@@ -234,7 +273,7 @@ class JechInternalsVisualizer {
           "task",
           "return",
           "for",
-          "while",
+          "while"
         ];
         const type = keywords.includes(value) ? "KEYWORD" : "IDENTIFIER";
         tokens.push({ type, value });
@@ -269,7 +308,7 @@ class JechInternalsVisualizer {
         ">": "GT",
         "!": "NOT",
         "&": "AND",
-        "|": "OR",
+        "|": "OR"
       };
 
       if (operators[char]) {
@@ -337,7 +376,7 @@ class JechInternalsVisualizer {
     if (code.includes("say(")) {
       checks.push({
         passed: true,
-        message: 'Função "say" existe e está disponível',
+        message: 'Função "say" existe e está disponível'
       });
 
       const match = code.match(/say\s*\(([^)]*)\)/);
@@ -345,7 +384,7 @@ class JechInternalsVisualizer {
         const args = match[1].split(",").filter((a) => a.trim());
         checks.push({
           passed: args.length === 1,
-          message: `Número de argumentos correto: ${args.length} (esperado: 1)`,
+          message: `Número de argumentos correto: ${args.length} (esperado: 1)`
         });
       }
     }
@@ -353,7 +392,7 @@ class JechInternalsVisualizer {
     if (code.includes("keep")) {
       checks.push({
         passed: true,
-        message: "Declaração de variável válida",
+        message: "Declaração de variável válida"
       });
     }
 
@@ -361,18 +400,18 @@ class JechInternalsVisualizer {
     if (stringMatch) {
       checks.push({
         passed: true,
-        message: "Literais de string bem formadas",
+        message: "Literais de string bem formadas"
       });
     }
 
     checks.push({
       passed: true,
-      message: "Tipos de dados compatíveis",
+      message: "Tipos de dados compatíveis"
     });
 
     checks.push({
       passed: true,
-      message: "Escopo de variáveis válido",
+      message: "Escopo de variáveis válido"
     });
 
     return checks;

@@ -6,34 +6,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Documentação - Jech</title>
 	<link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+		rel="stylesheet" />
 	<link rel="stylesheet" href="src/input.css">
 </head>
 
 <body class="bg-bg-dark text-text-secondary font-sans leading-relaxed">
 	<nav
-		class="navbar sticky top-0 z-sticky bg-bg-dark/80 backdrop-blur border-b border-bg-dark-3/20 py-4 transition-all duration-300">
+		class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300">
 		<div class="container flex justify-between items-center">
-			<a href="/"
-				class="logo flex items-center gap-2 text-2xl font-extrabold transition-transform hover:scale-105">
+			<a href="/" class="flex items-center gap-3 group">
 				<img src="images/JECH.png" alt="JECH Logo"
-					class="logo-img w-10 h-10 object-contain transition-all hover:rotate-[-5deg]"
-					style="filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));" />
-				<span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">JECH</span>
+					class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+					style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));" />
+				<span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
 			</a>
-			<div class="nav-links flex items-center gap-8">
-				<a href="/" class="font-medium text-text-secondary hover:text-primary transition-colors"
+			<div class="flex items-center gap-6">
+				<a href="/" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.home">Início</a>
-				<a href="/playground" class="font-medium text-text-secondary hover:text-primary transition-colors"
+				<a href="/playground" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.playground">Playground</a>
 				<a href="/docs"
-					class="relative font-medium text-primary after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+					class="relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
 					data-i18n="nav.docs">Documentação</a>
-				<a href="/internals" class="font-medium text-text-secondary hover:text-primary transition-colors"
+				<a href="/internals" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.internals">Como Funciona</a>
 				<a href="https://github.com/joaoluke/jech" target="_blank"
-					class="font-medium text-text-secondary hover:text-primary transition-colors"
+					class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
 					data-i18n="nav.github">GitHub</a>
-
 				<div class="language-selector">
 					<span class="language-icon">🌐</span>
 					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
@@ -66,8 +69,8 @@
 					</div>
 
 					<div>
-						<h3 class="text-primary text-sm font-bold uppercase tracking-wider mb-4"
-							data-i18n="docs.sidebar.syntax">Sintaxe</h3>
+						<h3 class="text-primary text-sm font-bold uppercase tracking-wider mb-4" data-i18n="docs.sidebar.syntax">
+							Sintaxe</h3>
 						<ul class="space-y-1">
 							<li><a href="#variables"
 									class="block py-2 px-3 rounded-lg text-text-muted hover:text-primary hover:bg-bg-dark transition-all text-sm"
@@ -91,8 +94,8 @@
 					</div>
 
 					<div>
-						<h3 class="text-primary text-sm font-bold uppercase tracking-wider mb-4"
-							data-i18n="docs.sidebar.advanced">Avançado</h3>
+						<h3 class="text-primary text-sm font-bold uppercase tracking-wider mb-4" data-i18n="docs.sidebar.advanced">
+							Avançado</h3>
 						<ul class="space-y-1">
 							<li><a href="#arrays"
 									class="block py-2 px-3 rounded-lg text-text-muted hover:text-primary hover:bg-bg-dark transition-all text-sm"
@@ -108,43 +111,72 @@
 				</div>
 			</aside>
 
-		<main class="flex-grow min-w-0 max-w-4xl">
-			<div class="bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-8 lg:p-12 shadow-xl space-y-10">
+			<main class="flex-grow min-w-0 max-w-4xl">
+				<div class="bg-bg-dark-2 border border-bg-dark-3/20 rounded-xl p-8 lg:p-12 shadow-xl space-y-10">
 
-				<!-- Introdução -->
-				<section>
-					<h1 id="intro" class="text-3xl font-bold text-white mb-4" data-i18n="docs.intro.title">Introdução ao Jech</h1>
-					<p class="text-text-muted mb-3" data-i18n="docs.intro.p1">
-						Jech é uma linguagem de programação educacional, projetada para ser simples, intuitiva e fácil de aprender. O principal objetivo do projeto é servir como base para o estudo de como compiladores, interpretadores e máquinas virtuais funcionam.
-					</p>
-					<p class="text-text-muted" data-i18n="docs.intro.p2">
-						O nome "Jech" é um jogo com as iniciais de seus conceitos fundamentais e do seu criador. Ela é implementada inteiramente em C e pode ser executada tanto nativamente quanto no navegador via WebAssembly.
-					</p>
-				</section>
+					<!-- Introdução -->
+					<section>
+						<h1 id="intro" class="text-3xl font-bold text-white mb-4" data-i18n="docs.intro.title">
+							Introdução ao Jech</h1>
+						<p class="text-text-muted mb-3" data-i18n="docs.intro.p1">
+							Jech é uma linguagem de programação educacional, projetada para ser simples, intuitiva e
+							fácil de aprender. O principal objetivo do projeto é servir como base para o estudo de como
+							compiladores, interpretadores e máquinas virtuais funcionam.
+						</p>
+						<p class="text-text-muted" data-i18n="docs.intro.p2">
+							O nome "Jech" é um jogo com as iniciais de seus conceitos fundamentais e do seu criador. Ela
+							é implementada inteiramente em C e pode ser executada tanto nativamente quanto no navegador
+							via WebAssembly.
+						</p>
+					</section>
 
-				<!-- Instalação -->
-				<section>
-					<h2 id="install" class="text-2xl font-bold text-white mb-4" data-i18n="docs.install.title">🚀 Instalação</h2>
-					<p class="text-text-muted mb-3" data-i18n="docs.install.p1">
-						Atualmente, a maneira mais fácil de experimentar Jech é através do nosso <a href="/playground" class="text-primary hover:underline">Playground Online</a>. Nenhuma instalação é necessária!
-					</p>
-					<p class="text-text-muted mb-4" data-i18n="docs.install.p2">
-						Para rodar localmente, você precisará compilar o código fonte. No futuro, disponibilizaremos binários para os principais sistemas operacionais.
-					</p>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code>git clone https://github.com/joaoluke/jech
+					<section>
+						<h2 class="text-2xl font-bold text-white mb-4" data-i18n="docs.story.title">📖 História do JECH</h2>
+						<p class="text-text-muted mb-3" data-i18n="docs.story.p1">
+							O Jech começou como uma curiosidade minha: eu queria entender como uma linguagem de programação
+							é feita e como ela funciona por baixo dos panos.
+						</p>
+						<p class="text-text-muted mb-3" data-i18n="docs.story.p2">
+							Com isso, veio a ideia de abrir esse processo ao público, criando uma documentação onde pessoas
+							com pouco conhecimento em C, compiladores e interpretadores possam acompanhar e entender como tudo
+							funciona.
+						</p>
+						<p class="text-text-muted" data-i18n="docs.story.p3">
+							O nome JECH vem das iniciais dos meus filhos: Jonathan Edwards e Charles Haddon.
+						</p>
+					</section>
+
+					<!-- Instalação -->
+					<section>
+						<h2 id="install" class="text-2xl font-bold text-white mb-4" data-i18n="docs.install.title">🚀
+							Instalação</h2>
+						<p class="text-text-muted mb-3" data-i18n="docs.install.p1">
+							Atualmente, a maneira mais fácil de experimentar Jech é através do nosso <a href="/playground"
+								class="text-primary hover:underline">Playground Online</a>. Nenhuma
+							instalação é necessária!
+						</p>
+						<p class="text-text-muted mb-4" data-i18n="docs.install.p2">
+							Para rodar localmente, você precisará compilar o código fonte. No futuro, disponibilizaremos
+							binários para os principais sistemas operacionais.
+						</p>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code>git clone https://github.com/joaoluke/jech
 cd jech
 make
 ./jech seu_arquivo.jc</code></pre>
-				</section>
+					</section>
 
-				<!-- Tipos de Dados -->
-				<section>
-					<h2 id="types" class="text-2xl font-bold text-white mb-4" data-i18n="docs.types.title">🎨 Tipos de Dados</h2>
-					<p class="text-text-muted mb-4" data-i18n="docs.types.p">Jech suporta quatro tipos principais de dados. Vamos explorar cada um em detalhes:</p>
+					<!-- Tipos de Dados -->
+					<section>
+						<h2 id="types" class="text-2xl font-bold text-white mb-4" data-i18n="docs.types.title">🎨 Tipos
+							de Dados</h2>
+						<p class="text-text-muted mb-4" data-i18n="docs.types.p">Jech suporta quatro tipos principais de
+							dados. Vamos explorar cada um em detalhes:</p>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.numbers">1. Números (Numbers)</h3>
-					<p class="text-text-muted mb-3" data-i18n="docs.types.numbersP">Jech trabalha com números inteiros e decimais. Não há distinção entre int e float.</p>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="comment">// Números inteiros</span>
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.numbers">1. Números
+							(Numbers)</h3>
+						<p class="text-text-muted mb-3" data-i18n="docs.types.numbersP">Jech trabalha com números
+							inteiros e decimais. Não há distinção entre int e float.</p>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="comment">// Números inteiros</span>
 <span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">25</span>;
 <span class="keyword">keep</span> <span class="variable">quantity</span> = <span class="number">100</span>;
 
@@ -152,45 +184,59 @@ make
 <span class="keyword">keep</span> <span class="variable">price</span> = <span class="number">19.99</span>;
 <span class="keyword">keep</span> <span class="variable">pi</span> = <span class="number">3.14</span>;</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.strings">2. Strings (Texto)</h3>
-					<p class="text-text-muted mb-3" data-i18n="docs.types.stringsP">Strings são sequências de caracteres delimitadas por aspas duplas.</p>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">greeting</span> = <span class="string">"Olá, Mundo!"</span>;
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.strings">2. Strings
+							(Texto)</h3>
+						<p class="text-text-muted mb-3" data-i18n="docs.types.stringsP">Strings são sequências de
+							caracteres delimitadas por aspas duplas.</p>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">greeting</span> = <span class="string">"Olá, Mundo!"</span>;
 <span class="keyword">keep</span> <span class="variable">name</span> = <span class="string">"Jech"</span>;</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.booleans">3. Booleanos (true/false)</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">isOnline</span> = <span class="number">true</span>;
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.booleans">3.
+							Booleanos (true/false)</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">isOnline</span> = <span class="number">true</span>;
 <span class="keyword">keep</span> <span class="variable">hasPermission</span> = <span class="number">false</span>;</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.arrays">4. Arrays (Listas)</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.types.arrays">4. Arrays
+							(Listas)</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
 <span class="keyword">keep</span> <span class="variable">names</span> = [<span class="string">"Ana"</span>, <span class="string">"Bruno"</span>, <span class="string">"Carlos"</span>];</code></pre>
-				</section>
+					</section>
 
-				<!-- Operadores -->
-				<section>
-					<h2 id="operators" class="text-2xl font-bold text-white mb-4" data-i18n="docs.operators.title">🔢 Operadores Aritméticos</h2>
-					<p class="text-text-muted mb-4" data-i18n="docs.operators.p">Jech suporta as quatro operações matemáticas básicas.</p>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">sum</span> = <span class="number">5</span> + <span class="number">3</span>;      <span class="comment">// Adição → 8</span>
+					<!-- Operadores -->
+					<section>
+						<h2 id="operators" class="text-2xl font-bold text-white mb-4" data-i18n="docs.operators.title">
+							🔢 Operadores Aritméticos</h2>
+						<p class="text-text-muted mb-4" data-i18n="docs.operators.p">Jech suporta as quatro operações
+							matemáticas básicas.</p>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">sum</span> = <span class="number">5</span> + <span class="number">3</span>;      <span class="comment">// Adição → 8</span>
 <span class="keyword">keep</span> <span class="variable">diff</span> = <span class="number">20</span> - <span class="number">8</span>;    <span class="comment">// Subtração → 12</span>
 <span class="keyword">keep</span> <span class="variable">prod</span> = <span class="number">4</span> * <span class="number">5</span>;     <span class="comment">// Multiplicação → 20</span>
 <span class="keyword">keep</span> <span class="variable">quot</span> = <span class="number">100</span> / <span class="number">4</span>;   <span class="comment">// Divisão → 25</span></code></pre>
-				</section>
+					</section>
 
-				<!-- Condicionais -->
-				<section>
-					<h2 id="conditionals" class="text-2xl font-bold text-white mb-4" data-i18n="docs.conditionals.title">🔀 Condicionais (when/else)</h2>
-					<p class="text-text-muted mb-4" data-i18n="docs.conditionals.p">Condicionais permitem que seu programa tome decisões baseado em condições.</p>
+					<!-- Condicionais -->
+					<section>
+						<h2 id="conditionals" class="text-2xl font-bold text-white mb-4" data-i18n="docs.conditionals.title">🔀
+							Condicionais (when/else)</h2>
+						<p class="text-text-muted mb-4" data-i18n="docs.conditionals.p">Condicionais permitem que seu
+							programa tome decisões baseado em condições.</p>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.operators">Operadores de Comparação</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="variable">x</span> == <span class="variable">y</span>    <span class="comment">// Igual a</span>
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.operators">
+							Operadores de Comparação</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="variable">x</span> == <span class="variable">y</span>    <span class="comment">// Igual a</span>
 <span class="variable">x</span> != <span class="variable">y</span>    <span class="comment">// Diferente de</span>
 <span class="variable">x</span> &gt; <span class="variable">y</span>     <span class="comment">// Maior que</span>
 <span class="variable">x</span> &lt; <span class="variable">y</span>     <span class="comment">// Menor que</span>
 <span class="variable">x</span> &gt;= <span class="variable">y</span>    <span class="comment">// Maior ou igual a</span>
 <span class="variable">x</span> &lt;= <span class="variable">y</span>    <span class="comment">// Menor ou igual a</span></code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.elseTitle">when/else</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">16</span>;
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.elseTitle">
+							when/else</h3>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">age</span> = <span class="number">16</span>;
 
 <span class="keyword">when</span> (<span class="variable">age</span> &gt;= <span class="number">18</span>) {
     <span class="function">say</span>(<span class="string">"Você pode votar"</span>);
@@ -199,8 +245,9 @@ make
     <span class="function">say</span>(<span class="string">"Muito jovem para votar"</span>);
 }</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.multipleTitle">Múltiplas Condições (else when)</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">grade</span> = <span class="number">85</span>;
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.conditionals.multipleTitle">Múltiplas
+							Condições (else when)</h3>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">grade</span> = <span class="number">85</span>;
 
 <span class="keyword">when</span> (<span class="variable">grade</span> &gt;= <span class="number">90</span>) {
     <span class="function">say</span>(<span class="string">"Nota A"</span>);
@@ -211,60 +258,74 @@ make
 <span class="keyword">else</span> {
     <span class="function">say</span>(<span class="string">"Reprovado"</span>);
 }</code></pre>
-				</section>
+					</section>
 
-				<!-- Arrays -->
-				<section>
-					<h2 id="arrays" class="text-2xl font-bold text-white mb-4" data-i18n="docs.arrays.title">📋 Arrays</h2>
-					<p class="text-text-muted mb-4" data-i18n="docs.arrays.p">Arrays são coleções ordenadas de valores indexadas a partir de 0.</p>
+					<!-- Arrays -->
+					<section>
+						<h2 id="arrays" class="text-2xl font-bold text-white mb-4" data-i18n="docs.arrays.title">📋
+							Arrays</h2>
+						<p class="text-text-muted mb-4" data-i18n="docs.arrays.p">Arrays são coleções ordenadas de
+							valores indexadas a partir de 0.</p>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.arrays.accessing">Acessando Elementos</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"Maçã"</span>, <span class="string">"Banana"</span>, <span class="string">"Uva"</span>];
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.arrays.accessing">
+							Acessando Elementos</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">fruits</span> = [<span class="string">"Maçã"</span>, <span class="string">"Banana"</span>, <span class="string">"Uva"</span>];
 <span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">0</span>]);  <span class="comment">// Exibe: Maçã</span>
 <span class="function">say</span>(<span class="variable">fruits</span>[<span class="number">1</span>]);  <span class="comment">// Exibe: Banana</span></code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.arrays.modifying">Modificando Elementos</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">list</span> = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.arrays.modifying">
+							Modificando Elementos</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">list</span> = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];
 <span class="variable">list</span>[<span class="number">1</span>] = <span class="number">99</span>;
 <span class="function">say</span>(<span class="variable">list</span>);  <span class="comment">// Exibe: [10, 99, 30]</span></code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2">Método map</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2">Método map</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
 <span class="keyword">keep</span> <span class="variable">doubled</span> = <span class="variable">numbers</span>.map(* <span class="number">2</span>);
 <span class="function">say</span>(<span class="variable">doubled</span>);  <span class="comment">// Exibe: [2, 4, 6, 8, 10]</span></code></pre>
-				</section>
+					</section>
 
-				<!-- Funções -->
-				<section>
-					<h2 id="functions" class="text-2xl font-bold text-white mb-4" data-i18n="docs.functions.title">🛠️ Funções (do)</h2>
-					<p class="text-text-muted mb-4" data-i18n="docs.functions.p">Funções permitem agrupar código para reutilização. Em Jech, usamos a palavra-chave <code class="text-primary">do</code>.</p>
+					<!-- Funções -->
+					<section>
+						<h2 id="functions" class="text-2xl font-bold text-white mb-4" data-i18n="docs.functions.title">
+							🛠️ Funções (do)</h2>
+						<p class="text-text-muted mb-4" data-i18n="docs.functions.p">Funções permitem agrupar código
+							para reutilização. Em Jech, usamos a palavra-chave <code class="text-primary">do</code>.</p>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.simple">Função Simples</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">sayHello</span>() {
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.simple">Função
+							Simples</h3>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">sayHello</span>() {
     <span class="function">say</span>(<span class="string">"Olá de dentro da função!"</span>);
 }
 <span class="function">sayHello</span>();</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.oneParam">Função com Parâmetros</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.oneParam">
+							Função com Parâmetros</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">greet</span>(<span class="variable">name</span>) {
     <span class="function">say</span>(<span class="string">"Olá, "</span> + <span class="variable">name</span> + <span class="string">"!"</span>);
 }
 <span class="function">greet</span>(<span class="string">"Alice"</span>);  <span class="comment">// Exibe: Olá, Alice!</span></code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.return">Função com Retorno</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">double</span>(<span class="variable">n</span>) {
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2" data-i18n="docs.functions.return">Função
+							com Retorno</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">double</span>(<span class="variable">n</span>) {
     <span class="keyword">return</span> <span class="variable">n</span> * <span class="number">2</span>;
 }
 <span class="keyword">keep</span> <span class="variable">res</span> = <span class="function">double</span>(<span class="number">10</span>);
 <span class="function">say</span>(<span class="variable">res</span>);  <span class="comment">// Exibe: 20</span></code></pre>
-				</section>
+					</section>
 
-				<!-- Exemplos Práticos -->
-				<section>
-					<h2 id="exemplos-praticos" class="text-2xl font-bold text-white mb-4">🎯 Exemplos Práticos</h2>
+					<!-- Exemplos Práticos -->
+					<section>
+						<h2 id="exemplos-praticos" class="text-2xl font-bold text-white mb-4">🎯 Exemplos Práticos</h2>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2">1. Sistema de Autenticação</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">username</span> = <span class="string">"admin"</span>;
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2">1. Sistema de Autenticação</h3>
+						<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">username</span> = <span class="string">"admin"</span>;
 <span class="keyword">keep</span> <span class="variable">isAuth</span> = <span class="number">false</span>;
 
 <span class="keyword">when</span> (<span class="variable">username</span> == <span class="string">"admin"</span>) {
@@ -279,37 +340,48 @@ make
     <span class="function">say</span>(<span class="string">"Bem-vindo ao sistema!"</span>);
 }</code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2">2. Calculadora de Área</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">calculateArea</span>(<span class="variable">width</span>, <span class="variable">height</span>) {
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2">2. Calculadora de Área</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">do</span> <span class="function">calculateArea</span>(<span class="variable">width</span>, <span class="variable">height</span>) {
     <span class="keyword">keep</span> <span class="variable">area</span> = <span class="variable">width</span> * <span class="variable">height</span>;
     <span class="function">say</span>(<span class="string">"A área é: "</span> + <span class="variable">area</span>);
 }
 
 <span class="function">calculateArea</span>(<span class="number">5</span>, <span class="number">10</span>);  <span class="comment">// Exibe: A área é: 50</span></code></pre>
 
-					<h3 class="text-xl font-semibold text-white mt-6 mb-2">3. Carrinho de Compras</h3>
-					<pre class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">products</span> = [<span class="number">100</span>, <span class="number">250</span>, <span class="number">50</span>];
+						<h3 class="text-xl font-semibold text-white mt-6 mb-2">3. Carrinho de Compras</h3>
+						<pre
+							class="bg-bg-dark rounded-lg p-4 overflow-x-auto text-sm"><code><span class="keyword">keep</span> <span class="variable">products</span> = [<span class="number">100</span>, <span class="number">250</span>, <span class="number">50</span>];
 <span class="keyword">keep</span> <span class="variable">subtotal</span> = <span class="variable">products</span>[<span class="number">0</span>] + <span class="variable">products</span>[<span class="number">1</span>] + <span class="variable">products</span>[<span class="number">2</span>];
 <span class="keyword">keep</span> <span class="variable">final</span> = <span class="variable">subtotal</span> * <span class="number">1.1</span>;
 <span class="function">say</span>(<span class="string">"Total com impostos: R$ "</span> + <span class="variable">final</span>);</code></pre>
 
-					<div class="mt-8 p-4 bg-primary/10 border border-primary/30 rounded-lg">
-						<p class="text-text-muted text-sm"><strong class="text-primary">💡 Dica:</strong> Todos estes exemplos estão prontos para executar! Copie e cole no <a href="/playground" class="text-primary hover:underline">playground</a> para ver como funcionam na prática.</p>
-					</div>
+						<div class="mt-8 p-4 bg-primary/10 border border-primary/30 rounded-lg">
+							<p class="text-text-muted text-sm"><strong class="text-primary">💡 Dica:</strong> Todos
+								estes exemplos estão prontos para executar! Copie e cole no <a href="/playground"
+									class="text-primary hover:underline">playground</a> para ver como funcionam na
+								prática.</p>
+						</div>
 
-					<div class="mt-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-						<p class="text-text-muted text-sm"><strong class="text-yellow-400">⚠️ Importante:</strong> Jech está em desenvolvimento ativo. Algumas funcionalidades podem mudar em versões futuras.</p>
-					</div>
+						<div class="mt-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+							<p class="text-text-muted text-sm"><strong class="text-yellow-400">⚠️ Importante:</strong>
+								Jech está em desenvolvimento ativo. Algumas funcionalidades podem mudar em versões
+								futuras.</p>
+						</div>
 
-					<div class="mt-8 text-center py-8 border-t border-bg-dark-3/20">
-						<h2 class="text-2xl font-bold text-white mb-3" data-i18n="docs.cta.ready">Pronto para começar?</h2>
-						<p class="text-text-muted mb-6" data-i18n="docs.cta.readyP">Teste seus conhecimentos no playground interativo!</p>
-						<a href="/playground" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-bg-dark font-bold py-3 px-8 rounded-xl transition-all" data-i18n="docs.cta.open">Abrir Playground</a>
-					</div>
-				</section>
+						<div class="mt-8 text-center py-8 border-t border-bg-dark-3/20">
+							<h2 class="text-2xl font-bold text-white mb-3" data-i18n="docs.cta.ready">Pronto para
+								começar?</h2>
+							<p class="text-text-muted mb-6" data-i18n="docs.cta.readyP">Teste seus conhecimentos no
+								playground interativo!</p>
+							<a href="/playground"
+								class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-bg-dark font-bold py-3 px-8 rounded-xl transition-all"
+								data-i18n="docs.cta.open">Abrir Playground</a>
+						</div>
+					</section>
 
-			</div>
-		</main>
+				</div>
+			</main>
 		</div>
 	</div>
 
@@ -325,16 +397,15 @@ make
 				<div class="footer-section">
 					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.links">Links</h4>
 					<ul class="list-none p-0 space-y-2">
-						<li><a href="/" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.home">Início</a></li>
+						<li><a href="/" class="text-text-muted hover:text-primary transition-colors" data-i18n="nav.home">Início</a>
+						</li>
 						<li><a href="/playground" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.playground">Playground</a></li>
 						<li><a href="/docs" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.docs">Documentação</a></li>
 						<li><a href="/internals" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.internals">Como Funciona</a></li>
-						<li><a href="https://github.com/joaoluke/jech"
-								class="text-text-muted hover:text-primary transition-colors"
+						<li><a href="https://github.com/joaoluke/jech" class="text-text-muted hover:text-primary transition-colors"
 								data-i18n="nav.github">GitHub</a></li>
 					</ul>
 				</div>
