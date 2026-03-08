@@ -125,7 +125,8 @@ const JechWASM = (function () {
     }
 
     try {
-      // Limpa o buffer de saída
+      // Limpa o estado da VM e o buffer de saída
+      await clear();
       outputBuffer = "";
 
       // Usa ccall para chamar a função C
