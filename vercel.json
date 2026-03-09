@@ -5,45 +5,13 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "."
+        "distDir": "dist"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)\\.wasm$",
-      "headers": {
-        "Content-Type": "application/wasm",
-        "Cross-Origin-Embedder-Policy": "require-corp",
-        "Cross-Origin-Opener-Policy": "same-origin"
-      },
-      "dest": "/$1.wasm"
-    },
-    {
-      "src": "/(.*)\\.js$",
-      "headers": {
-        "Content-Type": "application/javascript",
-        "Cross-Origin-Embedder-Policy": "require-corp",
-        "Cross-Origin-Opener-Policy": "same-origin"
-      },
-      "dest": "/$1.js"
-    },
-    {
-      "src": "/playground.html",
-      "headers": {
-        "Cross-Origin-Embedder-Policy": "require-corp",
-        "Cross-Origin-Opener-Policy": "same-origin"
-      },
-      "dest": "/playground.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
     }
   ],
   "headers": [
     {
-      "source": "/wasm/(.*)",
+      "source": "/wasm/:path*",
       "headers": [
         {
           "key": "Content-Type",
@@ -60,7 +28,7 @@
       ]
     },
     {
-      "source": "/(.*).wasm",
+      "source": "/:path*.wasm",
       "headers": [
         {
           "key": "Content-Type",
@@ -73,6 +41,46 @@
         {
           "key": "Cross-Origin-Opener-Policy",
           "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/playground",
+      "headers": [
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/js/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/:path*.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }

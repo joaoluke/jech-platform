@@ -1,54 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNavbar from "../components/SiteNavbar.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Como Funciona - Jech</title>
-	<link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
-		rel="stylesheet" />
-	<link rel="stylesheet" href="src/input.css">
-</head>
+const description =
+  "Entenda internamente como o Jech funciona: análise léxica, parser, análise semântica, geração de bytecode e execução em runtime.";
 
-<body class="bg-bg-dark text-text-secondary font-sans leading-relaxed">
-	<nav
-		class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300">
-		<div class="container flex justify-between items-center">
-			<a href="/" class="flex items-center gap-3 group">
-				<img src="images/JECH.png" alt="JECH Logo"
-					class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
-					style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));" />
-				<span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
-			</a>
-			<div class="flex items-center gap-6">
-				<a href="/" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
-					data-i18n="nav.home">Início</a>
-				<a href="/playground" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
-					data-i18n="nav.playground">Playground</a>
-				<a href="/docs" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
-					data-i18n="nav.docs">Documentação</a>
-				<a href="/internals"
-					class="relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-					data-i18n="nav.internals">Como Funciona</a>
-				<a href="https://github.com/joaoluke/jech" target="_blank"
-					class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
-					data-i18n="nav.github">GitHub</a>
-				<div class="language-selector">
-					<span class="language-icon">🌐</span>
-					<select id="languageSelector" onchange="I18n.setLanguage(this.value)">
-						<option value="pt-BR">🇧🇷 PT</option>
-						<option value="en">🇺🇸 EN</option>
-					</select>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="internals-container max-w-[1400px] mx-auto py-24 px-8">
+const mainHtml = String.raw`<div class="internals-container max-w-[1400px] mx-auto py-24 px-8">
 		<header
 			class="internals-header text-center mb-16 p-12 bg-gradient-to-br from-bg-dark-2 to-bg-dark-3 rounded-2xl border border-bg-dark-3/20">
 			<h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
@@ -632,55 +590,22 @@ POP_TOP                        ; Remove resultado da pilha</code></pre>
 				</a>
 			</div>
 		</section>
-	</div>
+	</div>`;
+---
 
-	<footer class="footer bg-bg-dark-2 border-t border-bg-dark-3 py-12 pb-4">
-		<div class="container mx-auto px-4">
-			<div class="footer-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-				<div class="footer-section">
-					<h4 class="text-primary font-bold mb-4 text-lg">Jech</h4>
-					<p class="text-text-muted leading-relaxed" data-i18n="home.footer.description">Linguagem de
-						programação educacional para aprender sobre interpretadores e compiladores.</p>
-				</div>
-
-				<div class="footer-section">
-					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.links">Links</h4>
-					<ul class="list-none p-0 space-y-2">
-						<li><a href="/" class="text-text-muted hover:text-primary transition-colors" data-i18n="nav.home">Início</a>
-						</li>
-						<li><a href="/playground" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.playground">Playground</a></li>
-						<li><a href="/docs" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.docs">Documentação</a></li>
-						<li><a href="/internals" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.internals">Como Funciona</a></li>
-						<li><a href="https://github.com/joaoluke/jech" class="text-text-muted hover:text-primary transition-colors"
-								data-i18n="nav.github">GitHub</a></li>
-					</ul>
-				</div>
-
-				<div class="footer-section">
-					<h4 class="text-primary font-bold mb-4 text-lg" data-i18n="home.footer.technologies">Tecnologias
-					</h4>
-					<ul class="list-none p-0 space-y-2 text-text-muted">
-						<li>C (Interpretador)</li>
-						<li>WebAssembly (Browser)</li>
-						<li>Emscripten (Compilação)</li>
-						<li>HTML/CSS/JS (Interface)</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="footer-bottom text-center pt-8 border-t border-bg-dark-3 text-text-muted text-sm">
-				<p data-i18n="home.footer.copyright">&copy; 2026 Jech Programming Language. Open Source sob MIT License.
-				</p>
-			</div>
-		</div>
-	</footer>
-
-	<script src="js/i18n/translations.js"></script>
-	<script src="js/i18n/i18n.js"></script>
-	<script src="js/internals.js"></script>
-</body>
-
-</html>
+<BaseLayout
+  title="Como Funciona - Jech"
+  description={description}
+  canonical="https://www.jech-lang.org/internals"
+  ogType="article"
+  bodyClass="bg-bg-dark text-text-secondary font-sans leading-relaxed"
+>
+  <SiteNavbar active="internals" />
+  <main>
+    <Fragment set:html={mainHtml} />
+  </main>
+  <SiteFooter />
+  <script is:inline src="/js/i18n/translations.js"></script>
+  <script is:inline src="/js/i18n/i18n.js"></script>
+  <script is:inline src="/js/internals.js"></script>
+</BaseLayout>

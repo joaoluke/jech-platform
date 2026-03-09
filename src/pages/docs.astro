@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNavbar from "../components/SiteNavbar.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { loadLegacyMain } from "../lib/legacy-page.js";
+
+const { mainHtml, bodyClass } = loadLegacyMain(
+  new URL("../../docs.html", import.meta.url),
+);
+---
+
+<BaseLayout
+  title="Documentação - Jech"
+  description="Documentação oficial da linguagem Jech: sintaxe, tipos, operadores, condicionais, loops, funções e exemplos práticos."
+  canonical="https://www.jech-lang.org/docs"
+  ogType="article"
+  bodyClass={bodyClass}
+>
+  <SiteNavbar active="docs" />
+  <main>
+    <Fragment set:html={mainHtml} />
+  </main>
+  <SiteFooter />
+  <script is:inline src="/js/i18n/translations.js"></script>
+  <script is:inline src="/js/i18n/i18n.js"></script>
+</BaseLayout>

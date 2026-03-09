@@ -1,0 +1,58 @@
+---
+const { active = "home" } = Astro.props;
+
+const isActive = (key) => active === key;
+const baseLinkClass =
+  "text-sm font-medium text-text-muted hover:text-text-primary transition-colors";
+const activeLinkClass =
+  "relative text-sm font-semibold text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary";
+---
+
+<nav
+  class="sticky top-0 z-50 bg-bg-dark/90 backdrop-blur-md border-b border-bg-dark-3/30 py-3 transition-all duration-300"
+>
+  <div class="container flex justify-between items-center">
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src="/images/JECH.png"
+        alt="JECH Logo"
+        class="w-8 h-8 object-contain transition-transform group-hover:scale-110"
+        style="filter: drop-shadow(0 0 6px rgba(181,58,46,0.4));"
+      />
+      <span class="text-xl font-black text-text-primary tracking-tight">JECH</span>
+    </a>
+    <div class="flex items-center gap-6">
+      <a href="/" class={isActive("home") ? activeLinkClass : baseLinkClass} data-i18n="nav.home"
+        >Início</a
+      >
+      <a
+        href="/playground"
+        class={isActive("playground") ? activeLinkClass : baseLinkClass}
+        data-i18n="nav.playground"
+        >Playground</a
+      >
+      <a href="/docs" class={isActive("docs") ? activeLinkClass : baseLinkClass} data-i18n="nav.docs"
+        >Documentação</a
+      >
+      <a
+        href="/internals"
+        class={isActive("internals") ? activeLinkClass : baseLinkClass}
+        data-i18n="nav.internals"
+        >Como Funciona</a
+      >
+      <a
+        href="https://github.com/joaoluke/jech"
+        target="_blank"
+        class={baseLinkClass}
+        data-i18n="nav.github">GitHub</a
+      >
+      <div class="language-selector">
+        <span class="language-icon">🌐</span>
+        <select id="languageSelector" onchange="I18n.setLanguage(this.value)">
+          <option value="pt-BR">🇧🇷 PT</option>
+          <option value="en">🇺🇸 EN</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -58,7 +58,8 @@ Explore the complete [documentation](https://joaoluke.github.io/jech-platform/do
 ### Prerequisites
 
 - Modern web browser (Chrome, Firefox, Safari, or Edge)
-- (Optional) Local web server for development
+- Node.js 20+
+- npm
 
 ### Running Locally
 
@@ -68,30 +69,33 @@ Explore the complete [documentation](https://joaoluke.github.io/jech-platform/do
    cd jech/jech-platform
    ```
 
-2. Start a local web server. For example, using Python:
+2. Install dependencies:
    ```bash
-   python3 -m http.server 8000
+   npm install
    ```
 
-3. Open your browser to `http://localhost:8000`
+3. Start the Astro development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser to `http://localhost:4321`
 
 ### Project Structure
 
 ```
 jech-platform/
-├── index.html          # Landing page
-├── playground.html     # Interactive code editor
-├── docs.html           # Documentation
-├── styles/             # CSS styles
-│   ├── styles.css      # Global styles
-│   └── playground.css  # Playground-specific styles
-├── js/                 # JavaScript files
-│   ├── animations.js   # UI animations
-│   └── playground/     # Playground logic
-│       └── wasm-loader.js  # WebAssembly loader
-└── wasm/               # WebAssembly files
-    ├── jech.wasm      # Jech interpreter (WASM)
-    └── jech.js        # Emscripten loader
+├── src/
+│   ├── pages/          # Astro routes (/, /docs, /internals, /playground)
+│   ├── layouts/        # Base layout with SEO defaults
+│   └── input.css       # Tailwind v4 styles
+├── public/
+│   ├── js/             # Browser scripts
+│   ├── images/         # Static images
+│   ├── icons/          # Favicons/icons
+│   └── wasm/           # Jech WebAssembly runtime
+├── astro.config.mjs
+└── vercel.json
 ```
 
 ## 🌐 Deployment
