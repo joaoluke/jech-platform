@@ -13,6 +13,17 @@ const JechWASM = (function () {
   let outputCallback = null;
 
   /**
+   * Resolve caminhos de assets WASM considerando rota atual e subpastas
+   */
+  function resolveWasmAsset(filename) {
+    const normalizedPath = window.location.pathname.endsWith("/")
+      ? window.location.pathname
+      : `${window.location.pathname}/`;
+    const pageUrl = new URL(normalizedPath, window.location.origin);
+    return new URL(`../wasm/${filename}`, pageUrl).href;
+  }
+
+  /**
    * Define um callback para receber a saída
    */
   function setOutputCallback(callback) {
@@ -53,7 +64,7 @@ const JechWASM = (function () {
 
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "wasm/jech.js";
+      script.src = resolveWasmAsset("jech.js");
 
       script.onload = async () => {
         try {
@@ -77,7 +88,7 @@ const JechWASM = (function () {
 
             locateFile: (path) => {
               if (path.endsWith(".wasm")) {
-                return "wasm/jech.wasm";
+                return resolveWasmAsset("jech.wasm");
               }
               return path;
             }
